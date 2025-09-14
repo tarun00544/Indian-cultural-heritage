@@ -1,0 +1,1715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bharat Heritage - Discover India's Cultural Diversity</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #2c1810 0%, #1a0e0a 30%, #8b4513 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        /* Header */
+        .header {
+            background: rgba(139, 69, 19, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid rgba(218, 165, 32, 0.3);
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            background: linear-gradient(135deg, #DAA520, #FFD700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-item {
+            color: #DAA520;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-item:hover, .nav-item.active {
+            background: rgba(218, 165, 32, 0.2);
+            color: #FFD700;
+        }
+
+        .language-selector {
+            position: relative;
+        }
+
+        .language-btn {
+            background: rgba(218, 165, 32, 0.2);
+            color: #DAA520;
+            border: 1px solid rgba(218, 165, 32, 0.3);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .language-btn:hover {
+            background: rgba(218, 165, 32, 0.3);
+        }
+
+        .language-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: rgba(139, 69, 19, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(218, 165, 32, 0.3);
+            border-radius: 12px;
+            padding: 1rem;
+            display: none;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.5rem;
+            min-width: 300px;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .language-dropdown.active {
+            display: grid;
+        }
+
+        .lang-option {
+            padding: 0.5rem;
+            color: #DAA520;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        .lang-option:hover {
+            background: rgba(218, 165, 32, 0.2);
+            color: #FFD700;
+        }
+
+        .search-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .search-box {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(218, 165, 32, 0.3);
+            border-radius: 25px;
+            padding: 0.7rem 1.5rem;
+            color: #DAA520;
+            width: 300px;
+            font-size: 0.9rem;
+        }
+
+        .search-box::placeholder {
+            color: rgba(218, 165, 32, 0.6);
+        }
+
+        .search-box:focus {
+            outline: none;
+            border-color: #DAA520;
+            box-shadow: 0 0 10px rgba(218, 165, 32, 0.3);
+        }
+
+        .search-history {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 60px;
+            background: rgba(139, 69, 19, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(218, 165, 32, 0.3);
+            border-radius: 12px;
+            padding: 1rem;
+            display: none;
+            max-height: 200px;
+            overflow-y: auto;
+            z-index: 100;
+        }
+
+        .search-history.active {
+            display: block;
+        }
+
+        .history-item {
+            padding: 0.5rem;
+            color: #DAA520;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .history-item:hover {
+            background: rgba(218, 165, 32, 0.2);
+        }
+
+        .clear-history {
+            background: rgba(220, 53, 69, 0.2);
+            color: #ff6b6b;
+            border: none;
+            padding: 0.3rem 0.8rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            margin-top: 0.5rem;
+        }
+
+        .user-stats {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: linear-gradient(135deg, #DAA520, #FFD700);
+            color: #2c1810;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(218, 165, 32, 0.9), rgba(139, 69, 19, 0.8)),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,215,0,0.3)"/><circle cx="80" cy="40" r="1.5" fill="rgba(255,215,0,0.2)"/><circle cx="40" cy="80" r="1" fill="rgba(255,215,0,0.4)"/><circle cx="70" cy="10" r="2.5" fill="rgba(255,215,0,0.2)"/></svg>');
+            padding: 4rem 2rem;
+            text-align: center;
+            margin: 2rem;
+            border-radius: 25px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            color: #fff;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+            color: white;
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255, 107, 107, 0.4);
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1400px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        /* Navigation Tabs */
+        .nav-tabs {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            justify-content: center;
+            background: rgba(139, 69, 19, 0.3);
+            padding: 1rem;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .tab-btn {
+            padding: 12px 24px;
+            background: rgba(218, 165, 32, 0.2);
+            border: 1px solid rgba(218, 165, 32, 0.3);
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: #DAA520;
+            backdrop-filter: blur(10px);
+        }
+
+        .tab-btn.active {
+            background: linear-gradient(135deg, #DAA520, #FFD700);
+            color: #2c1810;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(218, 165, 32, 0.3);
+            border-color: #FFD700;
+        }
+
+        .tab-btn:hover:not(.active) {
+            background: rgba(218, 165, 32, 0.3);
+            transform: translateY(-1px);
+        }
+
+        /* States Grid */
+        .states-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .state-card {
+            background: linear-gradient(145deg, rgba(139, 69, 19, 0.9), rgba(101, 67, 33, 0.8));
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            transition: all 0.4s ease;
+            cursor: pointer;
+            border: 1px solid rgba(218, 165, 32, 0.2);
+        }
+
+        .state-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+            border-color: rgba(218, 165, 32, 0.5);
+        }
+
+        .card-header {
+            height: 220px;
+            background: linear-gradient(135deg, #DAA520, #B8860B);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.2) 50%, transparent 70%);
+            transform: translateX(-100%);
+            transition: transform 0.6s;
+        }
+
+        .state-card:hover .card-header::before {
+            transform: translateX(100%);
+        }
+
+        .card-content {
+            padding: 1.5rem;
+            color: #DAA520;
+        }
+
+        .card-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: #FFD700;
+        }
+
+        .card-content p {
+            color: rgba(218, 165, 32, 0.8);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .card-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+        }
+
+        .stat {
+            text-align: center;
+            background: rgba(218, 165, 32, 0.1);
+            padding: 0.8rem;
+            border-radius: 12px;
+            flex: 1;
+            margin: 0 0.2rem;
+        }
+
+        .stat-value {
+            font-weight: 700;
+            color: #FFD700;
+            font-size: 1.2rem;
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: rgba(218, 165, 32, 0.7);
+            margin-top: 0.3rem;
+        }
+
+        .card-actions {
+            display: flex;
+            gap: 0.8rem;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #DAA520, #FFD700);
+            color: #2c1810;
+        }
+
+        .btn-secondary {
+            background: rgba(218, 165, 32, 0.2);
+            color: #DAA520;
+            border: 1px solid rgba(218, 165, 32, 0.4);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            backdrop-filter: blur(10px);
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background: linear-gradient(145deg, rgba(139, 69, 19, 0.95), rgba(101, 67, 33, 0.9));
+            backdrop-filter: blur(20px);
+            max-width: 900px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            border-radius: 25px;
+            position: relative;
+            animation: slideUp 0.4s ease;
+            border: 2px solid rgba(218, 165, 32, 0.3);
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .modal-header {
+            padding: 2rem;
+            background: linear-gradient(135deg, #DAA520, #FFD700);
+            color: #2c1810;
+            text-align: center;
+            border-radius: 25px 25px 0 0;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.3);
+            border: none;
+            color: #2c1810;
+            font-size: 1.8rem;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+
+        .close-btn:hover {
+            background: rgba(0, 0, 0, 0.5);
+            transform: scale(1.1);
+        }
+
+        .modal-body {
+            padding: 2rem;
+            color: #DAA520;
+        }
+
+        .section {
+            margin-bottom: 2.5rem;
+            background: rgba(218, 165, 32, 0.05);
+            padding: 1.5rem;
+            border-radius: 15px;
+            border-left: 4px solid #DAA520;
+        }
+
+        .section h3 {
+            font-family: 'Playfair Display', serif;
+            color: #FFD700;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        .section p {
+            line-height: 1.8;
+            color: rgba(218, 165, 32, 0.9);
+            margin-bottom: 1rem;
+        }
+
+        .cultural-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .cultural-item {
+            background: rgba(218, 165, 32, 0.1);
+            padding: 1rem;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid rgba(218, 165, 32, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .cultural-item:hover {
+            background: rgba(218, 165, 32, 0.15);
+            transform: translateY(-2px);
+        }
+
+        /* Quiz Styles */
+        .quiz-container {
+            display: none;
+            background: linear-gradient(145deg, rgba(139, 69, 19, 0.9), rgba(101, 67, 33, 0.8));
+            backdrop-filter: blur(20px);
+            border-radius: 25px;
+            padding: 2rem;
+            margin: 2rem auto;
+            max-width: 900px;
+            border: 2px solid rgba(218, 165, 32, 0.3);
+        }
+
+        .quiz-container.active {
+            display: block;
+            animation: slideUp 0.4s ease;
+        }
+
+        .quiz-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #DAA520;
+        }
+
+        .quiz-header h2 {
+            font-family: 'Playfair Display', serif;
+            color: #FFD700;
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .quiz-progress {
+            background: rgba(0, 0, 0, 0.3);
+            height: 10px;
+            border-radius: 5px;
+            margin-bottom: 2rem;
+            overflow: hidden;
+        }
+
+        .quiz-progress-bar {
+            height: 100%;
+            background: linear-gradient(135deg, #DAA520, #FFD700);
+            border-radius: 5px;
+            transition: width 0.3s ease;
+        }
+
+        .question {
+            margin-bottom: 2rem;
+            color: #DAA520;
+        }
+
+        .question h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1.5rem;
+            color: #FFD700;
+        }
+
+        .options {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .option {
+            padding: 1.2rem;
+            background: rgba(218, 165, 32, 0.1);
+            border: 2px solid rgba(218, 165, 32, 0.2);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: #DAA520;
+        }
+
+        .option:hover {
+            border-color: #DAA520;
+            background: rgba(218, 165, 32, 0.2);
+            transform: translateX(5px);
+        }
+
+        .option.selected {
+            border-color: #FFD700;
+            background: rgba(255, 215, 0, 0.2);
+        }
+
+        .option.correct {
+            border-color: #28a745;
+            background: rgba(40, 167, 69, 0.2);
+        }
+
+        .option.incorrect {
+            border-color: #dc3545;
+            background: rgba(220, 53, 69, 0.2);
+        }
+
+        .quiz-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 2rem;
+        }
+
+        /* Dashboard */
+        .dashboard {
+            display: none;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .dashboard.active {
+            display: grid;
+        }
+
+        .dashboard-card {
+            background: linear-gradient(145deg, rgba(139, 69, 19, 0.9), rgba(101, 67, 33, 0.8));
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            border: 2px solid rgba(218, 165, 32, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .dashboard-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        }
+
+        .dashboard-card h3 {
+            font-family: 'Playfair Display', serif;
+            color: #FFD700;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        .streak-display {
+            font-size: 3.5rem;
+            color: #DAA520;
+            font-weight: 700;
+            margin: 1rem 0;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-menu {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .search-box {
+                width: 200px;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .nav-tabs {
+                flex-wrap: wrap;
+                gap: 0.5rem;
+            }
+
+            .states-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+                gap: 1rem;
+            }
+
+            .modal-content {
+                width: 95%;
+                margin: 1rem;
+            }
+
+            .modal-body {
+                padding: 1rem;
+            }
+
+            .language-dropdown {
+                grid-template-columns: repeat(2, 1fr);
+                min-width: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <span style="font-size: 2.5rem;">🕉️</span>
+                <h1>Bharat Heritage</h1>
+            </div>
+            <nav class="nav-menu">
+                <a href="#" class="nav-item active">Home</a>
+                <a href="#" class="nav-item">States</a>
+                <a href="#" class="nav-item">Festivals</a>
+                <a href="#" class="nav-item">Arts</a>
+                <a href="#" class="nav-item">Heritage</a>
+                <div class="language-selector">
+                    <button class="language-btn" onclick="toggleLanguages()">
+                        <span id="currentLang">EN</span> ▼
+                    </button>
+                    <div class="language-dropdown" id="languageDropdown">
+                        <!-- Languages will be populated here -->
+                    </div>
+                </div>
+            </nav>
+            <div class="search-container">
+                <input type="text" class="search-box" id="searchBox" placeholder="Search culture, festivals, arts..." onkeyup="handleSearch(event)" onfocus="showSearchHistory()">
+                <div class="search-history" id="searchHistory">
+                    <!-- Search history will be populated here -->
+                </div>
+                <div class="user-stats">
+                    <div class="stat-item">
+                        <span>🏆</span>
+                        <span id="totalScore">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span>🔥</span>
+                        <span id="currentStreak">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span>📚</span>
+                        <span id="statesVisited">0/28</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Celebrating India's Cultural Diversity</h1>
+        <p>Discover our rich traditions, festivals, and timeless arts</p>
+        <button class="cta-button" onclick="showTab('explore')">Begin Journey</button>
+    </section>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Navigation -->
+        <div class="nav-tabs">
+            <button class="tab-btn active" onclick="showTab('explore')">🗺️ Explore States</button>
+            <button class="tab-btn" onclick="showTab('quiz')">🧠 Cultural Quiz</button>
+            <button class="tab-btn" onclick="showTab('dashboard')">📊 My Progress</button>
+        </div>
+
+        <!-- Explore States Tab -->
+        <div id="explore-tab" class="tab-content">
+            <div class="states-grid" id="statesGrid">
+                <!-- States will be dynamically generated -->
+            </div>
+        </div>
+
+        <!-- Quiz Tab -->
+        <div id="quiz-tab" class="tab-content hidden">
+            <div class="quiz-container" id="quizContainer">
+                <div class="quiz-header">
+                    <h2>🧠 Cultural Knowledge Quiz</h2>
+                    <p>Test your knowledge about India's rich cultural heritage!</p>
+                    <div class="quiz-progress">
+                        <div class="quiz-progress-bar" id="progressBar"></div>
+                    </div>
+                </div>
+                <div id="quizContent">
+                    <button class="btn btn-primary" onclick="startQuiz()" style="width: 200px; margin: 2rem auto; display: block;">Start Cultural Quiz</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dashboard Tab -->
+        <div id="dashboard-tab" class="tab-content hidden">
+            <div class="dashboard">
+                <div class="dashboard-card">
+                    <h3>🔥 Learning Streak</h3>
+                    <div class="streak-display" id="streakDisplay">0</div>
+                    <p>Days of cultural exploration</p>
+                </div>
+                <div class="dashboard-card">
+                    <h3>🏆 Cultural Points</h3>
+                    <div class="streak-display" id="scoreDisplay">0</div>
+                    <p>Heritage knowledge earned</p>
+                </div>
+                <div class="dashboard-card">
+                    <h3>🗺️ States Explored</h3>
+                    <div class="streak-display" id="exploredDisplay">0</div>
+                    <p>Out of 28 Indian states</p>
+                </div>
+                <div class="dashboard-card">
+                    <h3>📈 Quiz Mastery</h3>
+                    <div class="streak-display" id="accuracyDisplay">0%</div>
+                    <p>Cultural knowledge accuracy</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- State Detail Modal -->
+    <div class="modal" id="stateModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close-btn" onclick="closeModal()">&times;</button>
+                <h2 id="modalStateTitle">State Name</h2>
+                <p id="modalStateCapital">Capital City</p>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Content will be dynamically generated -->
+            </div>
+        </div>
+    </div>
+
+     
+     </div>
+    <script>
+        // Languages supported
+        const languages = {
+            'EN': 'English',
+            'HI': 'हिन्दी',
+            'BN': 'বাংলা',
+            'TE': 'తెలుగు',
+            'MR': 'मराठी',
+            'TA': 'தமிழ்',
+            'GU': 'ગુજરાતી',
+            'KN': 'ಕನ್ನಡ',
+            'ML': 'മലയാളം',
+            'PA': 'ਪੰਜਾਬੀ',
+            'OR': 'ଓଡ଼ିଆ',
+            'AS': 'অসমীয়া',
+            'UR': 'اردو',
+            'SA': 'संस्कृत',
+            'NE': 'नेपाली',
+            'SI': 'සිංහල',
+            'MY': 'မြန်မာ',
+            'TH': 'ไทย',
+            'VI': 'Tiếng Việt',
+            'ID': 'Bahasa Indonesia',
+            'MS': 'Bahasa Melayu',
+            'ZH': '中文'
+        };
+
+        // Indian States Data with enhanced cultural information
+        const indianStates = [
+              {
+                name: "Andhra Pradesh", capital: "Amaravati", emoji: "🏛️",
+                history: "Andhra Pradesh has a rich history dating back to ancient times. It was part of the Mauryan Empire and later ruled by various dynasties including the Satavahanas, Cholas, and Vijayanagara Empire. The region has witnessed significant Buddhist influence and contains some of India's most ancient Buddhist sites.",
+                culture: "Known for its classical dance form Kuchipudi, spicy cuisine, and rich literary tradition in Telugu literature.",
+                heritage: ["Tirumala Temple", "Buddhist Sites of Amaravati", "Charminar Architecture", "Kalamkari Art"],
+                festivals: ["Ugadi", "Sankranti", "Dussehra", "Diwali"],
+                cuisine: ["Biryani", "Pesarattu", "Gongura", "Pulihora"],
+                languages: ["Telugu", "Urdu", "Hindi"]
+            },
+            {
+                name: "Arunachal Pradesh", capital: "Itanagar", emoji: "🏔️",
+                history: "Known as the 'Land of Rising Sun', Arunachal Pradesh has been inhabited by various tribal communities for centuries. The region remained largely independent until British colonial times and has maintained its unique tribal culture and traditions.",
+                culture: "Home to 26 major tribes and 100+ sub-tribes, each with distinct traditions, languages, and customs.",
+                heritage: ["Tawang Monastery", "Namdapha National Park", "Ziro Valley", "Traditional Tribal Villages"],
+                festivals: ["Losar", "Dree", "Solung", "Boori Boot"],
+                cuisine: ["Thukpa", "Momos", "Apong", "Bamboo Shoot Curry"],
+                languages: ["Hindi", "English", "Tribal Languages"]
+            },
+            {
+                name: "Assam", capital: "Dispur", emoji: "🌿",
+                history: "Assam has a rich history spanning over 1000 years, ruled by the Ahom dynasty for nearly 600 years. It was a major center of the Vaishnavite movement under Srimanta Sankardeva and has been crucial in India's tea and oil industries.",
+                culture: "Famous for Bihu dance, traditional silk weaving, and the unique Assamese culture that blends various ethnic influences.",
+                heritage: ["Kaziranga National Park", "Kamakhya Temple", "Majuli Island", "Ahom Palaces"],
+                festivals: ["Bihu", "Poila Boishakh", "Kali Puja", "Durga Puja"],
+                cuisine: ["Assam Tea", "Fish Curry", "Masor Tenga", "Pitha"],
+                languages: ["Assamese", "Bengali", "Hindi", "Bodo"]
+            },
+            {
+                name: "Bihar", capital: "Patna", emoji: "📿",
+                history: "Bihar is the birthplace of Buddhism and Jainism, with Buddha attaining enlightenment in Bodh Gaya. It was the center of powerful empires like Magadha, Maurya, and Gupta, making it crucial to Indian civilization and spirituality.",
+                culture: "Rich in spiritual traditions, folk arts, and classical literature. Known for Madhubani painting and traditional music.",
+                heritage: ["Bodh Gaya", "Nalanda University", "Vikramshila", "Patna Sahib"],
+                festivals: ["Buddha Purnima", "Sonepur Mela", "Sama-Chakeva", "Jivitputrika"],
+                cuisine: ["Litti Chokha", "Sattu", "Khaja", "Malpua"],
+                languages: ["Hindi", "Bhojpuri", "Maithili", "Urdu"]
+            },
+            {
+                name: "Chhattisgarh", capital: "Raipur", emoji: "🌾",
+                history: "Formed in 2000, Chhattisgarh has ancient roots with evidence of human habitation from paleolithic times. It was part of various empires and is rich in tribal culture and mineral resources.",
+                culture: "Predominantly tribal culture with rich folk traditions, dance forms, and handicrafts.",
+                heritage: ["Chitrakoot Falls", "Barnawapara Sanctuary", "Tribal Museums", "Ancient Temples"],
+                festivals: ["Bastar Dussehra", "Hareli", "Pola", "Navakhani"],
+                cuisine: ["Bafauri", "Chila", "Aamat", "Fara"],
+                languages: ["Hindi", "Chhattisgarhi", "Tribal Languages"]
+            },
+            {
+                name: "Goa", capital: "Panaji", emoji: "🏖️",
+                history: "Goa was under Portuguese rule for over 450 years, creating a unique Indo-Portuguese culture. It was a major trading port and center of Christianity in India, gaining independence only in 1961.",
+                culture: "Blend of Indian and Portuguese cultures, famous for beaches, music, and relaxed lifestyle.",
+                heritage: ["Churches of Old Goa", "Portuguese Architecture", "Spice Plantations", "Beach Culture"],
+                festivals: ["Carnival", "Shigmo", "Feast of St. Francis Xavier", "Ganesh Chaturthi"],
+                cuisine: ["Fish Curry Rice", "Bebinca", "Sorpotel", "Feni"],
+                languages: ["Konkani", "Marathi", "Hindi", "English"]
+            },
+            {
+                name: "Gujarat", capital: "Gandhinagar", emoji: "🏺",
+                history: "Gujarat has been a major center of trade and commerce for centuries. It's the birthplace of Mahatma Gandhi and has witnessed various dynasties including Mauryas, Guptas, and Mughals. The region has been crucial in India's freedom movement.",
+                culture: "Known for vibrant festivals, entrepreneurial spirit, and rich textile traditions.",
+                heritage: ["Dholavira", "Rani ki Vav", "Somnath Temple", "Gir National Park"],
+                festivals: ["Navratri", "Kite Festival", "Janmashtami", "Diwali"],
+                cuisine: ["Dhokla", "Khandvi", "Undhiyu", "Gujarati Thali"],
+                languages: ["Gujarati", "Hindi", "English"]
+            },
+            {
+                name: "Haryana", capital: "Chandigarh", emoji: "🌾",
+                history: "Haryana is mentioned in ancient texts as the land where the Mahabharata war was fought at Kurukshetra. It has been a major agricultural region and has contributed significantly to India's green revolution.",
+                culture: "Predominantly agricultural culture with strong folk traditions and sports culture.",
+                heritage: ["Kurukshetra", "Panipat Battlefields", "Traditional Villages", "Agricultural Heritage"],
+                festivals: ["Karva Chauth", "Teej", "Holi", "Diwali"],
+                cuisine: ["Bajra Khichdi", "Churma", "Lassi", "Kachri ki Sabzi"],
+                languages: ["Hindi", "Haryanvi", "Punjabi"]
+            },
+            {
+                name: "Himachal Pradesh", capital: "Shimla", emoji: "🏔️",
+                history: "Himachal Pradesh has ancient Hindu and Buddhist influences. It was composed of various hill states and became a union territory in 1956, achieving full statehood in 1971.",
+                culture: "Mountain culture with strong religious traditions and craftsmanship in woolens and handicrafts.",
+                heritage: ["Shimla Heritage", "Hill Stations", "Ancient Temples", "Mountain Railways"],
+                festivals: ["Dussehra", "Diwali", "Holi", "Local Hill Festivals"],
+                cuisine: ["Dham", "Chana Madra", "Babru", "Siddu"],
+                languages: ["Hindi", "Pahari", "Punjabi"]
+            },
+            {
+                name: "Jharkhand", capital: "Ranchi", emoji: "⛰️",
+                history: "Created in 2000, Jharkhand has been inhabited by tribal communities for centuries. Rich in minerals and forests, it played a significant role in India's industrial development.",
+                culture: "Predominantly tribal culture with rich traditions in music, dance, and crafts.",
+                heritage: ["Tribal Heritage", "Betla National Park", "Waterfalls", "Ancient Rock Art"],
+                festivals: ["Sarhul", "Karma", "Sohrai", "Bandna"],
+                cuisine: ["Handia", "Chilka Roti", "Rugra", "Tribal Delicacies"],
+                languages: ["Hindi", "Santali", "Mundari", "Ho"]
+            },
+            {
+                name: "Karnataka", capital: "Bengaluru", emoji: "🏛️",
+                history: "Karnataka has a rich history with powerful empires like Chalukyas, Hoysalas, and Vijayanagara. It has been a center of South Indian culture, architecture, and learning for over a millennium.",
+                culture: "Known for classical music, dance, and being the Silicon Valley of India.",
+                heritage: ["Hampi", "Mysore Palace", "Western Ghats", "Hoysala Architecture"],
+                festivals: ["Dasara", "Ugadi", "Karaga", "Diwali"],
+                cuisine: ["Masala Dosa", "Bisi Bele Bath", "Mysore Pak", "Ragi Mudde"],
+                languages: ["Kannada", "Telugu", "Tamil", "Hindi"]
+            },
+            {
+                name: "Kerala", capital: "Thiruvananthapuram", emoji: "🌴",
+                history: "Kerala has been a major spice trading center for centuries, attracting traders from around the world. It has a unique history of matrilineal society and high literacy rates.",
+                culture: "Known for Ayurveda, classical arts like Kathakali, and unique traditions.",
+                heritage: ["Backwaters", "Hill Stations", "Spice Gardens", "Ayurvedic Traditions"],
+                festivals: ["Onam", "Vishu", "Thrissur Pooram", "Christmas"],
+                cuisine: ["Appam", "Fish Curry", "Payasam", "Coconut-based dishes"],
+                languages: ["Malayalam", "Tamil", "English"]
+            },
+            {
+                name: "Madhya Pradesh", capital: "Bhopal", emoji: "🐅",
+                history: "Known as the 'Heart of India', MP has ancient cave paintings at Bhimbetka and was part of various empires. It has significant Buddhist heritage and diverse cultural influences.",
+                culture: "Diverse culture with tribal traditions, classical arts, and wildlife conservation.",
+                heritage: ["Khajuraho Temples", "Sanchi Stupa", "Tiger Reserves", "Bhimbetka Caves"],
+                festivals: ["Navratri", "Diwali", "Holi", "Tribal Festivals"],
+                cuisine: ["Dal Bafla", "Poha", "Bhutte ka Kees", "Malpua"],
+                languages: ["Hindi", "Tribal Languages"]
+            },
+            {
+                name: "Maharashtra", capital: "Mumbai", emoji: "🏙️",
+                history: "Maharashtra has been ruled by various dynasties including Marathas under Shivaji. It's the commercial capital of India and birthplace of the Indian film industry.",
+                culture: "Diverse culture with strong traditions in arts, literature, and commerce.",
+                heritage: ["Ajanta-Ellora Caves", "Shivaji's Forts", "Gateway of India", "Bollywood"],
+                festivals: ["Ganesh Chaturthi", "Navratri", "Gudi Padwa", "Diwali"],
+                cuisine: ["Vada Pav", "Misal Pav", "Puran Poli", "Bharli Vangi"],
+                languages: ["Marathi", "Hindi", "English"]
+            },
+            {
+                name: "Manipur", capital: "Imphal", emoji: "💃",
+                history: "Manipur has a rich history with its own kingdom and unique culture. It played a crucial role in World War II and has maintained its distinct identity.",
+                culture: "Famous for Manipuri dance, martial arts, and polo sport which originated here.",
+                heritage: ["Manipuri Dance", "Loktak Lake", "War Memorials", "Handloom Traditions"],
+                festivals: ["Lai Haraoba", "Yaoshang", "Kang", "Ningol Chakouba"],
+                cuisine: ["Eromba", "Singju", "Ngari", "Chamthong"],
+                languages: ["Manipuri", "English", "Hindi"]
+            },
+            {
+                name: "Meghalaya", capital: "Shillong", emoji: "🌧️",
+                history: "Known as 'Abode of Clouds', Meghalaya was carved out of Assam in 1972. It has unique matrilineal society and receives the highest rainfall in the world.",
+                culture: "Predominantly tribal culture with matrilineal society where women inherit property.",
+                heritage: ["Living Root Bridges", "Cherrapunji", "Sacred Forests", "Traditional Music"],
+                festivals: ["Wangala", "Nongkrem", "Shad Suk Mynsiem", "Christmas"],
+                cuisine: ["Jadoh", "Tungrymbai", "Dohneiiong", "Kyat"],
+                languages: ["Khasi", "Garo", "Jaintia", "English"]
+            },
+            {
+                name: "Mizoram", capital: "Aizawl", emoji: "🎋",
+                history: "Mizoram became a state in 1987. The Mizo people have a rich oral tradition and were largely isolated until British colonial period.",
+                culture: "Strong Christian influence with vibrant music and dance traditions.",
+                heritage: ["Traditional Villages", "Handicrafts", "Folk Music", "Bamboo Architecture"],
+                festivals: ["Chapchar Kut", "Mim Kut", "Pawl Kut", "Christmas"],
+                cuisine: ["Bai", "Sawhchiar", "Koat Pitha", "Zu"],
+                languages: ["Mizo", "English", "Hindi"]
+            },
+            {
+                name: "Nagaland", capital: "Kohima", emoji: "🏹",
+                history: "Nagaland achieved statehood in 1963. The Naga tribes have maintained their warrior traditions and unique cultural practices for centuries.",
+                culture: "Tribal warrior culture with rich traditions in weaving, wood carving, and festivals.",
+                heritage: ["Hornbill Festival", "Traditional Villages", "War Memorials", "Tribal Arts"],
+                festivals: ["Hornbill Festival", "Sekrenyi", "Tuluni", "Moatsu"],
+                cuisine: ["Smoked Pork", "Bamboo Shoot", "Raja Mircha", "Axone"],
+                languages: ["English", "Nagamese", "Tribal Languages"]
+            },
+            {
+                name: "Odisha", capital: "Bhubaneswar", emoji: "🏛️",
+                history: "Ancient Kalinga kingdom, famous for the Kalinga War that transformed Emperor Ashoka. Rich in Buddhist and Hindu heritage with magnificent temples.",
+                culture: "Classical dance Odissi, temple architecture, and rich maritime traditions.",
+                heritage: ["Konark Sun Temple", "Jagannath Temple", "Buddhist Diamond Triangle", "Classical Dance"],
+                festivals: ["Jagannath Rath Yatra", "Durga Puja", "Kali Puja", "Poila Boishakh"],
+                cuisine: ["Dalma", "Pakhala", "Rasgulla", "Chhena Poda"],
+                languages: ["Odia", "Hindi", "Bengali", "Telugu"]
+            },
+            {
+                name: "Punjab", capital: "Chandigarh", emoji: "🌾",
+                history: "Land of five rivers, birthplace of Sikhism. Punjab has been a major agricultural region and witnessed significant historical events including partition.",
+                culture: "Sikh culture, Punjabi music, dance (Bhangra), and agricultural traditions.",
+                heritage: ["Golden Temple", "Partition Museum", "Rural Heritage", "Gurudwaras"],
+                festivals: ["Baisakhi", "Diwali", "Hola Mohalla", "Karva Chauth"],
+                cuisine: ["Makki di Roti", "Sarson da Saag", "Butter Chicken", "Lassi"],
+                languages: ["Punjabi", "Hindi", "Urdu"]
+            },
+            {
+                name: "Rajasthan", capital: "Jaipur", emoji: "🏰",
+                history: "Land of kings with numerous princely states. Rich in Rajput history, desert culture, and magnificent forts and palaces.",
+                culture: "Royal culture, desert lifestyle, folk music, dance, and colorful festivals.",
+                heritage: ["Amber Fort", "City Palace", "Hawa Mahal", "Desert Culture"],
+                festivals: ["Desert Festival", "Teej", "Gangaur", "Diwali"],
+                cuisine: ["Dal Baati Churma", "Laal Maas", "Gatte ki Sabzi", "Ghewar"],
+                languages: ["Rajasthani", "Hindi", "Urdu"]
+            },
+            {
+                name: "Sikkim", capital: "Gangtok", emoji: "🏔️",
+                history: "Former Buddhist kingdom that became part of India in 1975. Unique blend of Nepalese, Bhutanese, and Indian cultures.",
+                culture: "Buddhist culture with influences from Nepal and Bhutan, known for organic farming.",
+                heritage: ["Monasteries", "Kanchenjunga", "Buddhist Culture", "Organic Farming"],
+                festivals: ["Losar", "Buddha Purnima", "Drupka Teshi", "Diwali"],
+                cuisine: ["Momos", "Thukpa", "Gundruk", "Sel Roti"],
+                languages: ["Nepali", "Bhutia", "Lepcha", "Hindi"]
+            },
+            {
+                name: "Tamil Nadu", capital: "Chennai", emoji: "🏛️",
+                history: "Ancient Dravidian civilization with rich temple culture. Home to great empires like Cholas, Cheras, and Pandyas.",
+                culture: "Classical Tamil culture, Bharatanatyam dance, Carnatic music, and temple traditions.",
+                heritage: ["Meenakshi Temple", "Mahabalipuram", "Nilgiri Hills", "Classical Arts"],
+                festivals: ["Pongal", "Deepavali", "Navaratri", "Thaipusam"],
+                cuisine: ["Idli-Sambar", "Dosa", "Rasam", "Chettinad Cuisine"],
+                languages: ["Tamil", "Telugu", "Malayalam", "English"]
+            },
+            {
+                name: "Telangana", capital: "Hyderabad", emoji: "💎",
+                history: "Formed in 2014, rich in Nizami culture and IT industry. Historical significance with various dynasties ruling the region.",
+                culture: "Blend of Telugu and Urdu cultures, known for hospitality and cuisine.",
+                heritage: ["Charminar", "Golconda Fort", "IT Hub", "Nizami Culture"],
+                festivals: ["Bonalu", "Bathukamma", "Ugadi", "Eid"],
+                cuisine: ["Hyderabadi Biryani", "Haleem", "Qubani ka Meetha", "Irani Chai"],
+                languages: ["Telugu", "Urdu", "Hindi", "English"]
+            },
+            {
+                name: "Tripura", capital: "Agartala", emoji: "🏛️",
+                history: "Former princely state with rich tribal culture. Became part of India in 1949 with significant Buddhist and Hindu influences.",
+                culture: "Blend of tribal and Bengali cultures with traditional handicrafts.",
+                heritage: ["Ujjayanta Palace", "Neermahal", "Tribal Museums", "Traditional Crafts"],
+                festivals: ["Kharchi", "Garia", "Durga Puja", "Kali Puja"],
+                cuisine: ["Mui Borok", "Gudok", "Wahan Mosdeng", "Bengali Sweets"],
+                languages: ["Bengali", "Tripuri", "Hindi", "English"]
+            },
+            {
+                name: "Uttar Pradesh", capital: "Lucknow", emoji: "🕌",
+                history: "Heartland of ancient Indian civilization, home to major Hindu and Islamic heritage sites. Birthplace of Lord Rama and Krishna.",
+                culture: "Rich in religious traditions, classical music, dance, and Mughal influence.",
+                heritage: ["Taj Mahal", "Varanasi Ghats", "Lucknow Architecture", "Religious Sites"],
+                festivals: ["Kumbh Mela", "Diwali", "Holi", "Eid"],
+                cuisine: ["Awadhi Cuisine", "Kebabs", "Biryani", "Petha"],
+                languages: ["Hindi", "Urdu", "Awadhi", "Bhojpuri"]
+            },
+            {
+                name: "Uttarakhand", capital: "Dehradun", emoji: "⛰️",
+                history: "Land of gods, carved out of UP in 2000. Sacred to Hindus with numerous pilgrimage sites in the Himalayas.",
+                culture: "Mountain culture with strong religious traditions and connection to nature.",
+                heritage: ["Char Dham", "Valley of Flowers", "Rishikesh", "Hill Stations"],
+                festivals: ["Kumbh Mela", "Nanda Devi Raj Jat", "Bikhauti", "Diwali"],
+                cuisine: ["Kafuli", "Bal Mithai", "Singodi", "Aloo ke Gutke"],
+                languages: ["Hindi", "Garhwali", "Kumauni", "English"]
+            },
+            {
+                name: "West Bengal", capital: "Kolkata", emoji: "🎭",
+                history: "Rich cultural heritage, former capital of British India. Center of Bengal Renaissance and literary movements.",
+                culture: "Intellectual culture, arts, literature, cinema, and strong traditions in music and dance.",
+                heritage: ["Victoria Memorial", "Howrah Bridge", "Sundarbans", "Cultural Heritage"],
+                festivals: ["Durga Puja", "Kali Puja", "Poila Boishakh", "Diwali"],
+                cuisine: ["Fish Curry", "Rasgulla", "Mishti Doi", "Hilsa Fish"],
+                languages: ["Bengali", "Hindi", "English", "Urdu"]
+            }
+        ];
+        // Enhanced Quiz Questions with cultural focus
+        const quizQuestions = [
+            {
+                question: "Which state is known as the 'Land of Rising Sun'?",
+                options: ["Arunachal Pradesh", "Assam", "Manipur", "Nagaland"],
+                correct: 0,
+                explanation: "Arunachal Pradesh is called the 'Land of Rising Sun' as it receives the first rays of sunrise in India."
+            },
+            {
+                question: "Where did Buddha attain enlightenment?",
+                options: ["Sarnath", "Bodh Gaya", "Kushinagar", "Lumbini"],
+                correct: 1,
+                explanation: "Buddha attained enlightenment under the Bodhi tree in Bodh Gaya, Bihar."
+            },
+            {
+                question: "Which classical dance form originated in Kerala?",
+                options: ["Bharatanatyam", "Kathak", "Kathakali", "Kuchipudi"],
+                correct: 2,
+                explanation: "Kathakali is the classical dance-drama form that originated in Kerala."
+            },
+            {
+                question: "The Golden Temple is located in which state?",
+                options: ["Himachal Pradesh", "Punjab", "Haryana", "Rajasthan"],
+                correct: 1,
+                explanation: "The Golden Temple (Harmandir Sahib) is located in Amritsar, Punjab."
+            },
+            {
+                question: "Which festival is known as the 'Festival of Colors'?",
+                options: ["Diwali", "Holi", "Navratri", "Dussehra"],
+                correct: 1,
+                explanation: "Holi is known as the Festival of Colors, celebrated across India with vibrant colored powders."
+            },
+            {
+                question: "Madhubani painting originated in which state?",
+                options: ["West Bengal", "Bihar", "Odisha", "Jharkhand"],
+                correct: 1,
+                explanation: "Madhubani painting is a traditional art form from Bihar, known for its intricate patterns and bright colors."
+            },
+            {
+                question: "Which state is famous for Kathakali dance?",
+                options: ["Tamil Nadu", "Kerala", "Karnataka", "Andhra Pradesh"],
+                correct: 1,
+                explanation: "Kathakali is a classical dance-drama form that originated in Kerala."
+            },
+            {
+                question: "The ancient university of Nalanda was located in which modern state?",
+                options: ["West Bengal", "Jharkhand", "Bihar", "Odisha"],
+                correct: 2,
+                explanation: "The ancient Nalanda University was located in present-day Bihar."
+            },
+            {
+                question: "Which state celebrates the Hornbill Festival?",
+                options: ["Mizoram", "Nagaland", "Manipur", "Meghalaya"],
+                correct: 1,
+                explanation: "The Hornbill Festival is celebrated in Nagaland and showcases the rich cultural heritage of the Naga tribes."
+            },
+            {
+                question: "Kumbh Mela is primarily held in which state?",
+                options: ["Rajasthan", "Uttar Pradesh", "Maharashtra", "Gujarat"],
+                correct: 1,
+                explanation: "Kumbh Mela is primarily held at various locations in Uttar Pradesh, including Prayagraj and Haridwar."
+            }
+        ];
+
+        // Application State
+        let currentUser = {
+            score: parseInt(localStorage.getItem('userScore') || '0'),
+            streak: parseInt(localStorage.getItem('userStreak') || '0'),
+            statesVisited: JSON.parse(localStorage.getItem('statesVisited') || '[]'),
+            lastVisit: localStorage.getItem('lastVisit') || null,
+            quizHistory: JSON.parse(localStorage.getItem('quizHistory') || '[]'),
+            totalQuizzes: parseInt(localStorage.getItem('totalQuizzes') || '0'),
+            correctAnswers: parseInt(localStorage.getItem('correctAnswers') || '0'),
+            searchHistory: JSON.parse(localStorage.getItem('searchHistory') || '[]'),
+            currentLanguage: localStorage.getItem('currentLanguage') || 'EN'
+        };
+
+        let currentQuiz = {
+            questions: [],
+            currentQuestion: 0,
+            userAnswers: [],
+            isActive: false
+        };
+
+        // Initialize App
+        document.addEventListener('DOMContentLoaded', function() {
+            updateStreak();
+            renderStates();
+            updateUI();
+            populateLanguages();
+            updateLanguageDisplay();
+        });
+
+        // Language Functions
+        function populateLanguages() {
+            const dropdown = document.getElementById('languageDropdown');
+            dropdown.innerHTML = '';
+            
+            Object.entries(languages).forEach(([code, name]) => {
+                const option = document.createElement('div');
+                option.className = 'lang-option';
+                option.textContent = name;
+                option.onclick = () => switchLanguage(code);
+                dropdown.appendChild(option);
+            });
+        }
+
+        function toggleLanguages() {
+            const dropdown = document.getElementById('languageDropdown');
+            dropdown.classList.toggle('active');
+        }
+
+        function switchLanguage(langCode) {
+            currentUser.currentLanguage = langCode;
+            localStorage.setItem('currentLanguage', langCode);
+            updateLanguageDisplay();
+            toggleLanguages();
+            
+            // In a real app, you would translate content here
+            console.log(`Language switched to: ${languages[langCode]}`);
+        }
+
+        function updateLanguageDisplay() {
+            document.getElementById('currentLang').textContent = currentUser.currentLanguage;
+        }
+
+        // Search Functions
+        function handleSearch(event) {
+            const query = event.target.value.trim();
+            
+            if (event.key === 'Enter' && query) {
+                performSearch(query);
+            }
+        }
+
+        function performSearch(query) {
+            // Add to search history
+            if (query && !currentUser.searchHistory.includes(query)) {
+                currentUser.searchHistory.unshift(query);
+                if (currentUser.searchHistory.length > 10) {
+                    currentUser.searchHistory = currentUser.searchHistory.slice(0, 10);
+                }
+                localStorage.setItem('searchHistory', JSON.stringify(currentUser.searchHistory));
+            }
+
+            // Simple search implementation
+            const results = indianStates.filter(state => 
+                state.name.toLowerCase().includes(query.toLowerCase()) ||
+                state.capital.toLowerCase().includes(query.toLowerCase()) ||
+                state.culture.toLowerCase().includes(query.toLowerCase()) ||
+                state.heritage.some(item => item.toLowerCase().includes(query.toLowerCase())) ||
+                state.festivals.some(item => item.toLowerCase().includes(query.toLowerCase())) ||
+                state.cuisine.some(item => item.toLowerCase().includes(query.toLowerCase()))
+            );
+
+            displaySearchResults(results, query);
+            hideSearchHistory();
+        }
+
+        function displaySearchResults(results, query) {
+            const statesGrid = document.getElementById('statesGrid');
+            
+            if (results.length === 0) {
+                statesGrid.innerHTML = `
+                    <div style="grid-column: 1 / -1; text-align: center; padding: 2rem; color: #DAA520;">
+                        <h3>No results found for "${query}"</h3>
+                        <p>Try searching with different keywords</p>
+                        <button class="btn btn-primary" onclick="renderStates()" style="margin-top: 1rem;">Show All States</button>
+                    </div>
+                `;
+                return;
+            }
+
+            statesGrid.innerHTML = '';
+            results.forEach(state => {
+                renderStateCard(state, statesGrid);
+            });
+        }
+
+        function showSearchHistory() {
+            if (currentUser.searchHistory.length > 0) {
+                const historyDiv = document.getElementById('searchHistory');
+                historyDiv.innerHTML = '';
+                
+                currentUser.searchHistory.forEach(item => {
+                    const historyItem = document.createElement('div');
+                    historyItem.className = 'history-item';
+                    historyItem.innerHTML = `
+                        <span onclick="searchFromHistory('${item}')">${item}</span>
+                        <span onclick="removeFromHistory('${item}')" style="cursor: pointer; color: #ff6b6b;">×</span>
+                    `;
+                    historyDiv.appendChild(historyItem);
+                });
+
+                const clearBtn = document.createElement('button');
+                clearBtn.className = 'clear-history';
+                clearBtn.textContent = 'Clear History';
+                clearBtn.onclick = clearSearchHistory;
+                historyDiv.appendChild(clearBtn);
+                
+                historyDiv.classList.add('active');
+            }
+        }
+
+        function hideSearchHistory() {
+            document.getElementById('searchHistory').classList.remove('active');
+        }
+
+        function searchFromHistory(query) {
+            document.getElementById('searchBox').value = query;
+            performSearch(query);
+        }
+
+        function removeFromHistory(query) {
+            currentUser.searchHistory = currentUser.searchHistory.filter(item => item !== query);
+            localStorage.setItem('searchHistory', JSON.stringify(currentUser.searchHistory));
+            showSearchHistory();
+        }
+
+        function clearSearchHistory() {
+            currentUser.searchHistory = [];
+            localStorage.setItem('searchHistory', JSON.stringify(currentUser.searchHistory));
+            hideSearchHistory();
+        }
+
+        // Hide search history when clicking outside
+        document.addEventListener('click', function(event) {
+            const searchContainer = document.querySelector('.search-container');
+            const languageSelector = document.querySelector('.language-selector');
+            
+            if (!searchContainer.contains(event.target)) {
+                hideSearchHistory();
+            }
+            
+            if (!languageSelector.contains(event.target)) {
+                document.getElementById('languageDropdown').classList.remove('active');
+            }
+        });
+
+        // Update daily streak
+        function updateStreak() {
+            const today = new Date().toDateString();
+            const lastVisit = currentUser.lastVisit;
+            
+            if (lastVisit) {
+                const lastVisitDate = new Date(lastVisit);
+                const todayDate = new Date(today);
+                const diffTime = todayDate.getTime() - lastVisitDate.getTime();
+                const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+                
+                if (diffDays === 1) {
+                    currentUser.streak++;
+                } else if (diffDays > 1) {
+                    currentUser.streak = 1;
+                }
+            } else {
+                currentUser.streak = 1;
+            }
+            
+            currentUser.lastVisit = today;
+            saveUserData();
+        }
+
+        // Render States Grid
+        function renderStates() {
+            const statesGrid = document.getElementById('statesGrid');
+            statesGrid.innerHTML = '';
+            indianStates.forEach(state => renderStateCard(state, statesGrid));
+        }
+
+        function renderStateCard(state, container) {
+            const isVisited = currentUser.statesVisited.includes(state.name);
+            const stateCard = document.createElement('div');
+            stateCard.className = 'state-card';
+            stateCard.innerHTML = `
+                <div class="card-header">
+                    <span style="font-size: 4rem;">${state.emoji}</span>
+                    ${isVisited ? '<span style="position: absolute; top: 10px; right: 10px; font-size: 2rem;">✅</span>' : ''}
+                </div>
+                <div class="card-content">
+                    <h3>${state.name}</h3>
+                    <p><strong>Capital:</strong> ${state.capital}</p>
+                    <div class="card-stats">
+                        <div class="stat">
+                            <div class="stat-value">${state.heritage.length}</div>
+                            <div class="stat-label">Heritage Sites</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">${state.festivals.length}</div>
+                            <div class="stat-label">Festivals</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">${state.languages.length}</div>
+                            <div class="stat-label">Languages</div>
+                        </div>
+                    </div>
+                    <div class="card-actions">
+                        <button class="btn btn-primary" onclick="exploreState('${state.name}')">Explore Heritage</button>
+                        <button class="btn btn-secondary" onclick="stateQuiz('${state.name}')">Cultural Quiz</button>
+                    </div>
+                </div>
+            `;
+            container.appendChild(stateCard);
+        }
+
+        // Show State Details
+        function exploreState(stateName) {
+            const state = indianStates.find(s => s.name === stateName);
+            if (!state) return;
+
+            // Mark as visited
+            if (!currentUser.statesVisited.includes(stateName)) {
+                currentUser.statesVisited.push(stateName);
+                currentUser.score += 15; // Bonus for exploring new state
+                saveUserData();
+                updateUI();
+                renderStates();
+            }
+
+            // Show modal
+            document.getElementById('modalStateTitle').textContent = `${state.emoji} ${state.name}`;
+            document.getElementById('modalStateCapital').textContent = `Capital: ${state.capital}`;
+            
+            const modalBody = document.getElementById('modalBody');
+            modalBody.innerHTML = `
+                <div class="section">
+                    <h3>🏛️ Historical Heritage</h3>
+                    <p>${state.history}</p>
+                </div>
+                <div class="section">
+                    <h3>🎭 Cultural Identity</h3>
+                    <p>${state.culture}</p>
+                </div>
+                <div class="section">
+                    <h3>🏛️ Heritage & Monuments</h3>
+                    <div class="cultural-items">
+                        ${state.heritage.map(item => `<div class="cultural-item">${item}</div>`).join('')}
+                    </div>
+                </div>
+                <div class="section">
+                    <h3>🎉 Traditional Festivals</h3>
+                    <div class="cultural-items">
+                        ${state.festivals.map(item => `<div class="cultural-item">${item}</div>`).join('')}
+                    </div>
+                </div>
+                <div class="section">
+                    <h3>🍽️ Traditional Cuisine</h3>
+                    <div class="cultural-items">
+                        ${state.cuisine.map(item => `<div class="cultural-item">${item}</div>`).join('')}
+                    </div>
+                </div>
+                <div class="section">
+                    <h3>🗣️ Regional Languages</h3>
+                    <div class="cultural-items">
+                        ${state.languages.map(item => `<div class="cultural-item">${item}</div>`).join('')}
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('stateModal').classList.add('active');
+        }
+
+        // Close Modal
+        function closeModal() {
+            document.getElementById('stateModal').classList.remove('active');
+        }
+
+        // Start Quiz
+        function startQuiz() {
+            const shuffledQuestions = [...quizQuestions].sort(() => Math.random() - 0.5);
+            currentQuiz.questions = shuffledQuestions.slice(0, 5);
+            currentQuiz.currentQuestion = 0;
+            currentQuiz.userAnswers = [];
+            currentQuiz.isActive = true;
+
+            showQuestion();
+        }
+
+        // State-specific Quiz
+        function stateQuiz(stateName) {
+            showTab('quiz');
+            startQuiz();
+        }
+
+        // Show Current Question
+        function showQuestion() {
+            if (currentQuiz.currentQuestion >= currentQuiz.questions.length) {
+                finishQuiz();
+                return;
+            }
+
+            const question = currentQuiz.questions[currentQuiz.currentQuestion];
+            const progress = ((currentQuiz.currentQuestion) / currentQuiz.questions.length) * 100;
+            
+            document.getElementById('progressBar').style.width = progress + '%';
+            
+            document.getElementById('quizContent').innerHTML = `
+                <div class="question">
+                    <h3>Question ${currentQuiz.currentQuestion + 1} of ${currentQuiz.questions.length}</h3>
+                    <h3>${question.question}</h3>
+                    <div class="options">
+                        ${question.options.map((option, index) => `
+                            <div class="option" onclick="selectOption(${index})" data-index="${index}">
+                                ${option}
+                            </div>
+                        `).join('')}
+                    </div>
+                    <div class="quiz-actions">
+                        <button class="btn btn-secondary" onclick="previousQuestion()" ${currentQuiz.currentQuestion === 0 ? 'style="visibility: hidden;"' : ''}>Previous</button>
+                        <button class="btn btn-primary" onclick="nextQuestion()" id="nextBtn" style="display: none;">Next Question</button>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Select Option
+        function selectOption(index) {
+            const options = document.querySelectorAll('.option');
+            options.forEach(opt => opt.classList.remove('selected'));
+            options[index].classList.add('selected');
+            
+            currentQuiz.userAnswers[currentQuiz.currentQuestion] = index;
+            document.getElementById('nextBtn').style.display = 'block';
+        }
+
+        // Next Question
+        function nextQuestion() {
+            if (currentQuiz.userAnswers[currentQuiz.currentQuestion] === undefined) return;
+            
+            currentQuiz.currentQuestion++;
+            showQuestion();
+        }
+
+        // Previous Question
+        function previousQuestion() {
+            if (currentQuiz.currentQuestion > 0) {
+                currentQuiz.currentQuestion--;
+                showQuestion();
+            }
+        }
+
+        // Finish Quiz
+        function finishQuiz() {
+            let correctAnswers = 0;
+            currentQuiz.questions.forEach((question, index) => {
+                if (currentQuiz.userAnswers[index] === question.correct) {
+                    correctAnswers++;
+                }
+            });
+
+            const score = correctAnswers * 25; // 25 points per correct answer
+            currentUser.score += score;
+            currentUser.totalQuizzes++;
+            currentUser.correctAnswers += correctAnswers;
+            
+            currentUser.quizHistory.push({
+                date: new Date().toLocaleDateString(),
+                score: correctAnswers,
+                total: currentQuiz.questions.length
+            });
+
+            saveUserData();
+            updateUI();
+
+            const accuracy = Math.round((correctAnswers / currentQuiz.questions.length) * 100);
+            document.getElementById('quizContent').innerHTML = `
+                <div style="text-align: center; padding: 2rem;">
+                    <h2>🎉 Cultural Quiz Completed!</h2>
+                    <div class="streak-display" style="font-size: 4rem; color: #DAA520; margin: 1rem 0;">
+                        ${correctAnswers}/${currentQuiz.questions.length}
+                    </div>
+                    <p style="font-size: 1.2rem; margin-bottom: 1rem; color: #FFD700;">Cultural Knowledge: ${accuracy}%</p>
+                    <p style="margin-bottom: 2rem; color: #DAA520;">You earned ${score} heritage points!</p>
+                    <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                        <button class="btn btn-primary" onclick="startQuiz()">Another Quiz</button>
+                        <button class="btn btn-secondary" onclick="showTab('explore')">Explore More</button>
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('progressBar').style.width = '100%';
+            currentQuiz.isActive = false;
+        }
+
+        // Show Tab
+        function showTab(tabName) {
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.add('hidden');
+            });
+            
+            document.getElementById(tabName + '-tab').classList.remove('hidden');
+            
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Find and activate the correct tab button
+            const tabButtons = document.querySelectorAll('.tab-btn');
+            tabButtons.forEach(btn => {
+                if ((tabName === 'explore' && btn.textContent.includes('Explore')) ||
+                    (tabName === 'quiz' && btn.textContent.includes('Quiz')) ||
+                    (tabName === 'dashboard' && btn.textContent.includes('Progress'))) {
+                    btn.classList.add('active');
+                }
+            });
+
+            if (tabName === 'dashboard') {
+                updateDashboard();
+            }
+        }
+
+        // Update Dashboard
+        function updateDashboard() {
+            document.getElementById('streakDisplay').textContent = currentUser.streak;
+            document.getElementById('scoreDisplay').textContent = currentUser.score;
+            document.getElementById('exploredDisplay').textContent = currentUser.statesVisited.length;
+            
+            const accuracy = currentUser.totalQuizzes > 0 ? 
+                Math.round((currentUser.correctAnswers / (currentUser.totalQuizzes * 5)) * 100) : 0;
+            document.getElementById('accuracyDisplay').textContent = accuracy + '%';
+        }
+
+        // Update UI
+        function updateUI() {
+            document.getElementById('totalScore').textContent = currentUser.score;
+            document.getElementById('currentStreak').textContent = currentUser.streak;
+            document.getElementById('statesVisited').textContent = `${currentUser.statesVisited.length}/28`;
+        }
+
+        // Save User Data
+        function saveUserData() {
+            localStorage.setItem('userScore', currentUser.score.toString());
+            localStorage.setItem('userStreak', currentUser.streak.toString());
+            localStorage.setItem('statesVisited', JSON.stringify(currentUser.statesVisited));
+            localStorage.setItem('lastVisit', currentUser.lastVisit);
+            localStorage.setItem('quizHistory', JSON.stringify(currentUser.quizHistory));
+            localStorage.setItem('totalQuizzes', currentUser.totalQuizzes.toString());
+            localStorage.setItem('correctAnswers', currentUser.correctAnswers.toString());
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('stateModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>
