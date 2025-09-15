@@ -1,9 +1,9 @@
-   <!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bharat  - Discover India's Cultural Diversity</title>
+    <title>Bharat Heritage - Discover India's Cultural Diversity</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         * {
@@ -78,75 +78,6 @@
             color: #FFD700;
         }
 
-        .language-selector {
-            position: relative;
-        }
-
-        .language-btn {
-            background: rgba(218, 165, 32, 0.2);
-            color: #DAA520;
-            border: 1px solid rgba(218, 165, 32, 0.3);
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .language-btn:hover {
-            background: rgba(218, 165, 32, 0.3);
-        }
-
-        .language-dropdown {
-            position: absolute;
-            top: 100%;
-            right: 0;
-            background: rgba(139, 69, 19, 0.98);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(218, 165, 32, 0.3);
-            border-radius: 12px;
-            padding: 1rem;
-            display: none;
-            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-            gap: 0.5rem;
-            min-width: 300px;
-            max-width: 400px;
-            max-height: 300px;
-            overflow-y: auto;
-            z-index: 1001;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-        }
-
-        .language-dropdown.active {
-            display: grid;
-            animation: fadeIn 0.3s ease;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .lang-option {
-            padding: 0.8rem 0.5rem;
-            color: #DAA520;
-            cursor: pointer;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-            text-align: center;
-            font-size: 0.9rem;
-            border: 1px solid transparent;
-        }
-
-        .lang-option:hover {
-            background: rgba(218, 165, 32, 0.2);
-            color: #FFD700;
-            border-color: rgba(218, 165, 32, 0.3);
-        }
-
         .search-container {
             position: relative;
             display: flex;
@@ -176,62 +107,6 @@
             outline: none;
             border-color: #DAA520;
             box-shadow: 0 0 10px rgba(218, 165, 32, 0.3);
-        }
-
-        .search-history {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            right: 0;
-            background: rgba(139, 69, 19, 0.98);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(218, 165, 32, 0.3);
-            border-radius: 12px;
-            padding: 1rem;
-            display: none;
-            max-height: 200px;
-            overflow-y: auto;
-            z-index: 100;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            margin-top: 0.5rem;
-        }
-
-        .search-history.active {
-            display: block;
-            animation: fadeIn 0.3s ease;
-        }
-
-        .history-item {
-            padding: 0.8rem;
-            color: #DAA520;
-            cursor: pointer;
-            border-radius: 6px;
-            transition: all 0.3s ease;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 0.3rem;
-        }
-
-        .history-item:hover {
-            background: rgba(218, 165, 32, 0.2);
-        }
-
-        .clear-history {
-            background: rgba(220, 53, 69, 0.2);
-            color: #ff6b6b;
-            border: 1px solid rgba(220, 53, 69, 0.3);
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 0.8rem;
-            margin-top: 0.5rem;
-            transition: all 0.3s ease;
-            width: 100%;
-        }
-
-        .clear-history:hover {
-            background: rgba(220, 53, 69, 0.3);
         }
 
         .user-stats {
@@ -381,22 +256,6 @@
             overflow: hidden;
         }
 
-        .card-header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.2) 50%, transparent 70%);
-            transform: translateX(-100%);
-            transition: transform 0.6s;
-        }
-
-        .state-card:hover .card-header::before {
-            transform: translateX(100%);
-        }
-
         .card-content {
             padding: 1.5rem;
             color: #DAA520;
@@ -492,7 +351,6 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            animation: fadeIn 0.3s ease;
         }
 
         .modal-content {
@@ -504,13 +362,7 @@
             overflow-y: auto;
             border-radius: 25px;
             position: relative;
-            animation: slideUp 0.4s ease;
             border: 2px solid rgba(218, 165, 32, 0.3);
-        }
-
-        @keyframes slideUp {
-            from { transform: translateY(50px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
         }
 
         .modal-header {
@@ -594,7 +446,6 @@
 
         /* Quiz Styles */
         .quiz-container {
-            display: none;
             background: linear-gradient(145deg, rgba(139, 69, 19, 0.9), rgba(101, 67, 33, 0.8));
             backdrop-filter: blur(20px);
             border-radius: 25px;
@@ -602,11 +453,6 @@
             margin: 2rem auto;
             max-width: 900px;
             border: 2px solid rgba(218, 165, 32, 0.3);
-        }
-
-        .quiz-container.active {
-            display: block;
-            animation: slideUp 0.4s ease;
         }
 
         .quiz-header {
@@ -635,6 +481,7 @@
             background: linear-gradient(135deg, #DAA520, #FFD700);
             border-radius: 5px;
             transition: width 0.3s ease;
+            width: 0%;
         }
 
         .question {
@@ -692,13 +539,9 @@
 
         /* Dashboard */
         .dashboard {
-            display: none;
+            display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
-        }
-
-        .dashboard.active {
-            display: grid;
         }
 
         .dashboard-card {
@@ -735,107 +578,18 @@
             display: none !important;
         }
 
-        /* Mobile Menu Toggle */
-        .mobile-menu-toggle {
-            display: none;
-            background: rgba(218, 165, 32, 0.2);
-            border: 1px solid rgba(218, 165, 32, 0.3);
-            color: #DAA520;
-            padding: 0.5rem;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 1.2rem;
-        }
-
         /* Responsive Design */
-        @media (max-width: 1024px) {
-            .header-content {
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-
-            .nav-menu {
-                order: 3;
-                width: 100%;
-                justify-content: center;
-            }
-
-            .search-container {
-                max-width: 400px;
-            }
-        }
-
         @media (max-width: 768px) {
             .header {
                 padding: 0.8rem 1rem;
-            }
-
-            .header-content {
-                flex-direction: column;
-                gap: 1rem;
-            }
-
-            .logo h1 {
-                font-size: 1.8rem;
-            }
-
-            .nav-menu {
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 1rem;
-            }
-
-            .nav-item {
-                padding: 0.4rem 0.8rem;
-                font-size: 0.9rem;
-            }
-
-            .search-container {
-                width: 100%;
-                max-width: none;
-            }
-
-            .search-box {
-                font-size: 0.85rem;
-                padding: 0.6rem 1.2rem;
-            }
-
-            .user-stats {
-                justify-content: center;
-                gap: 10px;
-            }
-
-            .stat-item {
-                padding: 6px 12px;
-                font-size: 0.8rem;
-            }
-
-            .hero {
-                padding: 3rem 1rem;
-                margin: 1rem;
             }
 
             .hero h1 {
                 font-size: 2.5rem;
             }
 
-            .hero p {
-                font-size: 1.1rem;
-            }
-
             .container {
                 padding: 0 1rem;
-            }
-
-            .nav-tabs {
-                flex-direction: column;
-                gap: 0.8rem;
-                padding: 1rem 0.5rem;
-            }
-
-            .tab-btn {
-                padding: 10px 20px;
-                font-size: 0.9rem;
             }
 
             .states-grid {
@@ -843,91 +597,8 @@
                 gap: 1.5rem;
             }
 
-            .modal-content {
-                width: 95%;
-                margin: 1rem;
-                max-height: 85vh;
-            }
-
-            .modal-body {
-                padding: 1rem;
-            }
-
-            .section {
-                padding: 1rem;
-            }
-
-            .cultural-items {
-                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-                gap: 0.8rem;
-            }
-
-            .language-dropdown {
-                grid-template-columns: repeat(2, 1fr);
-                min-width: 250px;
-                max-width: 300px;
-                left: 0;
-                right: 0;
-            }
-
             .quiz-container {
                 padding: 1.5rem 1rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .logo h1 {
-                font-size: 1.5rem;
-            }
-
-            .nav-menu {
-                gap: 0.5rem;
-            }
-
-            .nav-item {
-                padding: 0.3rem 0.6rem;
-                font-size: 0.8rem;
-            }
-
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .hero p {
-                font-size: 1rem;
-            }
-
-            .states-grid {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-            }
-
-            .card-stats {
-                flex-direction: column;
-                gap: 0.5rem;
-            }
-
-            .stat {
-                margin: 0;
-            }
-
-            .language-dropdown {
-                grid-template-columns: 1fr;
-                min-width: 200px;
-            }
-
-            .user-stats {
-                flex-direction: column;
-                gap: 8px;
-            }
-
-            .modal-content {
-                border-radius: 15px;
-            }
-
-            .modal-header {
-                padding: 1.5rem 1rem;
-                border-radius: 15px 15px 0 0;
             }
         }
     </style>
@@ -937,7 +608,7 @@
     <header class="header">
         <div class="header-content">
             <div class="logo">
-                <h1>Bharat </h1>
+                <h1>Bharat Heritage</h1>
             </div>
             <nav class="nav-menu">
                 <a href="#" class="nav-item active">Home</a>
@@ -945,21 +616,9 @@
                 <a href="#" class="nav-item">Festivals</a>
                 <a href="#" class="nav-item">Arts</a>
                 <a href="#" class="nav-item">Heritage</a>
-                <div class="language-selector">
-                    <button class="language-btn" onclick="toggleLanguages()">
-                        <span id="currentLang">EN</span>
-                        <span>▼</span>
-                    </button>
-                    <div class="language-dropdown" id="languageDropdown">
-                        <!-- Languages will be populated here -->
-                    </div>
-                </div>
             </nav>
             <div class="search-container">
-                <input type="text" class="search-box" id="searchBox" placeholder="Search culture, festivals, arts..." onkeyup="handleSearch(event)" onfocus="showSearchHistory()">
-                <div class="search-history" id="searchHistory">
-                    <!-- Search history will be populated here -->
-                </div>
+                <input type="text" class="search-box" id="searchBox" placeholder="Search culture, festivals, arts..." onkeyup="handleSearch(event)">
                 <div class="user-stats">
                     <div class="stat-item">
                         <span>🏆</span>
@@ -1053,295 +712,663 @@
                 <p id="modalStateCapital">Capital City</p>
             </div>
             <div class="modal-body" id="modalBody">
-                <!-- Content will be dynamically generated -->
             </div>
         </div>
     </div>
 
-     <script>
-        // Languages supported
-        const languages = {
-            'EN': 'English',
-            'HI': 'हिन्दी',
-            'BN': 'বাংলা',
-            'TE': 'తెలుగు',
-            'MR': 'मराठी',
-            'TA': 'தமிழ்',
-            'GU': 'ગુજરાતી',
-            'KN': 'ಕನ್ನಡ',
-            'ML': 'മലയാളം',
-            'PA': 'ਪੰਜਾਬੀ',
-            'OR': 'ଓଡ଼ିଆ',
-            'AS': 'অসমীয়া',
-            'UR': 'اردو',
-            'SA': 'संस्कृत',
-            'NE': 'नेपाली',
-            'SI': 'සිංහල',
-            'MY': 'မြန်မာ',
-            'TH': 'ไทย',
-            'VI': 'Tiếng Việt',
-            'ID': 'Bahasa Indonesia',
-            'MS': 'Bahasa Melayu',
-            'ZH': '中文'
-        };
-
+    <script>
         // Indian States Data with enhanced cultural information
         const indianStates = [
-              {
-                name: "Andhra Pradesh", capital: "Amaravati", emoji: "🏛️",
-                history: "Andhra Pradesh has a rich history dating back to ancient times. It was part of the Mauryan Empire and later ruled by various dynasties including the Satavahanas, Cholas, and Vijayanagara Empire. The region has witnessed significant Buddhist influence and contains some of India's most ancient Buddhist sites.",
-                culture: "Known for its classical dance form Kuchipudi, spicy cuisine, and rich literary tradition in Telugu literature.",
-                heritage: ["Tirumala Temple", "Buddhist Sites of Amaravati", "Charminar Architecture", "Kalamkari Art"],
-                festivals: ["Ugadi", "Sankranti", "Dussehra", "Diwali"],
-                cuisine: ["Biryani", "Pesarattu", "Gongura", "Pulihora"],
-                languages: ["Telugu", "Urdu", "Hindi"]
+    {
+        name: "Andhra Pradesh", capital: "Amaravati", emoji: "🏛️",
+        history: "Andhra Pradesh has a rich history dating back to ancient times. It was part of the Mauryan Empire and later ruled by various dynasties including the Satavahanas, Cholas, and Vijayanagara Empire.",
+        culture: "Known for its classical dance form Kuchipudi, spicy cuisine, and rich literary tradition in Telugu literature.",
+        heritage: ["Tirumala Temple", "Buddhist Sites of Amaravati", "Charminar Architecture", "Kalamkari Art"],
+        festivals: ["Ugadi", "Sankranti", "Dussehra", "Diwali"],
+        cuisine: ["Biryani", "Pesarattu", "Gongura", "Pulihora"],
+        languages: ["Telugu", "Urdu", "Hindi"],
+        quizQuestions: [
+            {
+                question: "What is the classical dance form of Andhra Pradesh?",
+                options: ["Bharatanatyam", "Kuchipudi", "Kathak", "Odissi"],
+                correct: 1,
+                explanation: "Kuchipudi is the classical dance form that originated in Andhra Pradesh."
             },
             {
-                name: "Arunachal Pradesh", capital: "Itanagar", emoji: "🏔️",
-                history: "Known as the 'Land of Rising Sun', Arunachal Pradesh has been inhabited by various tribal communities for centuries. The region remained largely independent until British colonial times and has maintained its unique tribal culture and traditions.",
-                culture: "Home to 26 major tribes and 100+ sub-tribes, each with distinct traditions, languages, and customs.",
-                heritage: ["Tawang Monastery", "Namdapha National Park", "Ziro Valley", "Traditional Tribal Villages"],
-                festivals: ["Losar", "Dree", "Solung", "Boori Boot"],
-                cuisine: ["Thukpa", "Momos", "Apong", "Bamboo Shoot Curry"],
-                languages: ["Hindi", "English", "Tribal Languages"]
-            },
-            {
-                name: "Assam", capital: "Dispur", emoji: "🌿",
-                history: "Assam has a rich history spanning over 1000 years, ruled by the Ahom dynasty for nearly 600 years. It was a major center of the Vaishnavite movement under Srimanta Sankardeva and has been crucial in India's tea and oil industries.",
-                culture: "Famous for Bihu dance, traditional silk weaving, and the unique Assamese culture that blends various ethnic influences.",
-                heritage: ["Kaziranga National Park", "Kamakhya Temple", "Majuli Island", "Ahom Palaces"],
-                festivals: ["Bihu", "Poila Boishakh", "Kali Puja", "Durga Puja"],
-                cuisine: ["Assam Tea", "Fish Curry", "Masor Tenga", "Pitha"],
-                languages: ["Assamese", "Bengali", "Hindi", "Bodo"]
-            },
-            {
-                name: "Bihar", capital: "Patna", emoji: "📿",
-                history: "Bihar is the birthplace of Buddhism and Jainism, with Buddha attaining enlightenment in Bodh Gaya. It was the center of powerful empires like Magadha, Maurya, and Gupta, making it crucial to Indian civilization and spirituality.",
-                culture: "Rich in spiritual traditions, folk arts, and classical literature. Known for Madhubani painting and traditional music.",
-                heritage: ["Bodh Gaya", "Nalanda University", "Vikramshila", "Patna Sahib"],
-                festivals: ["Buddha Purnima", "Sonepur Mela", "Sama-Chakeva", "Jivitputrika"],
-                cuisine: ["Litti Chokha", "Sattu", "Khaja", "Malpua"],
-                languages: ["Hindi", "Bhojpuri", "Maithili", "Urdu"]
-            },
-            {
-                name: "Chhattisgarh", capital: "Raipur", emoji: "🌾",
-                history: "Formed in 2000, Chhattisgarh has ancient roots with evidence of human habitation from paleolithic times. It was part of various empires and is rich in tribal culture and mineral resources.",
-                culture: "Predominantly tribal culture with rich folk traditions, dance forms, and handicrafts.",
-                heritage: ["Chitrakoot Falls", "Barnawapara Sanctuary", "Tribal Museums", "Ancient Temples"],
-                festivals: ["Bastar Dussehra", "Hareli", "Pola", "Navakhani"],
-                cuisine: ["Bafauri", "Chila", "Aamat", "Fara"],
-                languages: ["Hindi", "Chhattisgarhi", "Tribal Languages"]
-            },
-            {
-                name: "Goa", capital: "Panaji", emoji: "🏖️",
-                history: "Goa was under Portuguese rule for over 450 years, creating a unique Indo-Portuguese culture. It was a major trading port and center of Christianity in India, gaining independence only in 1961.",
-                culture: "Blend of Indian and Portuguese cultures, famous for beaches, music, and relaxed lifestyle.",
-                heritage: ["Churches of Old Goa", "Portuguese Architecture", "Spice Plantations", "Beach Culture"],
-                festivals: ["Carnival", "Shigmo", "Feast of St. Francis Xavier", "Ganesh Chaturthi"],
-                cuisine: ["Fish Curry Rice", "Bebinca", "Sorpotel", "Feni"],
-                languages: ["Konkani", "Marathi", "Hindi", "English"]
-            },
-            {
-                name: "Gujarat", capital: "Gandhinagar", emoji: "🏺",
-                history: "Gujarat has been a major center of trade and commerce for centuries. It's the birthplace of Mahatma Gandhi and has witnessed various dynasties including Mauryas, Guptas, and Mughals. The region has been crucial in India's freedom movement.",
-                culture: "Known for vibrant festivals, entrepreneurial spirit, and rich textile traditions.",
-                heritage: ["Dholavira", "Rani ki Vav", "Somnath Temple", "Gir National Park"],
-                festivals: ["Navratri", "Kite Festival", "Janmashtami", "Diwali"],
-                cuisine: ["Dhokla", "Khandvi", "Undhiyu", "Gujarati Thali"],
-                languages: ["Gujarati", "Hindi", "English"]
-            },
-            {
-                name: "Haryana", capital: "Chandigarh", emoji: "🌾",
-                history: "Haryana is mentioned in ancient texts as the land where the Mahabharata war was fought at Kurukshetra. It has been a major agricultural region and has contributed significantly to India's green revolution.",
-                culture: "Predominantly agricultural culture with strong folk traditions and sports culture.",
-                heritage: ["Kurukshetra", "Panipat Battlefields", "Traditional Villages", "Agricultural Heritage"],
-                festivals: ["Karva Chauth", "Teej", "Holi", "Diwali"],
-                cuisine: ["Bajra Khichdi", "Churma", "Lassi", "Kachri ki Sabzi"],
-                languages: ["Hindi", "Haryanvi", "Punjabi"]
-            },
-            {
-                name: "Himachal Pradesh", capital: "Shimla", emoji: "🏔️",
-                history: "Himachal Pradesh has ancient Hindu and Buddhist influences. It was composed of various hill states and became a union territory in 1956, achieving full statehood in 1971.",
-                culture: "Mountain culture with strong religious traditions and craftsmanship in woolens and handicrafts.",
-                heritage: ["Shimla Heritage", "Hill Stations", "Ancient Temples", "Mountain Railways"],
-                festivals: ["Dussehra", "Diwali", "Holi", "Local Hill Festivals"],
-                cuisine: ["Dham", "Chana Madra", "Babru", "Siddu"],
-                languages: ["Hindi", "Pahari", "Punjabi"]
-            },
-            {
-                name: "Jharkhand", capital: "Ranchi", emoji: "⛰️",
-                history: "Created in 2000, Jharkhand has been inhabited by tribal communities for centuries. Rich in minerals and forests, it played a significant role in India's industrial development.",
-                culture: "Predominantly tribal culture with rich traditions in music, dance, and crafts.",
-                heritage: ["Tribal Heritage", "Betla National Park", "Waterfalls", "Ancient Rock Art"],
-                festivals: ["Sarhul", "Karma", "Sohrai", "Bandna"],
-                cuisine: ["Handia", "Chilka Roti", "Rugra", "Tribal Delicacies"],
-                languages: ["Hindi", "Santali", "Mundari", "Ho"]
-            },
-            {
-                name: "Karnataka", capital: "Bengaluru", emoji: "🏛️",
-                history: "Karnataka has a rich history with powerful empires like Chalukyas, Hoysalas, and Vijayanagara. It has been a center of South Indian culture, architecture, and learning for over a millennium.",
-                culture: "Known for classical music, dance, and being the Silicon Valley of India.",
-                heritage: ["Hampi", "Mysore Palace", "Western Ghats", "Hoysala Architecture"],
-                festivals: ["Dasara", "Ugadi", "Karaga", "Diwali"],
-                cuisine: ["Masala Dosa", "Bisi Bele Bath", "Mysore Pak", "Ragi Mudde"],
-                languages: ["Kannada", "Telugu", "Tamil", "Hindi"]
-            },
-            {
-                name: "Kerala", capital: "Thiruvananthapuram", emoji: "🌴",
-                history: "Kerala has been a major spice trading center for centuries, attracting traders from around the world. It has a unique history of matrilineal society and high literacy rates.",
-                culture: "Known for Ayurveda, classical arts like Kathakali, and unique traditions.",
-                heritage: ["Backwaters", "Hill Stations", "Spice Gardens", "Ayurvedic Traditions"],
-                festivals: ["Onam", "Vishu", "Thrissur Pooram", "Christmas"],
-                cuisine: ["Appam", "Fish Curry", "Payasam", "Coconut-based dishes"],
-                languages: ["Malayalam", "Tamil", "English"]
-            },
-            {
-                name: "Madhya Pradesh", capital: "Bhopal", emoji: "🐅",
-                history: "Known as the 'Heart of India', MP has ancient cave paintings at Bhimbetka and was part of various empires. It has significant Buddhist heritage and diverse cultural influences.",
-                culture: "Diverse culture with tribal traditions, classical arts, and wildlife conservation.",
-                heritage: ["Khajuraho Temples", "Sanchi Stupa", "Tiger Reserves", "Bhimbetka Caves"],
-                festivals: ["Navratri", "Diwali", "Holi", "Tribal Festivals"],
-                cuisine: ["Dal Bafla", "Poha", "Bhutte ka Kees", "Malpua"],
-                languages: ["Hindi", "Tribal Languages"]
-            },
-            {
-                name: "Maharashtra", capital: "Mumbai", emoji: "🏙️",
-                history: "Maharashtra has been ruled by various dynasties including Marathas under Shivaji. It's the commercial capital of India and birthplace of the Indian film industry.",
-                culture: "Diverse culture with strong traditions in arts, literature, and commerce.",
-                heritage: ["Ajanta-Ellora Caves", "Shivaji's Forts", "Gateway of India", "Bollywood"],
-                festivals: ["Ganesh Chaturthi", "Navratri", "Gudi Padwa", "Diwali"],
-                cuisine: ["Vada Pav", "Misal Pav", "Puran Poli", "Bharli Vangi"],
-                languages: ["Marathi", "Hindi", "English"]
-            },
-            {
-                name: "Manipur", capital: "Imphal", emoji: "💃",
-                history: "Manipur has a rich history with its own kingdom and unique culture. It played a crucial role in World War II and has maintained its distinct identity.",
-                culture: "Famous for Manipuri dance, martial arts, and polo sport which originated here.",
-                heritage: ["Manipuri Dance", "Loktak Lake", "War Memorials", "Handloom Traditions"],
-                festivals: ["Lai Haraoba", "Yaoshang", "Kang", "Ningol Chakouba"],
-                cuisine: ["Eromba", "Singju", "Ngari", "Chamthong"],
-                languages: ["Manipuri", "English", "Hindi"]
-            },
-            {
-                name: "Meghalaya", capital: "Shillong", emoji: "🌧️",
-                history: "Known as 'Abode of Clouds', Meghalaya was carved out of Assam in 1972. It has unique matrilineal society and receives the highest rainfall in the world.",
-                culture: "Predominantly tribal culture with matrilineal society where women inherit property.",
-                heritage: ["Living Root Bridges", "Cherrapunji", "Sacred Forests", "Traditional Music"],
-                festivals: ["Wangala", "Nongkrem", "Shad Suk Mynsiem", "Christmas"],
-                cuisine: ["Jadoh", "Tungrymbai", "Dohneiiong", "Kyat"],
-                languages: ["Khasi", "Garo", "Jaintia", "English"]
-            },
-            {
-                name: "Mizoram", capital: "Aizawl", emoji: "🎋",
-                history: "Mizoram became a state in 1987. The Mizo people have a rich oral tradition and were largely isolated until British colonial period.",
-                culture: "Strong Christian influence with vibrant music and dance traditions.",
-                heritage: ["Traditional Villages", "Handicrafts", "Folk Music", "Bamboo Architecture"],
-                festivals: ["Chapchar Kut", "Mim Kut", "Pawl Kut", "Christmas"],
-                cuisine: ["Bai", "Sawhchiar", "Koat Pitha", "Zu"],
-                languages: ["Mizo", "English", "Hindi"]
-            },
-            {
-                name: "Nagaland", capital: "Kohima", emoji: "🏹",
-                history: "Nagaland achieved statehood in 1963. The Naga tribes have maintained their warrior traditions and unique cultural practices for centuries.",
-                culture: "Tribal warrior culture with rich traditions in weaving, wood carving, and festivals.",
-                heritage: ["Hornbill Festival", "Traditional Villages", "War Memorials", "Tribal Arts"],
-                festivals: ["Hornbill Festival", "Sekrenyi", "Tuluni", "Moatsu"],
-                cuisine: ["Smoked Pork", "Bamboo Shoot", "Raja Mircha", "Axone"],
-                languages: ["English", "Nagamese", "Tribal Languages"]
-            },
-            {
-                name: "Odisha", capital: "Bhubaneswar", emoji: "🏛️",
-                history: "Ancient Kalinga kingdom, famous for the Kalinga War that transformed Emperor Ashoka. Rich in Buddhist and Hindu heritage with magnificent temples.",
-                culture: "Classical dance Odissi, temple architecture, and rich maritime traditions.",
-                heritage: ["Konark Sun Temple", "Jagannath Temple", "Buddhist Diamond Triangle", "Classical Dance"],
-                festivals: ["Jagannath Rath Yatra", "Durga Puja", "Kali Puja", "Poila Boishakh"],
-                cuisine: ["Dalma", "Pakhala", "Rasgulla", "Chhena Poda"],
-                languages: ["Odia", "Hindi", "Bengali", "Telugu"]
-            },
-            {
-                name: "Punjab", capital: "Chandigarh", emoji: "🌾",
-                history: "Land of five rivers, birthplace of Sikhism. Punjab has been a major agricultural region and witnessed significant historical events including partition.",
-                culture: "Sikh culture, Punjabi music, dance (Bhangra), and agricultural traditions.",
-                heritage: ["Golden Temple", "Partition Museum", "Rural Heritage", "Gurudwaras"],
-                festivals: ["Baisakhi", "Diwali", "Hola Mohalla", "Karva Chauth"],
-                cuisine: ["Makki di Roti", "Sarson da Saag", "Butter Chicken", "Lassi"],
-                languages: ["Punjabi", "Hindi", "Urdu"]
-            },
-            {
-                name: "Rajasthan", capital: "Jaipur", emoji: "🏰",
-                history: "Land of kings with numerous princely states. Rich in Rajput history, desert culture, and magnificent forts and palaces.",
-                culture: "Royal culture, desert lifestyle, folk music, dance, and colorful festivals.",
-                heritage: ["Amber Fort", "City Palace", "Hawa Mahal", "Desert Culture"],
-                festivals: ["Desert Festival", "Teej", "Gangaur", "Diwali"],
-                cuisine: ["Dal Baati Churma", "Laal Maas", "Gatte ki Sabzi", "Ghewar"],
-                languages: ["Rajasthani", "Hindi", "Urdu"]
-            },
-            {
-                name: "Sikkim", capital: "Gangtok", emoji: "🏔️",
-                history: "Former Buddhist kingdom that became part of India in 1975. Unique blend of Nepalese, Bhutanese, and Indian cultures.",
-                culture: "Buddhist culture with influences from Nepal and Bhutan, known for organic farming.",
-                heritage: ["Monasteries", "Kanchenjunga", "Buddhist Culture", "Organic Farming"],
-                festivals: ["Losar", "Buddha Purnima", "Drupka Teshi", "Diwali"],
-                cuisine: ["Momos", "Thukpa", "Gundruk", "Sel Roti"],
-                languages: ["Nepali", "Bhutia", "Lepcha", "Hindi"]
-            },
-            {
-                name: "Tamil Nadu", capital: "Chennai", emoji: "🏛️",
-                history: "Ancient Dravidian civilization with rich temple culture. Home to great empires like Cholas, Cheras, and Pandyas.",
-                culture: "Classical Tamil culture, Bharatanatyam dance, Carnatic music, and temple traditions.",
-                heritage: ["Meenakshi Temple", "Mahabalipuram", "Nilgiri Hills", "Classical Arts"],
-                festivals: ["Pongal", "Deepavali", "Navaratri", "Thaipusam"],
-                cuisine: ["Idli-Sambar", "Dosa", "Rasam", "Chettinad Cuisine"],
-                languages: ["Tamil", "Telugu", "Malayalam", "English"]
-            },
-            {
-                name: "Telangana", capital: "Hyderabad", emoji: "💎",
-                history: "Formed in 2014, rich in Nizami culture and IT industry. Historical significance with various dynasties ruling the region.",
-                culture: "Blend of Telugu and Urdu cultures, known for hospitality and cuisine.",
-                heritage: ["Charminar", "Golconda Fort", "IT Hub", "Nizami Culture"],
-                festivals: ["Bonalu", "Bathukamma", "Ugadi", "Eid"],
-                cuisine: ["Hyderabadi Biryani", "Haleem", "Qubani ka Meetha", "Irani Chai"],
-                languages: ["Telugu", "Urdu", "Hindi", "English"]
-            },
-            {
-                name: "Tripura", capital: "Agartala", emoji: "🏛️",
-                history: "Former princely state with rich tribal culture. Became part of India in 1949 with significant Buddhist and Hindu influences.",
-                culture: "Blend of tribal and Bengali cultures with traditional handicrafts.",
-                heritage: ["Ujjayanta Palace", "Neermahal", "Tribal Museums", "Traditional Crafts"],
-                festivals: ["Kharchi", "Garia", "Durga Puja", "Kali Puja"],
-                cuisine: ["Mui Borok", "Gudok", "Wahan Mosdeng", "Bengali Sweets"],
-                languages: ["Bengali", "Tripuri", "Hindi", "English"]
-            },
-            {
-                name: "Uttar Pradesh", capital: "Lucknow", emoji: "🕌",
-                history: "Heartland of ancient Indian civilization, home to major Hindu and Islamic heritage sites. Birthplace of Lord Rama and Krishna.",
-                culture: "Rich in religious traditions, classical music, dance, and Mughal influence.",
-                heritage: ["Taj Mahal", "Varanasi Ghats", "Lucknow Architecture", "Religious Sites"],
-                festivals: ["Kumbh Mela", "Diwali", "Holi", "Eid"],
-                cuisine: ["Awadhi Cuisine", "Kebabs", "Biryani", "Petha"],
-                languages: ["Hindi", "Urdu", "Awadhi", "Bhojpuri"]
-            },
-            {
-                name: "Uttarakhand", capital: "Dehradun", emoji: "⛰️",
-                history: "Land of gods, carved out of UP in 2000. Sacred to Hindus with numerous pilgrimage sites in the Himalayas.",
-                culture: "Mountain culture with strong religious traditions and connection to nature.",
-                heritage: ["Char Dham", "Valley of Flowers", "Rishikesh", "Hill Stations"],
-                festivals: ["Kumbh Mela", "Nanda Devi Raj Jat", "Bikhauti", "Diwali"],
-                cuisine: ["Kafuli", "Bal Mithai", "Singodi", "Aloo ke Gutke"],
-                languages: ["Hindi", "Garhwali", "Kumauni", "English"]
-            },
-            {
-                name: "West Bengal", capital: "Kolkata", emoji: "🎭",
-                history: "Rich cultural heritage, former capital of British India. Center of Bengal Renaissance and literary movements.",
-                culture: "Intellectual culture, arts, literature, cinema, and strong traditions in music and dance.",
-                heritage: ["Victoria Memorial", "Howrah Bridge", "Sundarbans", "Cultural Heritage"],
-                festivals: ["Durga Puja", "Kali Puja", "Poila Boishakh", "Diwali"],
-                cuisine: ["Fish Curry", "Rasgulla", "Mishti Doi", "Hilsa Fish"],
-                languages: ["Bengali", "Hindi", "English", "Urdu"]
+                question: "Which temple in Andhra Pradesh is famous for Lord Venkateswara?",
+                options: ["Tirumala", "Srisailam", "Bhadrachalam", "Simhachalam"],
+                correct: 0,
+                explanation: "Tirumala Temple is dedicated to Lord Venkateswara and is one of the most visited pilgrimage sites."
             }
-        ];
+        ]
+    },
+    {
+        name: "Karnataka", capital: "Bengaluru", emoji: "🏛️",
+        history: "Karnataka has a rich history with powerful empires like Chalukyas, Hoysalas, and Vijayanagara. It has been a center of South Indian culture and architecture.",
+        culture: "Known for classical music, dance, and being the Silicon Valley of India.",
+        heritage: ["Hampi", "Mysore Palace", "Western Ghats", "Hoysala Architecture"],
+        festivals: ["Dasara", "Ugadi", "Karaga", "Diwali"],
+        cuisine: ["Masala Dosa", "Bisi Bele Bath", "Mysore Pak", "Ragi Mudde"],
+        languages: ["Kannada", "Telugu", "Tamil", "Hindi"],
+        quizQuestions: [
+            {
+                question: "Which empire built the magnificent ruins at Hampi?",
+                options: ["Chola", "Vijayanagara", "Hoysala", "Chalukya"],
+                correct: 1,
+                explanation: "The Vijayanagara Empire built the magnificent structures at Hampi, now a UNESCO World Heritage Site."
+            },
+            {
+                question: "What is Karnataka also known as in the IT industry?",
+                options: ["Tech Valley", "Silicon Valley of India", "Cyber Hub", "Digital State"],
+                correct: 1,
+                explanation: "Karnataka, particularly Bengaluru, is known as the Silicon Valley of India due to its IT industry."
+            }
+        ]
+    },
+    {
+        name: "Kerala", capital: "Thiruvananthapuram", emoji: "🌴",
+        history: "Kerala has been a major spice trading center for centuries, attracting traders from around the world. It has a unique history of matrilineal society.",
+        culture: "Known for Ayurveda, classical arts like Kathakali, and unique traditions.",
+        heritage: ["Backwaters", "Hill Stations", "Spice Gardens", "Ayurvedic Traditions"],
+        festivals: ["Onam", "Vishu", "Thrissur Pooram", "Christmas"],
+        cuisine: ["Appam", "Fish Curry", "Payasam", "Coconut-based dishes"],
+        languages: ["Malayalam", "Tamil", "English"],
+        quizQuestions: [
+            {
+                question: "Which is the most important festival of Kerala?",
+                options: ["Vishu", "Onam", "Thrissur Pooram", "Christmas"],
+                correct: 1,
+                explanation: "Onam is the most important festival of Kerala, celebrating the homecoming of King Mahabali."
+            },
+            {
+                question: "What is Kerala famous for in traditional medicine?",
+                options: ["Unani", "Ayurveda", "Siddha", "Homeopathy"],
+                correct: 1,
+                explanation: "Kerala is famous for Ayurveda, an ancient system of traditional medicine."
+            }
+        ]
+    },
+    {
+        name: "Tamil Nadu", capital: "Chennai", emoji: "🏛️",
+        history: "Ancient Dravidian civilization with rich temple culture. Home to great empires like Cholas, Cheras, and Pandyas.",
+        culture: "Classical Tamil culture, Bharatanatyam dance, Carnatic music, and temple traditions.",
+        heritage: ["Meenakshi Temple", "Mahabalipuram", "Nilgiri Hills", "Classical Arts"],
+        festivals: ["Pongal", "Deepavali", "Navaratri", "Thaipusam"],
+        cuisine: ["Idli-Sambar", "Dosa", "Rasam", "Chettinad Cuisine"],
+        languages: ["Tamil", "Telugu", "Malayalam", "English"],
+        quizQuestions: [
+            {
+                question: "Which classical dance form originated in Tamil Nadu?",
+                options: ["Kuchipudi", "Bharatanatyam", "Kathakali", "Mohiniyattam"],
+                correct: 1,
+                explanation: "Bharatanatyam is the classical dance form that originated in Tamil Nadu."
+            },
+            {
+                question: "What is the harvest festival of Tamil Nadu called?",
+                options: ["Onam", "Pongal", "Baisakhi", "Makar Sankranti"],
+                correct: 1,
+                explanation: "Pongal is the harvest festival celebrated in Tamil Nadu, marking the end of the harvest season."
+            }
+        ]
+    },
+    {
+        name: "Rajasthan", capital: "Jaipur", emoji: "🏰",
+        history: "Land of kings with numerous princely states. Rich in Rajput history, desert culture, and magnificent forts and palaces.",
+        culture: "Royal culture, desert lifestyle, folk music, dance, and colorful festivals.",
+        heritage: ["Amber Fort", "City Palace", "Hawa Mahal", "Desert Culture"],
+        festivals: ["Desert Festival", "Teej", "Gangaur", "Diwali"],
+        cuisine: ["Dal Baati Churma", "Laal Maas", "Gatte ki Sabzi", "Ghewar"],
+        languages: ["Rajasthani", "Hindi", "Urdu"],
+        quizQuestions: [
+            {
+                question: "Which palace in Jaipur is known as the 'Palace of Winds'?",
+                options: ["City Palace", "Hawa Mahal", "Amber Fort", "Nahargarh Fort"],
+                correct: 1,
+                explanation: "Hawa Mahal is known as the 'Palace of Winds' due to its unique architecture with many windows."
+            },
+            {
+                question: "What is the traditional folk dance of Rajasthan?",
+                options: ["Bhangra", "Garba", "Ghoomar", "Lavani"],
+                correct: 2,
+                explanation: "Ghoomar is the traditional folk dance of Rajasthan, performed by women in flowing skirts."
+            }
+        ]
+    },
+    {
+        name: "Punjab", capital: "Chandigarh", emoji: "🌾",
+        history: "Land of five rivers, birthplace of Sikhism. Punjab has been a major agricultural region and witnessed significant historical events.",
+        culture: "Sikh culture, Punjabi music, dance (Bhangra), and agricultural traditions.",
+        heritage: ["Golden Temple", "Partition Museum", "Rural Heritage", "Gurudwaras"],
+        festivals: ["Baisakhi", "Diwali", "Hola Mohalla", "Karva Chauth"],
+        cuisine: ["Makki di Roti", "Sarson da Saag", "Butter Chicken", "Lassi"],
+        languages: ["Punjabi", "Hindi", "Urdu"],
+        quizQuestions: [
+            {
+                question: "What is the holiest shrine of Sikhism?",
+                options: ["Gurudwara Bangla Sahib", "Golden Temple", "Takht Sri Patna Sahib", "Anandpur Sahib"],
+                correct: 1,
+                explanation: "The Golden Temple (Harmandir Sahib) in Amritsar is the holiest shrine of Sikhism."
+            },
+            {
+                question: "Which dance form is Punjab famous for?",
+                options: ["Garba", "Bhangra", "Kathak", "Giddha"],
+                correct: 1,
+                explanation: "Bhangra is the famous energetic dance form from Punjab, originally performed during harvest."
+            }
+        ]
+    },
+    {
+        name: "West Bengal", capital: "Kolkata", emoji: "🎭",
+        history: "Rich cultural heritage, former capital of British India. Center of Bengal Renaissance and literary movements.",
+        culture: "Intellectual culture, arts, literature, cinema, and strong traditions in music and dance.",
+        heritage: ["Victoria Memorial", "Howrah Bridge", "Sundarbans", "Cultural Heritage"],
+        festivals: ["Durga Puja", "Kali Puja", "Poila Boishakh", "Diwali"],
+        cuisine: ["Fish Curry", "Rasgulla", "Mishti Doi", "Hilsa Fish"],
+        languages: ["Bengali", "Hindi", "English", "Urdu"],
+        quizQuestions: [
+            {
+                question: "Which is the most important festival of West Bengal?",
+                options: ["Kali Puja", "Durga Puja", "Poila Boishakh", "Diwali"],
+                correct: 1,
+                explanation: "Durga Puja is the most important festival of West Bengal, celebrating Goddess Durga."
+            },
+            {
+                question: "Which sweet is West Bengal famous for?",
+                options: ["Gulab Jamun", "Jalebi", "Rasgulla", "Barfi"],
+                correct: 2,
+                explanation: "Rasgulla is the famous sweet from West Bengal, made from cottage cheese."
+            }
+        ]
+    },
+    {
+        name: "Maharashtra", capital: "Mumbai", emoji: "🏙️",
+        history: "Maharashtra has been ruled by various dynasties including Marathas under Shivaji. It's the commercial capital of India.",
+        culture: "Diverse culture with strong traditions in arts, literature, and commerce.",
+        heritage: ["Ajanta-Ellora Caves", "Shivaji's Forts", "Gateway of India", "Bollywood"],
+        festivals: ["Ganesh Chaturthi", "Navratri", "Gudi Padwa", "Diwali"],
+        cuisine: ["Vada Pav", "Misal Pav", "Puran Poli", "Bharli Vangi"],
+        languages: ["Marathi", "Hindi", "English"],
+        quizQuestions: [
+            {
+                question: "Which caves in Maharashtra are famous for Buddhist art?",
+                options: ["Elephanta Caves", "Ajanta Caves", "Karla Caves", "Bhaja Caves"],
+                correct: 1,
+                explanation: "Ajanta Caves are famous for their ancient Buddhist paintings and sculptures."
+            },
+            {
+                question: "What is the most popular street food of Mumbai?",
+                options: ["Pani Puri", "Vada Pav", "Bhel Puri", "Dosa"],
+                correct: 1,
+                explanation: "Vada Pav is often called the 'burger of Mumbai' and is the most popular street food."
+            }
+        ]
+    },
+    {
+        name: "Gujarat", capital: "Gandhinagar", emoji: "🏺",
+        history: "Gujarat has been a major center of trade and commerce. It's the birthplace of Mahatma Gandhi and has rich textile traditions.",
+        culture: "Known for vibrant festivals, entrepreneurial spirit, and rich textile traditions.",
+        heritage: ["Dholavira", "Rani ki Vav", "Somnath Temple", "Gir National Park"],
+        festivals: ["Navratri", "Kite Festival", "Janmashtami", "Diwali"],
+        cuisine: ["Dhokla", "Khandvi", "Undhiyu", "Gujarati Thali"],
+        languages: ["Gujarati", "Hindi", "English"],
+        quizQuestions: [
+            {
+                question: "Which festival is Gujarat most famous for?",
+                options: ["Diwali", "Holi", "Navratri", "Janmashtami"],
+                correct: 2,
+                explanation: "Navratri is Gujarat's most famous festival, celebrated with traditional Garba and Dandiya dances."
+            },
+            {
+                question: "What is the traditional snack of Gujarat?",
+                options: ["Samosa", "Dhokla", "Kachori", "Pakora"],
+                correct: 1,
+                explanation: "Dhokla is the famous steamed snack from Gujarat, made from gram flour."
+            }
+        ]
+    },
+    {
+        name: "Assam", capital: "Dispur", emoji: "🌿",
+        history: "Assam has a rich history with ancient kingdoms like Kamarupa. It has been a major center for tea cultivation and trade.",
+        culture: "Known for its tribal culture, Bihu dance, and tea gardens.",
+        heritage: ["Kaziranga National Park", "Majuli Island", "Kamakhya Temple", "Tea Gardens"],
+        festivals: ["Bihu", "Magh Bihu", "Rongali Bihu", "Durga Puja"],
+        cuisine: ["Assamese Thali", "Pitha", "Duck Curry", " Fish Tenga"],
+        languages: ["Assamese", "Bengali", "Hindi", "English"],
+        quizQuestions: [
+            {
+                question: "Which dance form is Assam famous for?",
+                options: ["Bihu", "Garba", "Kathak", "Ghoomar"],
+                correct: 0,
+                explanation: "Bihu is the traditional folk dance of Assam, performed during the Bihu festival."
+            },
+            {
+                question: "What is Assam primarily known for producing?",
+                options: ["Coffee", "Tea", "Spices", "Silk"],
+                correct: 1,
+                explanation: "Assam is renowned for its tea plantations and is one of the largest tea-producing regions in the world."
+            }
+        ]
+    },
+
+    // --- Remaining States (17 more needed to reach 28) ---
+    {
+        name: "Uttar Pradesh", capital: "Lucknow", emoji: "🕌",
+        history: "Uttar Pradesh has been a center of Indian civilization with cities like Varanasi and Ayodhya. It has deep connections to Hinduism, Buddhism, and Mughal history.",
+        culture: "Known for classical music, dance (Kathak), Mughlai cuisine, and handicrafts.",
+        heritage: ["Taj Mahal", "Varanasi Ghats", "Fatehpur Sikri", "Ayodhya"],
+        festivals: ["Holi", "Diwali", "Eid", "Kumbh Mela"],
+        cuisine: ["Kebabs", "Puri-Sabzi", "Litti Chokha", "Mughlai Dishes"],
+        languages: ["Hindi", "Urdu", "Bhojpuri"],
+        quizQuestions: [
+            {
+                question: "Which wonder of the world is in Uttar Pradesh?",
+                options: ["Qutub Minar", "Taj Mahal", "Red Fort", "Charminar"],
+                correct: 1,
+                explanation: "The Taj Mahal in Agra is one of the Seven Wonders of the World."
+            },
+            {
+                question: "Which classical dance form is Uttar Pradesh famous for?",
+                options: ["Kathak", "Bharatanatyam", "Kuchipudi", "Odissi"],
+                correct: 0,
+                explanation: "Kathak originated in Uttar Pradesh and is a major classical dance form."
+            }
+        ]
+    },
+    {
+        name: "Madhya Pradesh", capital: "Bhopal", emoji: "🏞️",
+        history: "Known as the 'Heart of India', Madhya Pradesh has ancient cave paintings, forts, and temples. It was ruled by Mauryas, Guptas, and Mughals.",
+        culture: "Folk music, tribal traditions, and classical art.",
+        heritage: ["Khajuraho Temples", "Sanchi Stupa", "Bhimbetka Caves", "Gwalior Fort"],
+        festivals: ["Diwali", "Navratri", "Holi", "Tansen Music Festival"],
+        cuisine: ["Poha", "Bhutte ka Kees", "Dal Bafla", "Khopra Pak"],
+        languages: ["Hindi", "Bundeli", "Marathi"],
+        quizQuestions: [
+            {
+                question: "Which UNESCO site is famous for erotic sculptures in Madhya Pradesh?",
+                options: ["Ajanta", "Khajuraho", "Ellora", "Konark"],
+                correct: 1,
+                explanation: "Khajuraho Temples are famous for their detailed erotic sculptures."
+            },
+            {
+                question: "Where are ancient rock shelters with paintings found?",
+                options: ["Bhimbetka", "Ellora", "Hampi", "Konark"],
+                correct: 0,
+                explanation: "Bhimbetka Caves in Madhya Pradesh have prehistoric cave paintings."
+            }
+        ]
+    },
+    {
+        name: "Bihar", capital: "Patna", emoji: "📜",
+        history: "Bihar was home to ancient kingdoms like Magadha and the birthplace of Buddhism and Jainism.",
+        culture: "Folk traditions, Bhojpuri culture, and ancient learning centers.",
+        heritage: ["Nalanda University", "Bodh Gaya", "Rajgir", "Vaishali"],
+        festivals: ["Chhath Puja", "Diwali", "Makar Sankranti", "Holi"],
+        cuisine: ["Litti Chokha", "Khaja", "Sattu Paratha", "Thekua"],
+        languages: ["Hindi", "Bhojpuri", "Maithili"],
+        quizQuestions: [
+            {
+                question: "Which religion was founded in Bihar by Lord Buddha?",
+                options: ["Hinduism", "Buddhism", "Jainism", "Sikhism"],
+                correct: 1,
+                explanation: "Buddhism originated in Bodh Gaya, Bihar, where Buddha attained enlightenment."
+            },
+            {
+                question: "Which ancient university was in Bihar?",
+                options: ["Nalanda", "Takshashila", "Vikramshila", "Ujjain"],
+                correct: 0,
+                explanation: "Nalanda University was a great center of learning in ancient Bihar."
+            }
+        ]
+    },
+    {
+        name: "Jharkhand", capital: "Ranchi", emoji: "🌳",
+        history: "Rich in minerals and tribal culture, Jharkhand was carved out of Bihar in 2000.",
+        culture: "Tribal festivals, folk dances, and forest traditions.",
+        heritage: ["Betla National Park", "Parasnath Hills", "Dassam Falls", "Baidyanath Dham"],
+        festivals: ["Sarhul", "Karma", "Diwali", "Holi"],
+        cuisine: ["Thekua", "Dhuska", "Chilka Roti", "Handia"],
+        languages: ["Hindi", "Nagpuri", "Santali"],
+        quizQuestions: [
+            {
+                question: "Which mineral-rich state is called the 'Storehouse of Minerals'?",
+                options: ["Odisha", "Jharkhand", "Chhattisgarh", "Bihar"],
+                correct: 1,
+                explanation: "Jharkhand is known as the Storehouse of Minerals due to its rich mineral resources."
+            },
+            {
+                question: "Which festival is unique to Jharkhand's tribal communities?",
+                options: ["Sarhul", "Holi", "Diwali", "Navratri"],
+                correct: 0,
+                explanation: "Sarhul is the main tribal festival celebrated in Jharkhand."
+            }
+        ]
+    },
+    {
+        name: "Odisha", capital: "Bhubaneswar", emoji: "🕉️",
+        history: "Ancient Kalinga kingdom, known for maritime trade and the famous Kalinga War of Ashoka.",
+        culture: "Odissi dance, Jagannath culture, and temple architecture.",
+        heritage: ["Konark Sun Temple", "Jagannath Temple", "Chilika Lake", "Udayagiri Caves"],
+        festivals: ["Rath Yatra", "Durga Puja", "Diwali", "Makar Sankranti"],
+        cuisine: ["Dalma", "Pakhala Bhata", "Chhena Poda", "Macha Ghanta"],
+        languages: ["Odia", "Hindi", "English"],
+        quizQuestions: [
+            {
+                question: "Which classical dance originates from Odisha?",
+                options: ["Odissi", "Kathakali", "Kuchipudi", "Bharatanatyam"],
+                correct: 0,
+                explanation: "Odissi is the classical dance form from Odisha."
+            },
+            {
+                question: "Which world-famous chariot festival is celebrated in Odisha?",
+                options: ["Rath Yatra", "Navratri", "Durga Puja", "Pongal"],
+                correct: 0,
+                explanation: "Rath Yatra in Puri is Odisha's most famous festival."
+            }
+        ]
+    },
+    {
+        name: "Chhattisgarh", capital: "Raipur", emoji: "🌲",
+        history: "Known for tribal heritage, temples, and forests. It became a state in 2000 after separating from Madhya Pradesh.",
+        culture: "Tribal music, handicrafts, and folk art.",
+        heritage: ["Chitrakote Falls", "Barnawapara Sanctuary", "Sirpur", "Kanger Valley"],
+        festivals: ["Bastar Dussehra", "Hareli", "Diwali", "Holi"],
+        cuisine: ["Chila", "Fara", "Muthiya", "Dehrori"],
+        languages: ["Chhattisgarhi", "Hindi"],
+        quizQuestions: [
+            {
+                question: "Which waterfall in Chhattisgarh is called the 'Niagara of India'?",
+                options: ["Jog Falls", "Chitrakote Falls", "Dudhsagar", "Athirappilly"],
+                correct: 1,
+                explanation: "Chitrakote Falls in Chhattisgarh is known as the Niagara of India."
+            },
+            {
+                question: "Which major tribal festival is celebrated in Bastar?",
+                options: ["Onam", "Bastar Dussehra", "Navratri", "Ugadi"],
+                correct: 1,
+                explanation: "Bastar Dussehra is a unique tribal festival celebrated in Chhattisgarh."
+            }
+        ]
+    },
+    {
+        name: "Haryana", capital: "Chandigarh", emoji: "🚜",
+        history: "Land of the Mahabharata battlefield of Kurukshetra. Known for agriculture and military tradition.",
+        culture: "Haryanvi folk songs, dances, and wrestling.",
+        heritage: ["Kurukshetra", "Pinjore Gardens", "Morni Hills", "Sultanpur Bird Sanctuary"],
+        festivals: ["Holi", "Diwali", "Teej", "Baisakhi"],
+        cuisine: ["Bajra Roti", "Kadhi", "Churma", "Lassi"],
+        languages: ["Hindi", "Haryanvi", "Punjabi"],
+        quizQuestions: [
+            {
+                question: "Which epic battle was fought in Kurukshetra, Haryana?",
+                options: ["Ramayana", "Mahabharata", "Panipat War", "Plassey"],
+                correct: 1,
+                explanation: "The Mahabharata war was fought in Kurukshetra."
+            },
+            {
+                question: "Which occupation is Haryana most famous for?",
+                options: ["IT", "Agriculture", "Mining", "Fisheries"],
+                correct: 1,
+                explanation: "Haryana is primarily an agricultural state."
+            }
+        ]
+    },
+    {
+        name: "Himachal Pradesh", capital: "Shimla", emoji: "🏔️",
+        history: "Land of hill kingdoms, later became a full-fledged state in 1971.",
+        culture: "Himalayan traditions, handicrafts, and folk music.",
+        heritage: ["Shimla", "Manali", "Kullu Valley", "Dalhousie"],
+        festivals: ["Kullu Dussehra", "Losar", "Diwali", "Holi"],
+        cuisine: ["Dham", "Sidu", "Chana Madra", "Babru"],
+        languages: ["Hindi", "Pahari"],
+        quizQuestions: [
+            {
+                question: "Which mountain state is famous for apple orchards?",
+                options: ["Uttarakhand", "Himachal Pradesh", "Sikkim", "Nagaland"],
+                correct: 1,
+                explanation: "Himachal Pradesh is known for its apple orchards."
+            },
+            {
+                question: "Which famous hill station is the capital of Himachal Pradesh?",
+                options: ["Shimla", "Manali", "Dharamshala", "Dalhousie"],
+                correct: 0,
+                explanation: "Shimla is the capital of Himachal Pradesh."
+            }
+        ]
+    },
+    {
+        name: "Uttarakhand", capital: "Dehradun", emoji: "⛰️",
+        history: "Known as 'Devbhoomi', land of the Himalayas and pilgrimage sites. Carved out of Uttar Pradesh in 2000.",
+        culture: "Rich in Garhwali and Kumaoni traditions.",
+        heritage: ["Kedarnath", "Badrinath", "Rishikesh", "Nanda Devi"],
+        festivals: ["Kumbh Mela", "Makar Sankranti", "Diwali", "Holi"],
+        cuisine: ["Aloo Ke Gutke", "Chainsoo", "Kafuli", "Bal Mithai"],
+        languages: ["Hindi", "Garhwali", "Kumaoni"],
+        quizQuestions: [
+            {
+                question: "Which two famous pilgrimage sites are in Uttarakhand?",
+                options: ["Kedarnath & Badrinath", "Somnath & Dwarka", "Vaishno Devi & Amarnath", "Tirupati & Sabarimala"],
+                correct: 0,
+                explanation: "Kedarnath and Badrinath are important pilgrimage sites in Uttarakhand."
+            },
+            {
+                question: "Which city in Uttarakhand is known as the Yoga capital of the world?",
+                options: ["Rishikesh", "Haridwar", "Dehradun", "Nainital"],
+                correct: 0,
+                explanation: "Rishikesh is called the Yoga capital of the world."
+            }
+        ]
+    },
+    {
+        name: "Delhi (NCT)", capital: "New Delhi", emoji: "🏙️",
+        history: "Delhi has been the capital of several empires including the Mughals and the British. Today, it is the capital of India.",
+        culture: "Blend of Mughal, Punjabi, and modern cosmopolitan culture.",
+        heritage: ["Red Fort", "Qutub Minar", "India Gate", "Lotus Temple"],
+        festivals: ["Diwali", "Eid", "Holi", "Independence Day"],
+        cuisine: ["Paratha", "Chaat", "Butter Chicken", "Chole Bhature"],
+        languages: ["Hindi", "Punjabi", "Urdu", "English"],
+        quizQuestions: [
+            {
+                question: "Which UNESCO heritage monument is in Delhi?",
+                options: ["Charminar", "Qutub Minar", "Konark Temple", "Gateway of India"],
+                correct: 1,
+                explanation: "Qutub Minar is a UNESCO World Heritage Site in Delhi."
+            },
+            {
+                question: "Which city is the capital of India?",
+                options: ["Mumbai", "Delhi", "Chennai", "Kolkata"],
+                correct: 1,
+                explanation: "New Delhi is the capital of India."
+            }
+        ]
+    },
+    {
+        name: "Goa", capital: "Panaji", emoji: "🏖️",
+        history: "Former Portuguese colony, known for its unique Indo-Portuguese heritage.",
+        culture: "Beach culture, Portuguese influence, and vibrant festivals.",
+        heritage: ["Basilica of Bom Jesus", "Beaches", "Forts", "Spice Plantations"],
+        festivals: ["Carnival", "Christmas", "Diwali", "Sao Joao"],
+        cuisine: ["Fish Curry", "Vindaloo", "Bebinca", "Sorpotel"],
+        languages: ["Konkani", "Marathi", "English", "Hindi"],
+        quizQuestions: [
+            {
+                question: "Which European power ruled Goa before independence?",
+                options: ["Dutch", "Portuguese", "French", "British"],
+                correct: 1,
+                explanation: "Goa was a Portuguese colony until 1961."
+            },
+            {
+                question: "What is Goa most famous for?",
+                options: ["Mountains", "Deserts", "Beaches", "Temples"],
+                correct: 2,
+                explanation: "Goa is world-famous for its beaches."
+            }
+        ]
+    },
+    {
+        name: "Manipur", capital: "Imphal", emoji: "🌸",
+        history: "A northeastern state known for its rich cultural heritage and traditions. It joined India in 1949.",
+        culture: "Classical dance Ras Lila, handloom, and martial arts.",
+        heritage: ["Loktak Lake", "Kangla Fort", "Keibul Lamjao National Park", "Ima Market"],
+        festivals: ["Yaoshang", "Lai Haraoba", "Kang", "Diwali"],
+        cuisine: ["Eromba", "Chamthong", "Singju", "Nga Thongba"],
+        languages: ["Meitei (Manipuri)", "English", "Hindi"],
+        quizQuestions: [
+            {
+                question: "Which classical dance form is from Manipur?",
+                options: ["Bharatanatyam", "Ras Lila", "Kathakali", "Mohiniyattam"],
+                correct: 1,
+                explanation: "Ras Lila is the classical dance form from Manipur."
+            },
+            {
+                question: "Which unique floating lake is in Manipur?",
+                options: ["Loktak Lake", "Dal Lake", "Chilika Lake", "Sambhar Lake"],
+                correct: 0,
+                explanation: "Loktak Lake in Manipur is famous for its floating phumdis."
+            }
+        ]
+    },
+    {
+        name: "Meghalaya", capital: "Shillong", emoji: "🌧️",
+        history: "Known as the 'Abode of Clouds', Meghalaya has matrilineal tribes like Khasi, Garo, and Jaintia.",
+        culture: "Tribal traditions, music, and festivals.",
+        heritage: ["Living Root Bridges", "Cherrapunji", "Mawsynram", "Shillong"],
+        festivals: ["Nongkrem Dance", "Wangala", "Shad Suk Mynsiem", "Christmas"],
+        cuisine: ["Jadoh", "Tungrymbai", "Dohneiiong", "Pukhlein"],
+        languages: ["Khasi", "Garo", "English"],
+        quizQuestions: [
+            {
+                question: "Which natural bridges are unique to Meghalaya?",
+                options: ["Bamboo Bridges", "Living Root Bridges", "Stone Bridges", "Wooden Bridges"],
+                correct: 1,
+                explanation: "Living Root Bridges made from tree roots are unique to Meghalaya."
+            },
+            {
+                question: "Which place in Meghalaya is one of the wettest on Earth?",
+                options: ["Cherrapunji", "Mawsynram", "Shillong", "Tura"],
+                correct: 1,
+                explanation: "Mawsynram in Meghalaya receives the highest rainfall in the world."
+            }
+        ]
+    },
+    {
+        name: "Mizoram", capital: "Aizawl", emoji: "🌄",
+        history: "Known for its hills and Mizo culture, Mizoram became a state in 1987.",
+        culture: "Mizo festivals, bamboo dance (Cheraw), and handicrafts.",
+        heritage: ["Durtlang Hills", "Phawngpui Hills", "Vantawng Falls", "Tam Dil Lake"],
+        festivals: ["Chapchar Kut", "Mim Kut", "Pawl Kut", "Christmas"],
+        cuisine: ["Bai", "Sawhchiar", "Arsa Buhchiar", "Vawksa Rep"],
+        languages: ["Mizo", "English", "Hindi"],
+        quizQuestions: [
+            {
+                question: "Which dance form is Mizoram famous for?",
+                options: ["Cheraw", "Bihu", "Ghoomar", "Kathakali"],
+                correct: 0,
+                explanation: "Cheraw, also known as bamboo dance, is Mizoram's traditional dance."
+            },
+            {
+                question: "What is Mizoram's capital city?",
+                options: ["Aizawl", "Kohima", "Shillong", "Imphal"],
+                correct: 0,
+                explanation: "Aizawl is the capital of Mizoram."
+            }
+        ]
+    },
+    {
+        name: "Nagaland", capital: "Kohima", emoji: "🪖",
+        history: "Nagaland is home to several tribes and became a state in 1963. Known for its warrior traditions.",
+        culture: "Naga tribal culture, Hornbill Festival, and folk songs.",
+        heritage: ["Kohima War Cemetery", "Dzukou Valley", "Hornbill Festival Grounds", "Japfu Peak"],
+        festivals: ["Hornbill Festival", "Moatsu", "Sekrenyi", "Christmas"],
+        cuisine: ["Smoked Pork", "Rice Beer", "Axone Dishes", "Bamboo Shoot Curry"],
+        languages: ["English", "Nagamese", "Ao"],
+        quizQuestions: [
+            {
+                question: "Which festival is called the 'Festival of Festivals' in Nagaland?",
+                options: ["Moatsu", "Hornbill Festival", "Losar", "Chapchar Kut"],
+                correct: 1,
+                explanation: "Hornbill Festival is the most popular festival in Nagaland."
+            },
+            {
+                question: "What is the capital of Nagaland?",
+                options: ["Kohima", "Aizawl", "Shillong", "Gangtok"],
+                correct: 0,
+                explanation: "Kohima is the capital of Nagaland."
+            }
+        ]
+    },
+    {
+        name: "Tripura", capital: "Agartala", emoji: "🏯",
+        history: "Tripura was a princely state before joining India in 1949. Known for its cultural diversity.",
+        culture: "Blend of tribal and Bengali traditions.",
+        heritage: ["Ujjayanta Palace", "Neermahal", "Unakoti", "Tripura Sundari Temple"],
+        festivals: ["Durga Puja", "Kharchi Puja", "Diwali", "Garia Puja"],
+        cuisine: ["Mui Borok", "Chakhwi", "Mosdeng Serma", "Fish Stew"],
+        languages: ["Bengali", "Kokborok", "Hindi"],
+        quizQuestions: [
+            {
+                question: "Which palace in Tripura is a famous heritage site?",
+                options: ["Ujjayanta Palace", "City Palace", "Mysore Palace", "Amber Fort"],
+                correct: 0,
+                explanation: "Ujjayanta Palace in Agartala is a famous heritage landmark."
+            },
+            {
+                question: "Which tribal language is spoken in Tripura?",
+                options: ["Mizo", "Kokborok", "Khasi", "Ao"],
+                correct: 1,
+                explanation: "Kokborok is the main tribal language of Tripura."
+            }
+        ]
+    },
+    {
+        name: "Arunachal Pradesh", capital: "Itanagar", emoji: "🌲",
+        history: "Known as the 'Land of the Rising Sun' in India, home to diverse tribes and monasteries.",
+        culture: "Tribal traditions, Buddhist monasteries, and crafts.",
+        heritage: ["Tawang Monastery", "Ziro Valley", "Namdapha National Park", "Siang River"],
+        festivals: ["Losar", "Nyokum", "Solung", "Reh"],
+        cuisine: ["Thukpa", "Apong", "Rice with Meat", "Pika Pila"],
+        languages: ["English", "Nyishi", "Adi"],
+        quizQuestions: [
+            {
+                question: "Which famous monastery is in Arunachal Pradesh?",
+                options: ["Hemis", "Tawang", "Rumtek", "Kushinagar"],
+                correct: 1,
+                explanation: "Tawang Monastery is one of the largest Buddhist monasteries in India."
+            },
+            {
+                question: "Which northeastern state is called the 'Land of the Rising Sun'?",
+                options: ["Sikkim", "Nagaland", "Arunachal Pradesh", "Manipur"],
+                correct: 2,
+                explanation: "Arunachal Pradesh is the first Indian state to see sunrise."
+            }
+        ]
+    },
+    {
+        name: "Sikkim", capital: "Gangtok", emoji: "🏔️",
+        history: "A Himalayan kingdom that merged with India in 1975. Known for monasteries and biodiversity.",
+        culture: "Buddhist traditions, festivals, and eco-tourism.",
+        heritage: ["Rumtek Monastery", "Tsomgo Lake", "Nathu La", "Kanchenjunga"],
+        festivals: ["Losar", "Saga Dawa", "Maghe Sankranti", "Diwali"],
+        cuisine: ["Momos", "Thukpa", "Phagshapa", "Sel Roti"],
+        languages: ["Nepali", "Bhutia", "Lepcha", "English"],
+        quizQuestions: [
+            {
+                question: "Which mountain peak is Sikkim famous for?",
+                options: ["Everest", "Kanchenjunga", "Nanda Devi", "Annapurna"],
+                correct: 1,
+                explanation: "Kanchenjunga, the third highest peak in the world, is in Sikkim."
+            },
+            {
+                question: "Which dish is Sikkim most famous for?",
+                options: ["Momos", "Idli", "Rasgulla", "Biryani"],
+                correct: 0,
+                explanation: "Momos are a popular traditional dish in Sikkim."
+            }
+        ]
+    }
+];
+
         // Enhanced Quiz Questions with cultural focus
-        const quizQuestions = [
+        const generalQuizQuestions = [
             {
                 question: "Which state is known as the 'Land of Rising Sun'?",
                 options: ["Arunachal Pradesh", "Assam", "Manipur", "Nagaland"],
@@ -1373,98 +1400,63 @@
                 explanation: "Holi is known as the Festival of Colors, celebrated across India with vibrant colored powders."
             },
             {
-                question: "Madhubani painting originated in which state?",
-                options: ["West Bengal", "Bihar", "Odisha", "Jharkhand"],
-                correct: 1,
-                explanation: "Madhubani painting is a traditional art form from Bihar, known for its intricate patterns and bright colors."
-            },
-            {
-                question: "Which state is famous for Kathakali dance?",
-                options: ["Tamil Nadu", "Kerala", "Karnataka", "Andhra Pradesh"],
-                correct: 1,
-                explanation: "Kathakali is a classical dance-drama form that originated in Kerala."
-            },
-            {
-                question: "The ancient university of Nalanda was located in which modern state?",
-                options: ["West Bengal", "Jharkhand", "Bihar", "Odisha"],
-                correct: 2,
-                explanation: "The ancient Nalanda University was located in present-day Bihar."
-            },
-            {
                 question: "Which state celebrates the Hornbill Festival?",
                 options: ["Mizoram", "Nagaland", "Manipur", "Meghalaya"],
                 correct: 1,
                 explanation: "The Hornbill Festival is celebrated in Nagaland and showcases the rich cultural heritage of the Naga tribes."
             },
             {
-                question: "Kumbh Mela is primarily held in which state?",
-                options: ["Rajasthan", "Uttar Pradesh", "Maharashtra", "Gujarat"],
+                question: "What is the classical dance form of Andhra Pradesh?",
+                options: ["Bharatanatyam", "Kuchipudi", "Kathak", "Odissi"],
                 correct: 1,
-                explanation: "Kumbh Mela is primarily held at various locations in Uttar Pradesh, including Prayagraj and Haridwar."
+                explanation: "Kuchipudi is the classical dance form that originated in Andhra Pradesh."
+            },
+            {
+                question: "Which empire built the magnificent ruins at Hampi?",
+                options: ["Chola", "Vijayanagara", "Hoysala", "Chalukya"],
+                correct: 1,
+                explanation: "The Vijayanagara Empire built the magnificent structures at Hampi."
+            },
+            {
+                question: "What is the harvest festival of Tamil Nadu?",
+                options: ["Onam", "Pongal", "Baisakhi", "Makar Sankranti"],
+                correct: 1,
+                explanation: "Pongal is the harvest festival celebrated in Tamil Nadu."
+            },
+            {
+                question: "Which sweet is West Bengal famous for?",
+                options: ["Gulab Jamun", "Jalebi", "Rasgulla", "Barfi"],
+                correct: 2,
+                explanation: "Rasgulla is the famous sweet from West Bengal."
             }
         ];
 
-        // Application State
+        // Application State - Using memory instead of localStorage
         let currentUser = {
-            score: parseInt(localStorage.getItem('userScore') || '0'),
-            streak: parseInt(localStorage.getItem('userStreak') || '0'),
-            statesVisited: JSON.parse(localStorage.getItem('statesVisited') || '[]'),
-            lastVisit: localStorage.getItem('lastVisit') || null,
-            quizHistory: JSON.parse(localStorage.getItem('quizHistory') || '[]'),
-            totalQuizzes: parseInt(localStorage.getItem('totalQuizzes') || '0'),
-            correctAnswers: parseInt(localStorage.getItem('correctAnswers') || '0'),
-            searchHistory: JSON.parse(localStorage.getItem('searchHistory') || '[]'),
-            currentLanguage: localStorage.getItem('currentLanguage') || 'EN'
+            score: 0,
+            streak: 1,
+            statesVisited: [],
+            lastVisit: null,
+            quizHistory: [],
+            totalQuizzes: 0,
+            correctAnswers: 0,
+            searchHistory: []
         };
 
         let currentQuiz = {
             questions: [],
             currentQuestion: 0,
             userAnswers: [],
-            isActive: false
+            isActive: false,
+            stateSpecific: false,
+            stateName: null
         };
 
         // Initialize App
         document.addEventListener('DOMContentLoaded', function() {
-            updateStreak();
             renderStates();
             updateUI();
-            populateLanguages();
-            updateLanguageDisplay();
         });
-
-        // Language Functions
-        function populateLanguages() {
-            const dropdown = document.getElementById('languageDropdown');
-            dropdown.innerHTML = '';
-            
-            Object.entries(languages).forEach(([code, name]) => {
-                const option = document.createElement('div');
-                option.className = 'lang-option';
-                option.textContent = name;
-                option.onclick = () => switchLanguage(code);
-                dropdown.appendChild(option);
-            });
-        }
-
-        function toggleLanguages() {
-            const dropdown = document.getElementById('languageDropdown');
-            dropdown.classList.toggle('active');
-        }
-
-        function switchLanguage(langCode) {
-            currentUser.currentLanguage = langCode;
-            localStorage.setItem('currentLanguage', langCode);
-            updateLanguageDisplay();
-            toggleLanguages();
-            
-            // In a real app, you would translate content here
-            console.log(`Language switched to: ${languages[langCode]}`);
-        }
-
-        function updateLanguageDisplay() {
-            document.getElementById('currentLang').textContent = currentUser.currentLanguage;
-        }
 
         // Search Functions
         function handleSearch(event) {
@@ -1482,7 +1474,6 @@
                 if (currentUser.searchHistory.length > 10) {
                     currentUser.searchHistory = currentUser.searchHistory.slice(0, 10);
                 }
-                localStorage.setItem('searchHistory', JSON.stringify(currentUser.searchHistory));
             }
 
             // Simple search implementation
@@ -1496,7 +1487,6 @@
             );
 
             displaySearchResults(results, query);
-            hideSearchHistory();
         }
 
         function displaySearchResults(results, query) {
@@ -1517,90 +1507,6 @@
             results.forEach(state => {
                 renderStateCard(state, statesGrid);
             });
-        }
-
-        function showSearchHistory() {
-            if (currentUser.searchHistory.length > 0) {
-                const historyDiv = document.getElementById('searchHistory');
-                historyDiv.innerHTML = '';
-                
-                currentUser.searchHistory.forEach(item => {
-                    const historyItem = document.createElement('div');
-                    historyItem.className = 'history-item';
-                    historyItem.innerHTML = `
-                        <span onclick="searchFromHistory('${item}')">${item}</span>
-                        <span onclick="removeFromHistory('${item}')" style="cursor: pointer; color: #ff6b6b;">×</span>
-                    `;
-                    historyDiv.appendChild(historyItem);
-                });
-
-                const clearBtn = document.createElement('button');
-                clearBtn.className = 'clear-history';
-                clearBtn.textContent = 'Clear History';
-                clearBtn.onclick = clearSearchHistory;
-                historyDiv.appendChild(clearBtn);
-                
-                historyDiv.classList.add('active');
-            }
-        }
-
-        function hideSearchHistory() {
-            document.getElementById('searchHistory').classList.remove('active');
-        }
-
-        function searchFromHistory(query) {
-            document.getElementById('searchBox').value = query;
-            performSearch(query);
-        }
-
-        function removeFromHistory(query) {
-            currentUser.searchHistory = currentUser.searchHistory.filter(item => item !== query);
-            localStorage.setItem('searchHistory', JSON.stringify(currentUser.searchHistory));
-            showSearchHistory();
-        }
-
-        function clearSearchHistory() {
-            currentUser.searchHistory = [];
-            localStorage.setItem('searchHistory', JSON.stringify(currentUser.searchHistory));
-            hideSearchHistory();
-        }
-
-        // Hide search history when clicking outside
-        document.addEventListener('click', function(event) {
-            const searchContainer = document.querySelector('.search-container');
-            const languageSelector = document.querySelector('.language-selector');
-            
-            if (!searchContainer.contains(event.target)) {
-                hideSearchHistory();
-            }
-            
-            if (!languageSelector.contains(event.target)) {
-                document.getElementById('languageDropdown').classList.remove('active');
-            }
-        });
-
-        // Update daily streak
-        function updateStreak() {
-            const today = new Date().toDateString();
-            const lastVisit = currentUser.lastVisit;
-            
-            if (lastVisit) {
-                const lastVisitDate = new Date(lastVisit);
-                const todayDate = new Date(today);
-                const diffTime = todayDate.getTime() - lastVisitDate.getTime();
-                const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
-                
-                if (diffDays === 1) {
-                    currentUser.streak++;
-                } else if (diffDays > 1) {
-                    currentUser.streak = 1;
-                }
-            } else {
-                currentUser.streak = 1;
-            }
-            
-            currentUser.lastVisit = today;
-            saveUserData();
         }
 
         // Render States Grid
@@ -1654,7 +1560,6 @@
             if (!currentUser.statesVisited.includes(stateName)) {
                 currentUser.statesVisited.push(stateName);
                 currentUser.score += 15; // Bonus for exploring new state
-                saveUserData();
                 updateUI();
                 renderStates();
             }
@@ -1707,21 +1612,46 @@
             document.getElementById('stateModal').classList.remove('active');
         }
 
-        // Start Quiz
+        // Start General Quiz
         function startQuiz() {
-            const shuffledQuestions = [...quizQuestions].sort(() => Math.random() - 0.5);
+            const shuffledQuestions = [...generalQuizQuestions].sort(() => Math.random() - 0.5);
             currentQuiz.questions = shuffledQuestions.slice(0, 5);
             currentQuiz.currentQuestion = 0;
             currentQuiz.userAnswers = [];
             currentQuiz.isActive = true;
+            currentQuiz.stateSpecific = false;
+            currentQuiz.stateName = null;
 
             showQuestion();
         }
 
         // State-specific Quiz
         function stateQuiz(stateName) {
+            const state = indianStates.find(s => s.name === stateName);
+            if (!state || !state.quizQuestions) {
+                alert('Quiz not available for this state yet!');
+                return;
+            }
+
             showTab('quiz');
-            startQuiz();
+            
+            // Mix state-specific questions with general questions
+            const stateQuestions = [...state.quizQuestions];
+            const generalQuestions = [...generalQuizQuestions].sort(() => Math.random() - 0.5).slice(0, 3);
+            const mixedQuestions = [...stateQuestions, ...generalQuestions].sort(() => Math.random() - 0.5);
+
+            currentQuiz.questions = mixedQuestions.slice(0, 5);
+            currentQuiz.currentQuestion = 0;
+            currentQuiz.userAnswers = [];
+            currentQuiz.isActive = true;
+            currentQuiz.stateSpecific = true;
+            currentQuiz.stateName = stateName;
+
+            // Update quiz header
+            const quizHeader = document.querySelector('.quiz-header h2');
+            quizHeader.textContent = `${state.emoji} ${stateName} Cultural Quiz`;
+
+            showQuestion();
         }
 
         // Show Current Question
@@ -1798,24 +1728,44 @@
             currentUser.quizHistory.push({
                 date: new Date().toLocaleDateString(),
                 score: correctAnswers,
-                total: currentQuiz.questions.length
+                total: currentQuiz.questions.length,
+                stateName: currentQuiz.stateName
             });
 
-            saveUserData();
             updateUI();
 
             const accuracy = Math.round((correctAnswers / currentQuiz.questions.length) * 100);
+            const quizTypeText = currentQuiz.stateSpecific ? `${currentQuiz.stateName} Cultural Quiz` : 'Cultural Quiz';
+            
             document.getElementById('quizContent').innerHTML = `
                 <div style="text-align: center; padding: 2rem;">
-                    <h2>🎉 Cultural Quiz Completed!</h2>
+                    <h2>🎉 ${quizTypeText} Completed!</h2>
                     <div class="streak-display" style="font-size: 4rem; color: #DAA520; margin: 1rem 0;">
                         ${correctAnswers}/${currentQuiz.questions.length}
                     </div>
                     <p style="font-size: 1.2rem; margin-bottom: 1rem; color: #FFD700;">Cultural Knowledge: ${accuracy}%</p>
                     <p style="margin-bottom: 2rem; color: #DAA520;">You earned ${score} heritage points!</p>
+                    
+                    <div style="background: rgba(218, 165, 32, 0.1); padding: 1.5rem; border-radius: 15px; margin-bottom: 2rem;">
+                        <h3 style="color: #FFD700; margin-bottom: 1rem;">📚 What You Learned:</h3>
+                        <div style="text-align: left; color: #DAA520;">
+                            ${currentQuiz.questions.map((q, i) => `
+                                <p style="margin-bottom: 1rem;">
+                                    <strong>Q${i+1}:</strong> ${q.question}<br>
+                                    <span style="color: ${currentQuiz.userAnswers[i] === q.correct ? '#28a745' : '#dc3545'};">
+                                        Your answer: ${q.options[currentQuiz.userAnswers[i]] || 'Not answered'}
+                                    </span><br>
+                                    <span style="color: #28a745;">Correct: ${q.options[q.correct]}</span><br>
+                                    <em style="color: rgba(218, 165, 32, 0.8);">${q.explanation}</em>
+                                </p>
+                            `).join('')}
+                        </div>
+                    </div>
+                    
                     <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-                        <button class="btn btn-primary" onclick="startQuiz()">Another Quiz</button>
-                        <button class="btn btn-secondary" onclick="showTab('explore')">Explore More</button>
+                        <button class="btn btn-primary" onclick="startQuiz()">Another General Quiz</button>
+                        <button class="btn btn-secondary" onclick="showTab('explore')">Explore More States</button>
+                        <button class="btn btn-secondary" onclick="showTab('dashboard')">View Progress</button>
                     </div>
                 </div>
             `;
@@ -1848,6 +1798,18 @@
 
             if (tabName === 'dashboard') {
                 updateDashboard();
+            } else if (tabName === 'quiz') {
+                // Reset quiz header when going back to quiz tab
+                const quizHeader = document.querySelector('.quiz-header h2');
+                quizHeader.textContent = '🧠 Cultural Knowledge Quiz';
+                
+                // Reset quiz content if no active quiz
+                if (!currentQuiz.isActive) {
+                    document.getElementById('quizContent').innerHTML = `
+                        <button class="btn btn-primary" onclick="startQuiz()" style="width: 200px; margin: 2rem auto; display: block;">Start Cultural Quiz</button>
+                    `;
+                    document.getElementById('progressBar').style.width = '0%';
+                }
             }
         }
 
@@ -1869,24 +1831,16 @@
             document.getElementById('statesVisited').textContent = `${currentUser.statesVisited.length}/28`;
         }
 
-        // Save User Data
-        function saveUserData() {
-            localStorage.setItem('userScore', currentUser.score.toString());
-            localStorage.setItem('userStreak', currentUser.streak.toString());
-            localStorage.setItem('statesVisited', JSON.stringify(currentUser.statesVisited));
-            localStorage.setItem('lastVisit', currentUser.lastVisit);
-            localStorage.setItem('quizHistory', JSON.stringify(currentUser.quizHistory));
-            localStorage.setItem('totalQuizzes', currentUser.totalQuizzes.toString());
-            localStorage.setItem('correctAnswers', currentUser.correctAnswers.toString());
-        }
-
         // Close modal when clicking outside
         document.getElementById('stateModal').addEventListener('click', function(e) {
             if (e.target === this) {
                 closeModal();
             }
         });
+
+        // Initialize the app
+        renderStates();
+        updateUI();
     </script>
 </body>
 </html>
-
