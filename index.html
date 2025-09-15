@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+   <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -36,6 +36,8 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
         }
 
         .logo {
@@ -55,8 +57,9 @@
 
         .nav-menu {
             display: flex;
-            gap: 2rem;
+            gap: 1.5rem;
             align-items: center;
+            flex-wrap: wrap;
         }
 
         .nav-item {
@@ -67,6 +70,7 @@
             border-radius: 8px;
             transition: all 0.3s ease;
             position: relative;
+            white-space: nowrap;
         }
 
         .nav-item:hover, .nav-item.active {
@@ -87,6 +91,9 @@
             cursor: pointer;
             font-weight: 500;
             transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
         .language-btn:hover {
@@ -97,36 +104,47 @@
             position: absolute;
             top: 100%;
             right: 0;
-            background: rgba(139, 69, 19, 0.95);
+            background: rgba(139, 69, 19, 0.98);
             backdrop-filter: blur(20px);
             border: 1px solid rgba(218, 165, 32, 0.3);
             border-radius: 12px;
             padding: 1rem;
             display: none;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
             gap: 0.5rem;
             min-width: 300px;
+            max-width: 400px;
             max-height: 300px;
             overflow-y: auto;
+            z-index: 1001;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         }
 
         .language-dropdown.active {
             display: grid;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .lang-option {
-            padding: 0.5rem;
+            padding: 0.8rem 0.5rem;
             color: #DAA520;
             cursor: pointer;
-            border-radius: 6px;
+            border-radius: 8px;
             transition: all 0.3s ease;
             text-align: center;
             font-size: 0.9rem;
+            border: 1px solid transparent;
         }
 
         .lang-option:hover {
             background: rgba(218, 165, 32, 0.2);
             color: #FFD700;
+            border-color: rgba(218, 165, 32, 0.3);
         }
 
         .search-container {
@@ -134,6 +152,9 @@
             display: flex;
             align-items: center;
             gap: 1rem;
+            flex: 1;
+            max-width: 500px;
+            min-width: 250px;
         }
 
         .search-box {
@@ -142,8 +163,9 @@
             border-radius: 25px;
             padding: 0.7rem 1.5rem;
             color: #DAA520;
-            width: 300px;
+            width: 100%;
             font-size: 0.9rem;
+            transition: all 0.3s ease;
         }
 
         .search-box::placeholder {
@@ -160,8 +182,8 @@
             position: absolute;
             top: 100%;
             left: 0;
-            right: 60px;
-            background: rgba(139, 69, 19, 0.95);
+            right: 0;
+            background: rgba(139, 69, 19, 0.98);
             backdrop-filter: blur(20px);
             border: 1px solid rgba(218, 165, 32, 0.3);
             border-radius: 12px;
@@ -170,14 +192,17 @@
             max-height: 200px;
             overflow-y: auto;
             z-index: 100;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            margin-top: 0.5rem;
         }
 
         .search-history.active {
             display: block;
+            animation: fadeIn 0.3s ease;
         }
 
         .history-item {
-            padding: 0.5rem;
+            padding: 0.8rem;
             color: #DAA520;
             cursor: pointer;
             border-radius: 6px;
@@ -185,6 +210,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            margin-bottom: 0.3rem;
         }
 
         .history-item:hover {
@@ -194,18 +220,25 @@
         .clear-history {
             background: rgba(220, 53, 69, 0.2);
             color: #ff6b6b;
-            border: none;
-            padding: 0.3rem 0.8rem;
-            border-radius: 6px;
+            border: 1px solid rgba(220, 53, 69, 0.3);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
             cursor: pointer;
             font-size: 0.8rem;
             margin-top: 0.5rem;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .clear-history:hover {
+            background: rgba(220, 53, 69, 0.3);
         }
 
         .user-stats {
             display: flex;
-            gap: 20px;
+            gap: 15px;
             align-items: center;
+            flex-wrap: wrap;
         }
 
         .stat-item {
@@ -218,6 +251,7 @@
             border-radius: 20px;
             font-weight: 600;
             font-size: 0.9rem;
+            white-space: nowrap;
         }
 
         /* Hero Section */
@@ -282,6 +316,7 @@
             padding: 1rem;
             border-radius: 20px;
             backdrop-filter: blur(10px);
+            flex-wrap: wrap;
         }
 
         .tab-btn {
@@ -294,6 +329,7 @@
             transition: all 0.3s ease;
             color: #DAA520;
             backdrop-filter: blur(10px);
+            white-space: nowrap;
         }
 
         .tab-btn.active {
@@ -457,11 +493,6 @@
             align-items: center;
             justify-content: center;
             animation: fadeIn 0.3s ease;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
         }
 
         .modal-content {
@@ -704,20 +735,84 @@
             display: none !important;
         }
 
+        /* Mobile Menu Toggle */
+        .mobile-menu-toggle {
+            display: none;
+            background: rgba(218, 165, 32, 0.2);
+            border: 1px solid rgba(218, 165, 32, 0.3);
+            color: #DAA520;
+            padding: 0.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+
         /* Responsive Design */
+        @media (max-width: 1024px) {
+            .header-content {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .nav-menu {
+                order: 3;
+                width: 100%;
+                justify-content: center;
+            }
+
+            .search-container {
+                max-width: 400px;
+            }
+        }
+
         @media (max-width: 768px) {
+            .header {
+                padding: 0.8rem 1rem;
+            }
+
             .header-content {
                 flex-direction: column;
                 gap: 1rem;
             }
 
+            .logo h1 {
+                font-size: 1.8rem;
+            }
+
             .nav-menu {
                 flex-wrap: wrap;
                 justify-content: center;
+                gap: 1rem;
+            }
+
+            .nav-item {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.9rem;
+            }
+
+            .search-container {
+                width: 100%;
+                max-width: none;
             }
 
             .search-box {
-                width: 200px;
+                font-size: 0.85rem;
+                padding: 0.6rem 1.2rem;
+            }
+
+            .user-stats {
+                justify-content: center;
+                gap: 10px;
+            }
+
+            .stat-item {
+                padding: 6px 12px;
+                font-size: 0.8rem;
+            }
+
+            .hero {
+                padding: 3rem 1rem;
+                margin: 1rem;
             }
 
             .hero h1 {
@@ -728,28 +823,111 @@
                 font-size: 1.1rem;
             }
 
+            .container {
+                padding: 0 1rem;
+            }
+
             .nav-tabs {
-                flex-wrap: wrap;
-                gap: 0.5rem;
+                flex-direction: column;
+                gap: 0.8rem;
+                padding: 1rem 0.5rem;
+            }
+
+            .tab-btn {
+                padding: 10px 20px;
+                font-size: 0.9rem;
             }
 
             .states-grid {
                 grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-                gap: 1rem;
+                gap: 1.5rem;
             }
 
             .modal-content {
                 width: 95%;
                 margin: 1rem;
+                max-height: 85vh;
             }
 
             .modal-body {
                 padding: 1rem;
             }
 
+            .section {
+                padding: 1rem;
+            }
+
+            .cultural-items {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                gap: 0.8rem;
+            }
+
             .language-dropdown {
                 grid-template-columns: repeat(2, 1fr);
+                min-width: 250px;
+                max-width: 300px;
+                left: 0;
+                right: 0;
+            }
+
+            .quiz-container {
+                padding: 1.5rem 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo h1 {
+                font-size: 1.5rem;
+            }
+
+            .nav-menu {
+                gap: 0.5rem;
+            }
+
+            .nav-item {
+                padding: 0.3rem 0.6rem;
+                font-size: 0.8rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .states-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .card-stats {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .stat {
+                margin: 0;
+            }
+
+            .language-dropdown {
+                grid-template-columns: 1fr;
                 min-width: 200px;
+            }
+
+            .user-stats {
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .modal-content {
+                border-radius: 15px;
+            }
+
+            .modal-header {
+                padding: 1.5rem 1rem;
+                border-radius: 15px 15px 0 0;
             }
         }
     </style>
@@ -759,7 +937,6 @@
     <header class="header">
         <div class="header-content">
             <div class="logo">
-                <span style="font-size: 2.5rem;">🕉️</span>
                 <h1>Bharat Heritage</h1>
             </div>
             <nav class="nav-menu">
@@ -770,7 +947,8 @@
                 <a href="#" class="nav-item">Heritage</a>
                 <div class="language-selector">
                     <button class="language-btn" onclick="toggleLanguages()">
-                        <span id="currentLang">EN</span> ▼
+                        <span id="currentLang">EN</span>
+                        <span>▼</span>
                     </button>
                     <div class="language-dropdown" id="languageDropdown">
                         <!-- Languages will be populated here -->
@@ -880,9 +1058,7 @@
         </div>
     </div>
 
-     
-     </div>
-    <script>
+     <script>
         // Languages supported
         const languages = {
             'EN': 'English',
