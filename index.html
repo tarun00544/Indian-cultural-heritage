@@ -1,4 +1,4 @@
-    <!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,856 +6,958 @@
     <title>Bharat - Discover India's Cultural Diversity</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #2c1810 0%, #1a0e0a 30%, #8b4513 100%);
-            min-height: 100vh;
-            color: #333;
-        }
-
-        /* Enhanced Menu Bar */
-        .menu-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            background: linear-gradient(135deg, rgba(44, 24, 16, 0.98), rgba(26, 14, 10, 0.95));
-            backdrop-filter: blur(20px);
-            z-index: 3000;
-            display: none;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            transform: translateX(-100%);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .menu-bar.active {
-            display: flex;
-            transform: translateX(0);
-        }
-
-        .menu-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,215,0,0.1)"/><circle cx="80" cy="40" r="1.5" fill="rgba(255,215,0,0.08)"/><circle cx="40" cy="80" r="1" fill="rgba(255,215,0,0.12)"/><circle cx="70" cy="10" r="2.5" fill="rgba(255,215,0,0.06)"/></svg>');
-            opacity: 0.3;
-        }
-
-        .menu-close {
-            position: absolute;
-            top: 2rem;
-            right: 2rem;
-            background: none;
-            border: none;
-            color: #DAA520;
-            font-size: 2rem;
-            cursor: pointer;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-            z-index: 3001;
-        }
-
-        .menu-close:hover {
-            background: rgba(218, 165, 32, 0.2);
-            transform: rotate(90deg);
-        }
-
-        .menu-content {
-            position: relative;
-            z-index: 3001;
-            text-align: center;
-            max-width: 600px;
-            width: 90%;
-        }
-
-        .menu-logo {
-            margin-bottom: 3rem;
-        }
-
-        .menu-logo h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 3.5rem;
-            background: linear-gradient(135deg, #DAA520, #FFD700);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-        }
-
-        .menu-logo p {
-            color: rgba(218, 165, 32, 0.8);
-            font-size: 1.1rem;
-            font-style: italic;
-        }
-
-        .menu-items {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-            margin-bottom: 3rem;
-        }
-
-        .menu-item {
-            background: linear-gradient(135deg, rgba(218, 165, 32, 0.1), rgba(255, 215, 0, 0.05));
-            border: 2px solid rgba(218, 165, 32, 0.3);
-            border-radius: 25px;
-            padding: 1.5rem 2rem;
-            color: #DAA520;
-            text-decoration: none;
-            font-size: 1.4rem;
-            font-weight: 600;
-            font-family: 'Playfair Display', serif;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-            backdrop-filter: blur(10px);
-        }
-
-        .menu-item::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(218, 165, 32, 0.2), rgba(255, 215, 0, 0.1));
-            transition: left 0.5s ease;
-        }
-
-        .menu-item:hover::before {
-            left: 0;
-        }
-
-        .menu-item:hover {
-            border-color: #FFD700;
-            transform: translateY(-5px) scale(1.02);
-            box-shadow: 0 15px 40px rgba(218, 165, 32, 0.3);
-            color: #FFD700;
-        }
-
-        .menu-item span {
-            position: relative;
-            z-index: 1;
-        }
-
-        .login-section {
-            border-top: 1px solid rgba(218, 165, 32, 0.3);
-            padding-top: 2rem;
-        }
-
-        .login-button {
-            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
-            color: white;
-            padding: 1.2rem 3rem;
-            border: none;
-            border-radius: 30px;
-            font-size: 1.2rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.4s ease;
-            text-decoration: none;
-            display: inline-block;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .login-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #ee5a24, #ff6b6b);
-            transition: left 0.3s ease;
-        }
-
-        .login-button:hover::before {
-            left: 0;
-        }
-
-        .login-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 35px rgba(255, 107, 107, 0.4);
-        }
-
-        .login-button span {
-            position: relative;
-            z-index: 1;
-        }
-
-        /* Menu Toggle Button */
-        .menu-toggle {
-            position: fixed;
-            top: 2rem;
-            left: 2rem;
-            background: linear-gradient(135deg, rgba(218, 165, 32, 0.9), rgba(255, 215, 0, 0.8));
-            border: none;
-            border-radius: 15px;
-            width: 60px;
-            height: 60px;
-            cursor: pointer;
-            z-index: 2500;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            gap: 6px;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-        }
-
-        .menu-toggle:hover {
-            transform: scale(1.05);
-            box-shadow: 0 15px 35px rgba(218, 165, 32, 0.4);
-        }
-
-        .menu-toggle span {
-            width: 25px;
-            height: 3px;
-            background: #2c1810;
-            border-radius: 2px;
-            transition: all 0.3s ease;
-        }
-
-        .menu-toggle.active span:nth-child(1) {
-            transform: rotate(45deg) translate(6px, 6px);
-        }
-
-        .menu-toggle.active span:nth-child(2) {
-            opacity: 0;
-        }
-
-        .menu-toggle.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(6px, -6px);
-        }
-
-        /* Header */
-        .header {
-            background: rgba(139, 69, 19, 0.95);
-            backdrop-filter: blur(20px);
-            padding: 1rem 2rem;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 2px solid rgba(218, 165, 32, 0.3);
-            margin-top: 80px; /* Account for menu toggle button */
-        }
-
-        .header-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .logo h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.2rem;
-            background: linear-gradient(135deg, #DAA520, #FFD700);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-weight: 700;
-        }
-
-        .nav-menu {
-            display: flex;
-            gap: 1.5rem;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        .nav-item {
-            color: #DAA520;
-            text-decoration: none;
-            font-weight: 500;
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-            position: relative;
-            white-space: nowrap;
-        }
-
-        .nav-item:hover, .nav-item.active {
-            background: rgba(218, 165, 32, 0.2);
-            color: #FFD700;
-        }
-
-        .search-container {
-            position: relative;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            flex: 1;
-            max-width: 500px;
-            min-width: 250px;
-        }
-
-        .search-box {
-            background: rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(218, 165, 32, 0.3);
-            border-radius: 25px;
-            padding: 0.7rem 1.5rem;
-            color: #DAA520;
-            width: 100%;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-        }
-
-        .search-box::placeholder {
-            color: rgba(218, 165, 32, 0.6);
-        }
-
-        .search-box:focus {
-            outline: none;
-            border-color: #DAA520;
-            box-shadow: 0 0 10px rgba(218, 165, 32, 0.3);
-        }
-
-        .user-stats {
-            display: flex;
-            gap: 15px;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        .stat-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 16px;
-            background: linear-gradient(135deg, #DAA520, #FFD700);
-            color: #2c1810;
-            border-radius: 20px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            white-space: nowrap;
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, rgba(218, 165, 32, 0.9), rgba(139, 69, 19, 0.8)),
-                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,215,0,0.3)"/><circle cx="80" cy="40" r="1.5" fill="rgba(255,215,0,0.2)"/><circle cx="40" cy="80" r="1" fill="rgba(255,215,0,0.4)"/><circle cx="70" cy="10" r="2.5" fill="rgba(255,215,0,0.2)"/></svg>');
-            padding: 4rem 2rem;
-            text-align: center;
-            margin: 2rem;
-            border-radius: 25px;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
-        }
-
-        .hero h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 3.5rem;
-            color: #fff;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
-        }
-
-        .hero p {
-            font-size: 1.3rem;
-            color: rgba(255, 255, 255, 0.9);
-            margin-bottom: 2rem;
-            font-style: italic;
-        }
-
-        .cta-button {
-            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
-            color: white;
-            padding: 1rem 2.5rem;
-            border: none;
-            border-radius: 25px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(255, 107, 107, 0.4);
-        }
-
-        /* Main Container */
-        .container {
-            max-width: 1400px;
-            margin: 2rem auto;
-            padding: 0 2rem;
-        }
-
-        /* Navigation Tabs */
-        .nav-tabs {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 2rem;
-            justify-content: center;
-            background: rgba(139, 69, 19, 0.3);
-            padding: 1rem;
-            border-radius: 20px;
-            backdrop-filter: blur(10px);
-            flex-wrap: wrap;
-        }
-
-        .tab-btn {
-            padding: 12px 24px;
-            background: rgba(218, 165, 32, 0.2);
-            border: 1px solid rgba(218, 165, 32, 0.3);
-            border-radius: 25px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            color: #DAA520;
-            backdrop-filter: blur(10px);
-            white-space: nowrap;
-        }
-
-        .tab-btn.active {
-            background: linear-gradient(135deg, #DAA520, #FFD700);
-            color: #2c1810;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(218, 165, 32, 0.3);
-            border-color: #FFD700;
-        }
-
-        .tab-btn:hover:not(.active) {
-            background: rgba(218, 165, 32, 0.3);
-            transform: translateY(-1px);
-        }
-
-        /* States Grid */
-        .states-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .state-card {
-            background: linear-gradient(145deg, rgba(139, 69, 19, 0.9), rgba(101, 67, 33, 0.8));
-            backdrop-filter: blur(20px);
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
-            transition: all 0.4s ease;
-            cursor: pointer;
-            border: 1px solid rgba(218, 165, 32, 0.2);
-        }
-
-        .state-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
-            border-color: rgba(218, 165, 32, 0.5);
-        }
-
-        .card-header {
-            height: 220px;
-            background: linear-gradient(135deg, #DAA520, #B8860B);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 4.5rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .card-content {
-            padding: 1.5rem;
-            color: #DAA520;
-        }
-
-        .card-content h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.6rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            color: #FFD700;
-        }
-
-        .card-content p {
-            color: rgba(218, 165, 32, 0.8);
-            line-height: 1.6;
-            margin-bottom: 1rem;
-        }
-
-        .card-stats {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 1.5rem;
-        }
-
-        .stat {
-            text-align: center;
-            background: rgba(218, 165, 32, 0.1);
-            padding: 0.8rem;
-            border-radius: 12px;
-            flex: 1;
-            margin: 0 0.2rem;
-        }
-
-        .stat-value {
-            font-weight: 700;
-            color: #FFD700;
-            font-size: 1.2rem;
-        }
-
-        .stat-label {
-            font-size: 0.8rem;
-            color: rgba(218, 165, 32, 0.7);
-            margin-top: 0.3rem;
-        }
-
-        .card-actions {
-            display: flex;
-            gap: 0.8rem;
-        }
-
-        .btn {
-            flex: 1;
-            padding: 12px 20px;
-            border: none;
-            border-radius: 12px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 0.9rem;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, #DAA520, #FFD700);
-            color: #2c1810;
-        }
-
-        .btn-secondary {
-            background: rgba(218, 165, 32, 0.2);
-            color: #DAA520;
-            border: 1px solid rgba(218, 165, 32, 0.4);
-        }
-
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-        }
-
-        /* Modal Styles */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            z-index: 2000;
-            backdrop-filter: blur(10px);
-        }
-
-        .modal.active {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .modal-content {
-            background: linear-gradient(145deg, rgba(139, 69, 19, 0.95), rgba(101, 67, 33, 0.9));
-            backdrop-filter: blur(20px);
-            max-width: 900px;
-            width: 90%;
-            max-height: 90vh;
-            overflow-y: auto;
-            border-radius: 25px;
-            position: relative;
-            border: 2px solid rgba(218, 165, 32, 0.3);
-        }
-
-        .modal-header {
-            padding: 2rem;
-            background: linear-gradient(135deg, #DAA520, #FFD700);
-            color: #2c1810;
-            text-align: center;
-            border-radius: 25px 25px 0 0;
-        }
-
-        .close-btn {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: rgba(0, 0, 0, 0.3);
-            border: none;
-            color: #2c1810;
-            font-size: 1.8rem;
-            cursor: pointer;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-            font-weight: bold;
-        }
-
-        .close-btn:hover {
-            background: rgba(0, 0, 0, 0.5);
-            transform: scale(1.1);
-        }
-
-        .modal-body {
-            padding: 2rem;
-            color: #DAA520;
-        }
-
-        .section {
-            margin-bottom: 2.5rem;
-            background: rgba(218, 165, 32, 0.05);
-            padding: 1.5rem;
-            border-radius: 15px;
-            border-left: 4px solid #DAA520;
-        }
-
-        .section h3 {
-            font-family: 'Playfair Display', serif;
-            color: #FFD700;
-            margin-bottom: 1rem;
-            font-size: 1.4rem;
-        }
-
-        .section p {
-            line-height: 1.8;
-            color: rgba(218, 165, 32, 0.9);
-            margin-bottom: 1rem;
-        }
-
-        .cultural-items {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-
-        .cultural-item {
-            background: rgba(218, 165, 32, 0.1);
-            padding: 1rem;
-            border-radius: 12px;
-            text-align: center;
-            border: 1px solid rgba(218, 165, 32, 0.2);
-            transition: all 0.3s ease;
-        }
-
-        .cultural-item:hover {
-            background: rgba(218, 165, 32, 0.15);
-            transform: translateY(-2px);
-        }
-
-        /* Quiz Styles */
-        .quiz-container {
-            background: linear-gradient(145deg, rgba(139, 69, 19, 0.9), rgba(101, 67, 33, 0.8));
-            backdrop-filter: blur(20px);
-            border-radius: 25px;
-            padding: 2rem;
-            margin: 2rem auto;
-            max-width: 900px;
-            border: 2px solid rgba(218, 165, 32, 0.3);
-        }
-
-        .quiz-header {
-            text-align: center;
-            margin-bottom: 2rem;
-            color: #DAA520;
-        }
-
-        .quiz-header h2 {
-            font-family: 'Playfair Display', serif;
-            color: #FFD700;
-            font-size: 2.2rem;
-            margin-bottom: 1rem;
-        }
-
-        .quiz-progress {
-            background: rgba(0, 0, 0, 0.3);
-            height: 10px;
-            border-radius: 5px;
-            margin-bottom: 2rem;
-            overflow: hidden;
-        }
-
-        .quiz-progress-bar {
-            height: 100%;
-            background: linear-gradient(135deg, #DAA520, #FFD700);
-            border-radius: 5px;
-            transition: width 0.3s ease;
-            width: 0%;
-        }
-
-        .question {
-            margin-bottom: 2rem;
-            color: #DAA520;
-        }
-
-        .question h3 {
-            font-size: 1.4rem;
-            margin-bottom: 1.5rem;
-            color: #FFD700;
-        }
-
-        .options {
-            display: grid;
-            gap: 1rem;
-        }
-
-        .option {
-            padding: 1.2rem;
-            background: rgba(218, 165, 32, 0.1);
-            border: 2px solid rgba(218, 165, 32, 0.2);
-            border-radius: 12px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            color: #DAA520;
-        }
-
-        .option:hover {
-            border-color: #DAA520;
-            background: rgba(218, 165, 32, 0.2);
-            transform: translateX(5px);
-        }
-
-        .option.selected {
-            border-color: #FFD700;
-            background: rgba(255, 215, 0, 0.2);
-        }
-
-        .option.correct {
-            border-color: #28a745;
-            background: rgba(40, 167, 69, 0.2);
-        }
-
-        .option.incorrect {
-            border-color: #dc3545;
-            background: rgba(220, 53, 69, 0.2);
-        }
-
-        .quiz-actions {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 2rem;
-        }
-
-        /* Dashboard */
-        .dashboard {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .dashboard-card {
-            background: linear-gradient(145deg, rgba(139, 69, 19, 0.9), rgba(101, 67, 33, 0.8));
-            backdrop-filter: blur(20px);
-            border-radius: 20px;
-            padding: 2rem;
-            text-align: center;
-            border: 2px solid rgba(218, 165, 32, 0.3);
-            transition: all 0.3s ease;
-        }
-
-        .dashboard-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
-        }
-
-        .dashboard-card h3 {
-            font-family: 'Playfair Display', serif;
-            color: #FFD700;
-            margin-bottom: 1rem;
-            font-size: 1.4rem;
-        }
-
-        .streak-display {
-            font-size: 3.5rem;
-            color: #DAA520;
-            font-weight: 700;
-            margin: 1rem 0;
-            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
-        }
-
-        .hidden {
-            display: none !important;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .header {
-                padding: 0.8rem 1rem;
-                margin-top: 70px;
-            }
-
-            .menu-toggle {
-                top: 1rem;
-                left: 1rem;
-                width: 50px;
-                height: 50px;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .container {
-                padding: 0 1rem;
-            }
-
-            .states-grid {
-                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-                gap: 1.5rem;
-            }
-
-            .quiz-container {
-                padding: 1.5rem 1rem;
-            }
-
-            .menu-content {
-                width: 95%;
-            }
-
-            .menu-logo h1 {
-                font-size: 2.5rem;
-            }
-
-            .menu-item {
-                font-size: 1.2rem;
-                padding: 1.2rem 1.5rem;
-            }
-        }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, #2c1810 0%, #1a0e0a 30%, #8b4513 100%);
+    min-height: 100vh;
+    color: #333;
+}
+
+/* Enhanced Menu Bar */
+.menu-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(135deg, rgba(44, 24, 16, 0.98), rgba(26, 14, 10, 0.95));
+    backdrop-filter: blur(20px);
+    z-index: 3000;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(-100%);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.menu-bar.active {
+    display: flex;
+    transform: translateX(0);
+}
+
+.menu-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,215,0,0.1)"/><circle cx="80" cy="40" r="1.5" fill="rgba(255,215,0,0.08)"/><circle cx="40" cy="80" r="1" fill="rgba(255,215,0,0.12)"/><circle cx="70" cy="10" r="2.5" fill="rgba(255,215,0,0.06)"/></svg>');
+    opacity: 0.3;
+}
+
+.menu-close {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    background: none;
+    border: none;
+    color: #DAA520;
+    font-size: 2rem;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 3001;
+}
+
+.menu-close:hover {
+    background: rgba(218, 165, 32, 0.2);
+    transform: rotate(90deg);
+}
+
+.menu-content {
+    position: relative;
+    z-index: 3001;
+    text-align: center;
+    max-width: 600px;
+    width: 90%;
+}
+
+.menu-logo {
+    margin-bottom: 3rem;
+}
+
+.menu-logo h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    background: linear-gradient(135deg, #DAA520, #FFD700);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.menu-logo p {
+    color: rgba(218, 165, 32, 0.8);
+    font-size: 1.1rem;
+    font-style: italic;
+}
+
+.menu-items {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.menu-item {
+    background: linear-gradient(135deg, rgba(218, 165, 32, 0.1), rgba(255, 215, 0, 0.05));
+    border: 2px solid rgba(218, 165, 32, 0.3);
+    border-radius: 25px;
+    padding: 1.5rem 2rem;
+    color: #DAA520;
+    text-decoration: none;
+    font-size: 1.4rem;
+    font-weight: 600;
+    font-family: 'Playfair Display', serif;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+}
+
+.menu-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(218, 165, 32, 0.2), rgba(255, 215, 0, 0.1));
+    transition: left 0.5s ease;
+}
+
+.menu-item:hover::before {
+    left: 0;
+}
+
+.menu-item:hover {
+    border-color: #FFD700;
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 15px 40px rgba(218, 165, 32, 0.3);
+    color: #FFD700;
+}
+
+.menu-item span {
+    position: relative;
+    z-index: 1;
+}
+
+.login-section {
+    border-top: 1px solid rgba(218, 165, 32, 0.3);
+    padding-top: 2rem;
+}
+
+.login-button {
+    background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+    color: white;
+    padding: 1.2rem 3rem;
+    border: none;
+    border-radius: 30px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    text-decoration: none;
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+}
+
+.login-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #ee5a24, #ff6b6b);
+    transition: left 0.3s ease;
+}
+
+.login-button:hover::before {
+    left: 0;
+}
+
+.login-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(255, 107, 107, 0.4);
+}
+
+.login-button span {
+    position: relative;
+    z-index: 1;
+}
+
+/* Menu Toggle Button */
+.menu-toggle {
+    position: fixed;
+    top: 2rem;
+    left: 2rem;
+    background: linear-gradient(135deg, rgba(218, 165, 32, 0.9), rgba(255, 215, 0, 0.8));
+    border: none;
+    border-radius: 15px;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    z-index: 2500;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.menu-toggle:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 35px rgba(218, 165, 32, 0.4);
+}
+
+.menu-toggle span {
+    width: 25px;
+    height: 3px;
+    background: #2c1810;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+.menu-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);
+}
+
+.menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* Header */
+.header {
+    background: rgba(139, 69, 19, 0.95);
+    backdrop-filter: blur(20px);
+    padding: 1rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 2px solid rgba(218, 165, 32, 0.3);
+    margin-top: 80px;
+}
+
+.header-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    background: linear-gradient(135deg, #DAA520, #FFD700);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 700;
+}
+
+.search-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex: 1;
+    max-width: 500px;
+    min-width: 250px;
+}
+
+.search-box {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(218, 165, 32, 0.3);
+    border-radius: 25px;
+    padding: 0.7rem 1.5rem;
+    color: #DAA520;
+    width: 100%;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.search-box::placeholder {
+    color: rgba(218, 165, 32, 0.6);
+}
+
+.search-box:focus {
+    outline: none;
+    border-color: #DAA520;
+    box-shadow: 0 0 10px rgba(218, 165, 32, 0.3);
+}
+
+.user-stats {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.stat-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background: linear-gradient(135deg, #DAA520, #FFD700);
+    color: #2c1810;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    white-space: nowrap;
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(135deg, rgba(44, 24, 16, 0.85), rgba(139, 69, 19, 0.85)),
+                url('https://www.shutterstock.com/image-vector/india-has-incredible-culture-diversity-260nw-2237822423.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 4rem 2rem;
+    text-align: center;
+    margin: 2rem;
+    border-radius: 25px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+    position: relative;
+}
+
+.hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    color: #fff;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.hero p {
+    font-size: 1.3rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 2rem;
+    font-style: italic;
+}
+
+.cta-button {
+    background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+    color: white;
+    padding: 1rem 2.5rem;
+    border: none;
+    border-radius: 25px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(255, 107, 107, 0.4);
+}
+
+/* Main Container */
+.container {
+    max-width: 1400px;
+    margin: 2rem auto;
+    padding: 0 2rem;
+}
+
+/* Navigation Tabs */
+.nav-tabs {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    justify-content: center;
+    background: rgba(139, 69, 19, 0.3);
+    padding: 1rem;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    flex-wrap: wrap;
+}
+
+.tab-btn {
+    padding: 12px 24px;
+    background: rgba(218, 165, 32, 0.2);
+    border: 1px solid rgba(218, 165, 32, 0.3);
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: #DAA520;
+    backdrop-filter: blur(10px);
+    white-space: nowrap;
+}
+
+.tab-btn.active {
+    background: linear-gradient(135deg, #DAA520, #FFD700);
+    color: #2c1810;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(218, 165, 32, 0.3);
+    border-color: #FFD700;
+}
+
+.tab-btn:hover:not(.active) {
+    background: rgba(218, 165, 32, 0.3);
+    transform: translateY(-1px);
+}
+
+/* States Grid */
+.states-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.state-card {
+    background: linear-gradient(145deg, rgba(139, 69, 19, 0.9), rgba(101, 67, 33, 0.8));
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+    transition: all 0.4s ease;
+    cursor: pointer;
+    border: 1px solid rgba(218, 165, 32, 0.2);
+}
+
+.state-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+    border-color: rgba(218, 165, 32, 0.5);
+}
+
+.card-header {
+    height: 220px;
+    background: linear-gradient(135deg, #DAA520, #B8860B);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4.5rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.card-content {
+    padding: 1.5rem;
+    color: #DAA520;
+}
+
+.card-content h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: #FFD700;
+}
+
+.card-content p {
+    color: rgba(218, 165, 32, 0.8);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.card-stats {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+}
+
+.stat {
+    text-align: center;
+    background: rgba(218, 165, 32, 0.1);
+    padding: 0.8rem;
+    border-radius: 12px;
+    flex: 1;
+    margin: 0 0.2rem;
+}
+
+.stat-value {
+    font-weight: 700;
+    color: #FFD700;
+    font-size: 1.2rem;
+}
+
+.stat-label {
+    font-size: 0.8rem;
+    color: rgba(218, 165, 32, 0.7);
+    margin-top: 0.3rem;
+}
+
+.card-actions {
+    display: flex;
+    gap: 0.8rem;
+}
+
+.btn {
+    flex: 1;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #DAA520, #FFD700);
+    color: #2c1810;
+}
+
+.btn-secondary {
+    background: rgba(218, 165, 32, 0.2);
+    color: #DAA520;
+    border: 1px solid rgba(218, 165, 32, 0.4);
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 2000;
+    backdrop-filter: blur(10px);
+}
+
+.modal.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background: linear-gradient(145deg, rgba(139, 69, 19, 0.95), rgba(101, 67, 33, 0.9));
+    backdrop-filter: blur(20px);
+    max-width: 900px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    border-radius: 25px;
+    position: relative;
+    border: 2px solid rgba(218, 165, 32, 0.3);
+}
+
+.modal-header {
+    padding: 2rem;
+    background: linear-gradient(135deg, #DAA520, #FFD700);
+    color: #2c1810;
+    text-align: center;
+    border-radius: 25px 25px 0 0;
+}
+
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(0, 0, 0, 0.3);
+    border: none;
+    color: #2c1810;
+    font-size: 1.8rem;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    font-weight: bold;
+}
+
+.close-btn:hover {
+    background: rgba(0, 0, 0, 0.5);
+    transform: scale(1.1);
+}
+
+.modal-body {
+    padding: 2rem;
+    color: #DAA520;
+}
+
+.section {
+    margin-bottom: 2.5rem;
+    background: rgba(218, 165, 32, 0.05);
+    padding: 1.5rem;
+    border-radius: 15px;
+    border-left: 4px solid #DAA520;
+}
+
+.section h3 {
+    font-family: 'Playfair Display', serif;
+    color: #FFD700;
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
+}
+
+.section p {
+    line-height: 1.8;
+    color: rgba(218, 165, 32, 0.9);
+    margin-bottom: 1rem;
+}
+
+.cultural-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.cultural-item {
+    background: rgba(218, 165, 32, 0.1);
+    padding: 1rem;
+    border-radius: 12px;
+    text-align: center;
+    border: 1px solid rgba(218, 165, 32, 0.2);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.cultural-item:hover {
+    background: rgba(218, 165, 32, 0.15);
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 8px 20px rgba(218, 165, 32, 0.3);
+}
+
+/* Quiz Styles */
+.quiz-container {
+    background: linear-gradient(145deg, rgba(139, 69, 19, 0.9), rgba(101, 67, 33, 0.8));
+    backdrop-filter: blur(20px);
+    border-radius: 25px;
+    padding: 2rem;
+    margin: 2rem auto;
+    max-width: 900px;
+    border: 2px solid rgba(218, 165, 32, 0.3);
+}
+
+.quiz-header {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #DAA520;
+}
+
+.quiz-header h2 {
+    font-family: 'Playfair Display', serif;
+    color: #FFD700;
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+}
+
+.quiz-progress {
+    background: rgba(0, 0, 0, 0.3);
+    height: 10px;
+    border-radius: 5px;
+    margin-bottom: 2rem;
+    overflow: hidden;
+}
+
+.quiz-progress-bar {
+    height: 100%;
+    background: linear-gradient(135deg, #DAA520, #FFD700);
+    border-radius: 5px;
+    transition: width 0.3s ease;
+    width: 0%;
+}
+
+.question {
+    margin-bottom: 2rem;
+    color: #DAA520;
+}
+
+.question h3 {
+    font-size: 1.4rem;
+    margin-bottom: 1.5rem;
+    color: #FFD700;
+}
+
+.options {
+    display: grid;
+    gap: 1rem;
+}
+
+.option {
+    padding: 1.2rem;
+    background: rgba(218, 165, 32, 0.1);
+    border: 2px solid rgba(218, 165, 32, 0.2);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: #DAA520;
+}
+
+.option:hover {
+    border-color: #DAA520;
+    background: rgba(218, 165, 32, 0.2);
+    transform: translateX(5px);
+}
+
+.option.selected {
+    border-color: #FFD700;
+    background: rgba(255, 215, 0, 0.2);
+}
+
+.option.correct {
+    border-color: #28a745;
+    background: rgba(40, 167, 69, 0.2);
+}
+
+.option.incorrect {
+    border-color: #dc3545;
+    background: rgba(220, 53, 69, 0.2);
+}
+
+.quiz-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+}
+
+/* Dashboard */
+.dashboard {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.dashboard-card {
+    background: linear-gradient(145deg, rgba(139, 69, 19, 0.9), rgba(101, 67, 33, 0.8));
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    padding: 2rem;
+    text-align: center;
+    border: 2px solid rgba(218, 165, 32, 0.3);
+    transition: all 0.3s ease;
+}
+
+.dashboard-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+}
+
+.dashboard-card h3 {
+    font-family: 'Playfair Display', serif;
+    color: #FFD700;
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
+}
+
+.streak-display {
+    font-size: 3.5rem;
+    color: #DAA520;
+    font-weight: 700;
+    margin: 1rem 0;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* 3D Image Viewer Modal */
+.image-viewer-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 3000;
+    backdrop-filter: blur(10px);
+    align-items: center;
+    justify-content: center;
+}
+
+.image-viewer-modal.active {
+    display: flex;
+}
+
+.image-viewer-content {
+    perspective: 1500px;
+    max-width: 90%;
+    max-height: 90vh;
+}
+
+.image-3d-container {
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    animation: rotate3d 20s infinite linear;
+}
+
+.image-3d-container:hover {
+    animation-play-state: paused;
+}
+
+@keyframes rotate3d {
+    0% {
+        transform: rotateY(0deg) rotateX(0deg);
+    }
+    25% {
+        transform: rotateY(90deg) rotateX(5deg);
+    }
+    50% {
+        transform: rotateY(180deg) rotateX(0deg);
+    }
+    75% {
+        transform: rotateY(270deg) rotateX(-5deg);
+    }
+    100% {
+        transform: rotateY(360deg) rotateX(0deg);
+    }
+}
+
+.image-3d-wrapper {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 30px 80px rgba(218, 165, 32, 0.5),
+                0 0 50px rgba(255, 215, 0, 0.3);
+}
+
+.image-3d-wrapper img {
+    display: block;
+    max-width: 800px;
+    max-height: 600px;
+    width: auto;
+    height: auto;
+    border-radius: 20px;
+}
+
+.image-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(44, 24, 16, 0.95), transparent);
+    padding: 2rem;
+    color: #FFD700;
+    text-align: center;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+}
+
+.image-3d-container:hover .image-info {
+    transform: translateY(0);
+}
+
+.image-info h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+}
+
+.image-close-btn {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    background: rgba(218, 165, 32, 0.9);
+    border: none;
+    color: #2c1810;
+    font-size: 2rem;
+    cursor: pointer;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    font-weight: bold;
+    z-index: 3001;
+}
+
+.image-close-btn:hover {
+    background: #FFD700;
+    transform: rotate(90deg) scale(1.1);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .header {
+        padding: 0.8rem 1rem;
+        margin-top: 70px;
+    }
+
+    .menu-toggle {
+        top: 1rem;
+        left: 1rem;
+        width: 50px;
+        height: 50px;
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .container {
+        padding: 0 1rem;
+    }
+
+    .states-grid {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 1.5rem;
+    }
+
+    .quiz-container {
+        padding: 1.5rem 1rem;
+    }
+
+    .menu-content {
+        width: 95%;
+    }
+
+    .menu-logo h1 {
+        font-size: 2.5rem;
+    }
+
+    .menu-item {
+        font-size: 1.2rem;
+        padding: 1.2rem 1.5rem;
+    }
+}
     </style>
 </head>
 <body>
    
-     <!-- Menu Toggle Button -->
+    <!-- Menu Toggle Button -->
     <button class="menu-toggle" onclick="toggleMenu()" id="menuToggle">
         <span></span>
         <span></span>
@@ -875,21 +977,21 @@
             
             <nav class="menu-items">
                 <a href="#" class="menu-item" onclick="closeMenuAndShow('explore')">
-                    <span> Home</span>
+                    <span>🏠 Home</span>
                 </a>
                 <a href="#" class="menu-item" onclick="closeMenuAndShow('explore')">
-                    <span> States</span>
+                    <span>🗺️ States</span>
                 </a>
                 <a href="#" class="menu-item" onclick="closeMenuAndShow('quiz')">
-                    <span>Festivals</span>
+                    <span>🧠 Quiz</span>
                 </a>
                 <a href="#" class="menu-item" onclick="closeMenuAndShow('dashboard')">
-                    <span>Dashboard</span>
+                    <span>📊 Dashboard</span>
                 </a>
             </nav>
             
             <div class="login-section">
-                <a href="LOGIN.html" target="_blank" class="login-button" onclick="handleLogin()">
+                <a href="https://loginportal-gamma.vercel.app/" target="_blank" class="login-button" onclick="handleLogin()">
                     <span>🔐 Login Portal</span>
                 </a>
             </div>
@@ -902,12 +1004,6 @@
             <div class="logo">
                 <h1>Bharat</h1>
             </div>
-            <!-- <nav class="nav-menu">
-                <a href="#" class="nav-item active">Home</a>
-                <a href="#" class="nav-item">States</a>
-                <a href="#" class="nav-item">Festivals</a>
-                <a href="#" class="nav-item">Arts</a>
-            </nav> -->
             <div class="search-container">
                 <input type="text" class="search-box" id="searchBox" placeholder="Search culture, festivals, arts..." onkeyup="handleSearch(event)">
                 <div class="user-stats">
@@ -1006,67 +1102,99 @@
             </div>
         </div>
     </div>
+
+    <!-- 3D Image Viewer Modal -->
+    <div class="image-viewer-modal" id="imageViewerModal">
+        <button class="image-close-btn" onclick="closeImageViewer()">&times;</button>
+        <div class="image-viewer-content">
+            <div class="image-3d-container" id="image3dContainer">
+                <div class="image-3d-wrapper">
+                    <img id="viewerImage" src="" alt="Heritage Site">
+                    <div class="image-info">
+                        <h3 id="imageName"></h3>
+                        <p id="imageState"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
-         // Menu Toggle Functions
-        function toggleMenu() {
-            const menuBar = document.getElementById('menuBar');
-            const menuToggle = document.getElementById('menuToggle');
-            
-            menuBar.classList.toggle('active');
-            menuToggle.classList.toggle('active');
-            
-            // Prevent body scroll when menu is open
-            if (menuBar.classList.contains('active')) {
-                document.body.style.overflow = 'hidden';
-            } else {
-                document.body.style.overflow = 'auto';
-            }
-        }
+// Menu Toggle Functions
+function toggleMenu() {
+    const menuBar = document.getElementById('menuBar');
+    const menuToggle = document.getElementById('menuToggle');
+    
+    menuBar.classList.toggle('active');
+    menuToggle.classList.toggle('active');
+    
+    if (menuBar.classList.contains('active')) {
+        document.body.style.overflow = 'hidden';
+    } else {
+        document.body.style.overflow = 'auto';
+    }
+}
 
-        function closeMenuAndShow(tab) {
-            toggleMenu();
-            setTimeout(() => {
-                showTab(tab);
-            }, 300);
-        }
+function closeMenuAndShow(tab) {
+    toggleMenu();
+    setTimeout(() => {
+        showTab(tab);
+    }, 300);
+}
 
-        function handleLogin() {
-            // Close menu before opening login portal
-            const menuBar = document.getElementById('menuBar');
-            if (menuBar.classList.contains('active')) {
-                toggleMenu();
-            }
-        }
+function handleLogin() {
+    const menuBar = document.getElementById('menuBar');
+    if (menuBar.classList.contains('active')) {
+        toggleMenu();
+    }
+}
 
-        // Close menu when clicking outside
-        document.addEventListener('click', function(e) {
-            const menuBar = document.getElementById('menuBar');
-            const menuToggle = document.getElementById('menuToggle');
-            
-            if (menuBar.classList.contains('active') && 
-                !menuBar.contains(e.target) && 
-                !menuToggle.contains(e.target)) {
-                toggleMenu();
-            }
-        });
+document.addEventListener('click', function(e) {
+    const menuBar = document.getElementById('menuBar');
+    const menuToggle = document.getElementById('menuToggle');
+    
+    if (menuBar.classList.contains('active') && 
+        !menuBar.contains(e.target) && 
+        !menuToggle.contains(e.target)) {
+        toggleMenu();
+    }
+});
 
-        // Close menu on escape key
-        document.addEventListener('keydown', function(e) {
-            const menuBar = document.getElementById('menuBar');
-            if (e.key === 'Escape' && menuBar.classList.contains('active')) {
-                toggleMenu();
-            }
-        });
+document.addEventListener('keydown', function(e) {
+    const menuBar = document.getElementById('menuBar');
+    if (e.key === 'Escape' && menuBar.classList.contains('active')) {
+        toggleMenu();
+    }
+});
 
-        // Indian States Data with enhanced cultural information
-        const indianStates = [
+// Indian States Data
+  
+     const indianStates = [
     {
         name: "Andhra Pradesh", capital: "Amaravati", emoji: "🏛️",
-        history: "Andhra Pradesh has a rich history dating back to ancient times. It was part of the Mauryan Empire and later ruled by various dynasties including the Satavahanas, Cholas, and Vijayanagara Empire.",
-        culture: "Known for its classical dance form Kuchipudi, spicy cuisine, and rich literary tradition in Telugu literature.",
+        history: "Andhra Pradesh has a rich history dating back to ancient times. It was part of the Mauryan Empire and later ruled by the Satavahanas, Cholas, and the Vijayanagara Empire.",
+        culture: "Known for its classical dance form Kuchipudi, spicy cuisine, and rich Telugu literature.",
         heritage: ["Tirumala Temple", "Buddhist Sites of Amaravati", "Charminar Architecture", "Kalamkari Art"],
+        heritageImages: {
+            "Tirumala Temple": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvQL4twTG-6kKRLMgBTSEfPFfBgPJyClHeSg&s",
+            "Buddhist Sites of Amaravati": "https://s7ap1.scene7.com/is/image/incredibleindia/1-amaravati-buddhist-site-guntur-andhra-pradesh-attr-hero?qlt=82&ts=1726743666481 ",
+            "Charminar Architecture": "https://cdn.britannica.com/77/22877-050-9EFB35D4/Charminar-city-Hyderabad-India-Telangana.jpg",
+            "Kalamkari Art": "https://m.media-amazon.com/images/I/718U3FPUVBL.jpg "
+        },
         festivals: ["Ugadi", "Sankranti", "Dussehra", "Diwali"],
+        festivalsImages: {
+            "Ugadi": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsUDfQ5yN7QP9MN6CR-gG5JxLUfZ-c7ZpNNw&s ",
+            "Sankranti": "https://static.toiimg.com/thumb/msid-117223167,width-400,resizemode-4/117223167.jpg",
+            "Dussehra": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT62CUYh5wfWniUvBNNEOqbZ04kcvJAbam9HQ&s",
+            "Diwali": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/The_Rangoli_of_Lights.jpg/1200px-The_Rangoli_of_Lights.jpg"
+        },
         cuisine: ["Biryani", "Pesarattu", "Gongura", "Pulihora"],
+        cuisineImages: {
+            "Biryani": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Bangladeshi_Biryani.jpg/250px-Bangladeshi_Biryani.jpg",
+            "Pesarattu": "https://i0.wp.com/www.chitrasfoodbook.com/wp-content/uploads/2022/07/pesarattu-allam-pachadi-1.jpg?ssl=1 ",
+            "Gongura": "https://bhoomifresh.com/image/cache/catalog/Leaves%20and%20Leafy%20Vegetable/gongura-1000x606.jpg",
+            "Pulihora": "https://www.indianhealthyrecipes.com/wp-content/uploads/2024/06/pulihora-recipe.jpg"
+        },
         languages: ["Telugu", "Urdu", "Hindi"],
         quizQuestions: [
             {
@@ -1088,6 +1216,12 @@
         history: "Karnataka has a rich history with powerful empires like Chalukyas, Hoysalas, and Vijayanagara. It has been a center of South Indian culture and architecture.",
         culture: "Known for classical music, dance, and being the Silicon Valley of India.",
         heritage: ["Hampi", "Mysore Palace", "Western Ghats", "Hoysala Architecture"],
+        heritageImages: {
+            "Hampi": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Hampi_Monuments.jpg/1200px-Hampi_Monuments.jpg",
+            "Mysore Palace": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Mysore_Palace_at_night.jpg/1200px-Mysore_Palace_at_night.jpg",
+            "Western Ghats": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Western_Ghats_from_Munnar.jpg/1200px-Western_Ghats_from_Munnar.jpg",
+            "Hoysala Architecture": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Chennakesava_Temple_Hoysala_Architecture.jpg/1200px-Chennakesava_Temple_Hoysala_Architecture.jpg"
+        },
         festivals: ["Dasara", "Ugadi", "Karaga", "Diwali"],
         cuisine: ["Masala Dosa", "Bisi Bele Bath", "Mysore Pak", "Ragi Mudde"],
         languages: ["Kannada", "Telugu", "Tamil", "Hindi"],
@@ -1675,7 +1809,7 @@
                 correct: 1,
                 explanation: "Tawang Monastery is one of the largest Buddhist monasteries in India."
             },
-            {
+                        {
                 question: "Which northeastern state is called the 'Land of the Rising Sun'?",
                 options: ["Sikkim", "Nagaland", "Arunachal Pradesh", "Manipur"],
                 correct: 2,
@@ -1707,484 +1841,532 @@
         ]
     }
 ];
-
-        // Enhanced Quiz Questions with cultural focus
-        const generalQuizQuestions = [
-            {
-                question: "Which state is known as the 'Land of Rising Sun'?",
-                options: ["Arunachal Pradesh", "Assam", "Manipur", "Nagaland"],
-                correct: 0,
-                explanation: "Arunachal Pradesh is called the 'Land of Rising Sun' as it receives the first rays of sunrise in India."
-            },
-            {
-                question: "Where did Buddha attain enlightenment?",
-                options: ["Sarnath", "Bodh Gaya", "Kushinagar", "Lumbini"],
-                correct: 1,
-                explanation: "Buddha attained enlightenment under the Bodhi tree in Bodh Gaya, Bihar."
-            },
-            {
-                question: "Which classical dance form originated in Kerala?",
-                options: ["Bharatanatyam", "Kathak", "Kathakali", "Kuchipudi"],
-                correct: 2,
-                explanation: "Kathakali is the classical dance-drama form that originated in Kerala."
-            },
-            {
-                question: "The Golden Temple is located in which state?",
-                options: ["Himachal Pradesh", "Punjab", "Haryana", "Rajasthan"],
-                correct: 1,
-                explanation: "The Golden Temple (Harmandir Sahib) is located in Amritsar, Punjab."
-            },
-            {
-                question: "Which festival is known as the 'Festival of Colors'?",
-                options: ["Diwali", "Holi", "Navratri", "Dussehra"],
-                correct: 1,
-                explanation: "Holi is known as the Festival of Colors, celebrated across India with vibrant colored powders."
-            },
-            {
-                question: "Which state celebrates the Hornbill Festival?",
-                options: ["Mizoram", "Nagaland", "Manipur", "Meghalaya"],
-                correct: 1,
-                explanation: "The Hornbill Festival is celebrated in Nagaland and showcases the rich cultural heritage of the Naga tribes."
-            },
-            {
-                question: "What is the classical dance form of Andhra Pradesh?",
-                options: ["Bharatanatyam", "Kuchipudi", "Kathak", "Odissi"],
-                correct: 1,
-                explanation: "Kuchipudi is the classical dance form that originated in Andhra Pradesh."
-            },
-            {
-                question: "Which empire built the magnificent ruins at Hampi?",
-                options: ["Chola", "Vijayanagara", "Hoysala", "Chalukya"],
-                correct: 1,
-                explanation: "The Vijayanagara Empire built the magnificent structures at Hampi."
-            },
-            {
-                question: "What is the harvest festival of Tamil Nadu?",
-                options: ["Onam", "Pongal", "Baisakhi", "Makar Sankranti"],
-                correct: 1,
-                explanation: "Pongal is the harvest festival celebrated in Tamil Nadu."
-            },
-            {
-                question: "Which sweet is West Bengal famous for?",
-                options: ["Gulab Jamun", "Jalebi", "Rasgulla", "Barfi"],
-                correct: 2,
-                explanation: "Rasgulla is the famous sweet from West Bengal."
-            }
-        ];
-
-        // Application State - Using memory instead of localStorage
-        let currentUser = {
-            score: 0,
-            streak: 1,
-            statesVisited: [],
-            lastVisit: null,
-            quizHistory: [],
-            totalQuizzes: 0,
-            correctAnswers: 0,
-            searchHistory: []
-        };
-
-        let currentQuiz = {
-            questions: [],
-            currentQuestion: 0,
-            userAnswers: [],
-            isActive: false,
-            stateSpecific: false,
-            stateName: null
-        };
-
-        // Initialize App
-        document.addEventListener('DOMContentLoaded', function() {
-            renderStates();
-            updateUI();
-        });
-
-        // Search Functions
-        function handleSearch(event) {
-            const query = event.target.value.trim();
             
-            if (event.key === 'Enter' && query) {
-                performSearch(query);
-            }
+
+const generalQuizQuestions = [
+    {
+        question: "Which state is known as the 'Land of Rising Sun'?",
+        options: ["Arunachal Pradesh", "Assam", "Manipur", "Nagaland"],
+        correct: 0,
+        explanation: "Arunachal Pradesh is called the 'Land of Rising Sun' as it receives the first rays of sunrise in India."
+    },
+    {
+        question: "Where did Buddha attain enlightenment?",
+        options: ["Sarnath", "Bodh Gaya", "Kushinagar", "Lumbini"],
+        correct: 1,
+        explanation: "Buddha attained enlightenment under the Bodhi tree in Bodh Gaya, Bihar."
+    },
+    {
+        question: "Which classical dance form originated in Kerala?",
+        options: ["Bharatanatyam", "Kathak", "Kathakali", "Kuchipudi"],
+        correct: 2,
+        explanation: "Kathakali is the classical dance-drama form that originated in Kerala."
+    },
+    {
+        question: "The Golden Temple is located in which state?",
+        options: ["Himachal Pradesh", "Punjab", "Haryana", "Rajasthan"],
+        correct: 1,
+        explanation: "The Golden Temple (Harmandir Sahib) is located in Amritsar, Punjab."
+    },
+    {
+        question: "Which festival is known as the 'Festival of Colors'?",
+        options: ["Diwali", "Holi", "Navratri", "Dussehra"],
+        correct: 1,
+        explanation: "Holi is known as the Festival of Colors, celebrated across India with vibrant colored powders."
+    },
+    {
+        question: "Which state celebrates the Hornbill Festival?",
+        options: ["Mizoram", "Nagaland", "Manipur", "Meghalaya"],
+        correct: 1,
+        explanation: "The Hornbill Festival is celebrated in Nagaland and showcases the rich cultural heritage of the Naga tribes."
+    },
+    {
+        question: "What is the classical dance form of Andhra Pradesh?",
+        options: ["Bharatanatyam", "Kuchipudi", "Kathak", "Odissi"],
+        correct: 1,
+        explanation: "Kuchipudi is the classical dance form that originated in Andhra Pradesh."
+    },
+    {
+        question: "Which empire built the magnificent ruins at Hampi?",
+        options: ["Chola", "Vijayanagara", "Hoysala", "Chalukya"],
+        correct: 1,
+        explanation: "The Vijayanagara Empire built the magnificent structures at Hampi."
+    },
+    {
+        question: "What is the harvest festival of Tamil Nadu?",
+        options: ["Onam", "Pongal", "Baisakhi", "Makar Sankranti"],
+        correct: 1,
+        explanation: "Pongal is the harvest festival celebrated in Tamil Nadu."
+    },
+    {
+        question: "Which sweet is West Bengal famous for?",
+        options: ["Gulab Jamun", "Jalebi", "Rasgulla", "Barfi"],
+        correct: 2,
+        explanation: "Rasgulla is the famous sweet from West Bengal."
+    }
+];
+
+let currentUser = {
+    score: 0,
+    streak: 1,
+    statesVisited: [],
+    lastVisit: null,
+    quizHistory: [],
+    totalQuizzes: 0,
+    correctAnswers: 0,
+    searchHistory: []
+};
+
+let currentQuiz = {
+    questions: [],
+    currentQuestion: 0,
+    userAnswers: [],
+    isActive: false,
+    stateSpecific: false,
+    stateName: null
+};
+
+document.addEventListener('DOMContentLoaded', function() {
+    renderStates();
+    updateUI();
+});
+
+function handleSearch(event) {
+    const query = event.target.value.trim();
+    
+    if (event.key === 'Enter' && query) {
+        performSearch(query);
+    }
+}
+
+function performSearch(query) {
+    if (query && !currentUser.searchHistory.includes(query)) {
+        currentUser.searchHistory.unshift(query);
+        if (currentUser.searchHistory.length > 10) {
+            currentUser.searchHistory = currentUser.searchHistory.slice(0, 10);
         }
+    }
 
-        function performSearch(query) {
-            // Add to search history
-            if (query && !currentUser.searchHistory.includes(query)) {
-                currentUser.searchHistory.unshift(query);
-                if (currentUser.searchHistory.length > 10) {
-                    currentUser.searchHistory = currentUser.searchHistory.slice(0, 10);
-                }
-            }
+    const results = indianStates.filter(state => 
+        state.name.toLowerCase().includes(query.toLowerCase()) ||
+        state.capital.toLowerCase().includes(query.toLowerCase()) ||
+        state.culture.toLowerCase().includes(query.toLowerCase()) ||
+        state.heritage.some(item => item.toLowerCase().includes(query.toLowerCase())) ||
+        state.festivals.some(item => item.toLowerCase().includes(query.toLowerCase())) ||
+        state.cuisine.some(item => item.toLowerCase().includes(query.toLowerCase()))
+    );
 
-            // Simple search implementation
-            const results = indianStates.filter(state => 
-                state.name.toLowerCase().includes(query.toLowerCase()) ||
-                state.capital.toLowerCase().includes(query.toLowerCase()) ||
-                state.culture.toLowerCase().includes(query.toLowerCase()) ||
-                state.heritage.some(item => item.toLowerCase().includes(query.toLowerCase())) ||
-                state.festivals.some(item => item.toLowerCase().includes(query.toLowerCase())) ||
-                state.cuisine.some(item => item.toLowerCase().includes(query.toLowerCase()))
-            );
+    displaySearchResults(results, query);
+}
 
-            displaySearchResults(results, query);
-        }
+function displaySearchResults(results, query) {
+    const statesGrid = document.getElementById('statesGrid');
+    
+    if (results.length === 0) {
+        statesGrid.innerHTML = `
+            <div style="grid-column: 1 / -1; text-align: center; padding: 2rem; color: #DAA520;">
+                <h3>No results found for "${query}"</h3>
+                <p>Try searching with different keywords</p>
+                <button class="btn btn-primary" onclick="renderStates()" style="margin-top: 1rem;">Show All States</button>
+            </div>
+        `;
+        return;
+    }
 
-        function displaySearchResults(results, query) {
-            const statesGrid = document.getElementById('statesGrid');
-            
-            if (results.length === 0) {
-                statesGrid.innerHTML = `
-                    <div style="grid-column: 1 / -1; text-align: center; padding: 2rem; color: #DAA520;">
-                        <h3>No results found for "${query}"</h3>
-                        <p>Try searching with different keywords</p>
-                        <button class="btn btn-primary" onclick="renderStates()" style="margin-top: 1rem;">Show All States</button>
-                    </div>
-                `;
-                return;
-            }
+    statesGrid.innerHTML = '';
+    results.forEach(state => {
+        renderStateCard(state, statesGrid);
+    });
+}
 
-            statesGrid.innerHTML = '';
-            results.forEach(state => {
-                renderStateCard(state, statesGrid);
-            });
-        }
+function renderStates() {
+    const statesGrid = document.getElementById('statesGrid');
+    statesGrid.innerHTML = '';
+    indianStates.forEach(state => renderStateCard(state, statesGrid));
+}
 
-        // Render States Grid
-        function renderStates() {
-            const statesGrid = document.getElementById('statesGrid');
-            statesGrid.innerHTML = '';
-            indianStates.forEach(state => renderStateCard(state, statesGrid));
-        }
-
-        function renderStateCard(state, container) {
-            const isVisited = currentUser.statesVisited.includes(state.name);
-            const stateCard = document.createElement('div');
-            stateCard.className = 'state-card';
-            stateCard.innerHTML = `
-                <div class="card-header">
-                    <span style="font-size: 4rem;">${state.emoji}</span>
-                    ${isVisited ? '<span style="position: absolute; top: 10px; right: 10px; font-size: 2rem;">✅</span>' : ''}
+function renderStateCard(state, container) {
+    const isVisited = currentUser.statesVisited.includes(state.name);
+    const stateCard = document.createElement('div');
+    stateCard.className = 'state-card';
+    stateCard.innerHTML = `
+        <div class="card-header">
+            <span style="font-size: 4rem;">${state.emoji}</span>
+            ${isVisited ? '<span style="position: absolute; top: 10px; right: 10px; font-size: 2rem;">✅</span>' : ''}
+        </div>
+        <div class="card-content">
+            <h3>${state.name}</h3>
+            <p><strong>Capital:</strong> ${state.capital}</p>
+            <div class="card-stats">
+                <div class="stat">
+                    <div class="stat-value">${state.heritage.length}</div>
+                    <div class="stat-label">Heritage Sites</div>
                 </div>
-                <div class="card-content">
-                    <h3>${state.name}</h3>
-                    <p><strong>Capital:</strong> ${state.capital}</p>
-                    <div class="card-stats">
-                        <div class="stat">
-                            <div class="stat-value">${state.heritage.length}</div>
-                            <div class="stat-label">Heritage Sites</div>
-                        </div>
-                        <div class="stat">
-                            <div class="stat-value">${state.festivals.length}</div>
-                            <div class="stat-label">Festivals</div>
-                        </div>
-                        <div class="stat">
-                            <div class="stat-value">${state.languages.length}</div>
-                            <div class="stat-label">Languages</div>
-                        </div>
-                    </div>
-                    <div class="card-actions">
-                        <button class="btn btn-primary" onclick="exploreState('${state.name}')">Explore Heritage</button>
-                        <button class="btn btn-secondary" onclick="stateQuiz('${state.name}')">Cultural Quiz</button>
-                    </div>
+                <div class="stat">
+                    <div class="stat-value">${state.festivals.length}</div>
+                    <div class="stat-label">Festivals</div>
                 </div>
-            `;
-            container.appendChild(stateCard);
-        }
-
-        // Show State Details
-        function exploreState(stateName) {
-            const state = indianStates.find(s => s.name === stateName);
-            if (!state) return;
-
-            // Mark as visited
-            if (!currentUser.statesVisited.includes(stateName)) {
-                currentUser.statesVisited.push(stateName);
-                currentUser.score += 15; // Bonus for exploring new state
-                updateUI();
-                renderStates();
-            }
-
-            // Show modal
-            document.getElementById('modalStateTitle').textContent = `${state.emoji} ${state.name}`;
-            document.getElementById('modalStateCapital').textContent = `Capital: ${state.capital}`;
-            
-            const modalBody = document.getElementById('modalBody');
-            modalBody.innerHTML = `
-                <div class="section">
-                    <h3>🏛️ Historical Heritage</h3>
-                    <p>${state.history}</p>
+                <div class="stat">
+                    <div class="stat-value">${state.languages.length}</div>
+                    <div class="stat-label">Languages</div>
                 </div>
-                <div class="section">
-                    <h3>🎭 Cultural Identity</h3>
-                    <p>${state.culture}</p>
-                </div>
-                <div class="section">
-                    <h3>🏛️ Heritage & Monuments</h3>
-                    <div class="cultural-items">
-                        ${state.heritage.map(item => `<div class="cultural-item">${item}</div>`).join('')}
-                    </div>
-                </div>
-                <div class="section">
-                    <h3>🎉 Traditional Festivals</h3>
-                    <div class="cultural-items">
-                        ${state.festivals.map(item => `<div class="cultural-item">${item}</div>`).join('')}
-                    </div>
-                </div>
-                <div class="section">
-                    <h3>🍽️ Traditional Cuisine</h3>
-                    <div class="cultural-items">
-                        ${state.cuisine.map(item => `<div class="cultural-item">${item}</div>`).join('')}
-                    </div>
-                </div>
-                <div class="section">
-                    <h3>🗣️ Regional Languages</h3>
-                    <div class="cultural-items">
-                        ${state.languages.map(item => `<div class="cultural-item">${item}</div>`).join('')}
-                    </div>
-                </div>
-            `;
+            </div>
+            <div class="card-actions">
+                <button class="btn btn-primary" onclick="exploreState('${state.name}')">Explore Heritage</button>
+                <button class="btn btn-secondary" onclick="stateQuiz('${state.name}')">Cultural Quiz</button>
+            </div>
+        </div>
+    `;
+    container.appendChild(stateCard);
+}
 
-            document.getElementById('stateModal').classList.add('active');
-        }
+function exploreState(stateName) {
+    const state = indianStates.find(s => s.name === stateName);
+    if (!state) return;
 
-        // Close Modal
-        function closeModal() {
-            document.getElementById('stateModal').classList.remove('active');
-        }
-
-        // Start General Quiz
-        function startQuiz() {
-            const shuffledQuestions = [...generalQuizQuestions].sort(() => Math.random() - 0.5);
-            currentQuiz.questions = shuffledQuestions.slice(0, 5);
-            currentQuiz.currentQuestion = 0;
-            currentQuiz.userAnswers = [];
-            currentQuiz.isActive = true;
-            currentQuiz.stateSpecific = false;
-            currentQuiz.stateName = null;
-
-            showQuestion();
-        }
-
-        // State-specific Quiz
-        function stateQuiz(stateName) {
-            const state = indianStates.find(s => s.name === stateName);
-            if (!state || !state.quizQuestions) {
-                alert('Quiz not available for this state yet!');
-                return;
-            }
-
-            showTab('quiz');
-            
-            // Mix state-specific questions with general questions
-            const stateQuestions = [...state.quizQuestions];
-            const generalQuestions = [...generalQuizQuestions].sort(() => Math.random() - 0.5).slice(0, 3);
-            const mixedQuestions = [...stateQuestions, ...generalQuestions].sort(() => Math.random() - 0.5);
-
-            currentQuiz.questions = mixedQuestions.slice(0, 5);
-            currentQuiz.currentQuestion = 0;
-            currentQuiz.userAnswers = [];
-            currentQuiz.isActive = true;
-            currentQuiz.stateSpecific = true;
-            currentQuiz.stateName = stateName;
-
-            // Update quiz header
-            const quizHeader = document.querySelector('.quiz-header h2');
-            quizHeader.textContent = `${state.emoji} ${stateName} Cultural Quiz`;
-
-            showQuestion();
-        }
-
-        // Show Current Question
-        function showQuestion() {
-            if (currentQuiz.currentQuestion >= currentQuiz.questions.length) {
-                finishQuiz();
-                return;
-            }
-
-            const question = currentQuiz.questions[currentQuiz.currentQuestion];
-            const progress = ((currentQuiz.currentQuestion) / currentQuiz.questions.length) * 100;
-            
-            document.getElementById('progressBar').style.width = progress + '%';
-            
-            document.getElementById('quizContent').innerHTML = `
-                <div class="question">
-                    <h3>Question ${currentQuiz.currentQuestion + 1} of ${currentQuiz.questions.length}</h3>
-                    <h3>${question.question}</h3>
-                    <div class="options">
-                        ${question.options.map((option, index) => `
-                            <div class="option" onclick="selectOption(${index})" data-index="${index}">
-                                ${option}
-                            </div>
-                        `).join('')}
-                    </div>
-                    <div class="quiz-actions">
-                        <button class="btn btn-secondary" onclick="previousQuestion()" ${currentQuiz.currentQuestion === 0 ? 'style="visibility: hidden;"' : ''}>Previous</button>
-                        <button class="btn btn-primary" onclick="nextQuestion()" id="nextBtn" style="display: none;">Next Question</button>
-                    </div>
-                </div>
-            `;
-        }
-
-        // Select Option
-        function selectOption(index) {
-            const options = document.querySelectorAll('.option');
-            options.forEach(opt => opt.classList.remove('selected'));
-            options[index].classList.add('selected');
-            
-            currentQuiz.userAnswers[currentQuiz.currentQuestion] = index;
-            document.getElementById('nextBtn').style.display = 'block';
-        }
-
-        // Next Question
-        function nextQuestion() {
-            if (currentQuiz.userAnswers[currentQuiz.currentQuestion] === undefined) return;
-            
-            currentQuiz.currentQuestion++;
-            showQuestion();
-        }
-
-        // Previous Question
-        function previousQuestion() {
-            if (currentQuiz.currentQuestion > 0) {
-                currentQuiz.currentQuestion--;
-                showQuestion();
-            }
-        }
-
-        // Finish Quiz
-        function finishQuiz() {
-            let correctAnswers = 0;
-            currentQuiz.questions.forEach((question, index) => {
-                if (currentQuiz.userAnswers[index] === question.correct) {
-                    correctAnswers++;
-                }
-            });
-
-            const score = correctAnswers * 25; // 25 points per correct answer
-            currentUser.score += score;
-            currentUser.totalQuizzes++;
-            currentUser.correctAnswers += correctAnswers;
-            
-            currentUser.quizHistory.push({
-                date: new Date().toLocaleDateString(),
-                score: correctAnswers,
-                total: currentQuiz.questions.length,
-                stateName: currentQuiz.stateName
-            });
-
-            updateUI();
-
-            const accuracy = Math.round((correctAnswers / currentQuiz.questions.length) * 100);
-            const quizTypeText = currentQuiz.stateSpecific ? `${currentQuiz.stateName} Cultural Quiz` : 'Cultural Quiz';
-            
-            document.getElementById('quizContent').innerHTML = `
-                <div style="text-align: center; padding: 2rem;">
-                    <h2>🎉 ${quizTypeText} Completed!</h2>
-                    <div class="streak-display" style="font-size: 4rem; color: #DAA520; margin: 1rem 0;">
-                        ${correctAnswers}/${currentQuiz.questions.length}
-                    </div>
-                    <p style="font-size: 1.2rem; margin-bottom: 1rem; color: #FFD700;">Cultural Knowledge: ${accuracy}%</p>
-                    <p style="margin-bottom: 2rem; color: #DAA520;">You earned ${score} heritage points!</p>
-                    
-                    <div style="background: rgba(218, 165, 32, 0.1); padding: 1.5rem; border-radius: 15px; margin-bottom: 2rem;">
-                        <h3 style="color: #FFD700; margin-bottom: 1rem;">📚 What You Learned:</h3>
-                        <div style="text-align: left; color: #DAA520;">
-                            ${currentQuiz.questions.map((q, i) => `
-                                <p style="margin-bottom: 1rem;">
-                                    <strong>Q${i+1}:</strong> ${q.question}<br>
-                                    <span style="color: ${currentQuiz.userAnswers[i] === q.correct ? '#28a745' : '#dc3545'};">
-                                        Your answer: ${q.options[currentQuiz.userAnswers[i]] || 'Not answered'}
-                                    </span><br>
-                                    <span style="color: #28a745;">Correct: ${q.options[q.correct]}</span><br>
-                                    <em style="color: rgba(218, 165, 32, 0.8);">${q.explanation}</em>
-                                </p>
-                            `).join('')}
-                        </div>
-                    </div>
-                    
-                    <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-                        <button class="btn btn-primary" onclick="startQuiz()">Another General Quiz</button>
-                        <button class="btn btn-secondary" onclick="showTab('explore')">Explore More States</button>
-                        <button class="btn btn-secondary" onclick="showTab('dashboard')">View Progress</button>
-                    </div>
-                </div>
-            `;
-
-            document.getElementById('progressBar').style.width = '100%';
-            currentQuiz.isActive = false;
-        }
-
-        // Show Tab
-        function showTab(tabName) {
-            document.querySelectorAll('.tab-content').forEach(tab => {
-                tab.classList.add('hidden');
-            });
-            
-            document.getElementById(tabName + '-tab').classList.remove('hidden');
-            
-            document.querySelectorAll('.tab-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            
-            // Find and activate the correct tab button
-            const tabButtons = document.querySelectorAll('.tab-btn');
-            tabButtons.forEach(btn => {
-                if ((tabName === 'explore' && btn.textContent.includes('Explore')) ||
-                    (tabName === 'quiz' && btn.textContent.includes('Quiz')) ||
-                    (tabName === 'dashboard' && btn.textContent.includes('Progress'))) {
-                    btn.classList.add('active');
-                }
-            });
-
-            if (tabName === 'dashboard') {
-                updateDashboard();
-            } else if (tabName === 'quiz') {
-                // Reset quiz header when going back to quiz tab
-                const quizHeader = document.querySelector('.quiz-header h2');
-                quizHeader.textContent = '🧠 Cultural Knowledge Quiz';
-                
-                // Reset quiz content if no active quiz
-                if (!currentQuiz.isActive) {
-                    document.getElementById('quizContent').innerHTML = `
-                        <button class="btn btn-primary" onclick="startQuiz()" style="width: 200px; margin: 2rem auto; display: block;">Start Cultural Quiz</button>
-                    `;
-                    document.getElementById('progressBar').style.width = '0%';
-                }
-            }
-        }
-
-        // Update Dashboard
-        function updateDashboard() {
-            document.getElementById('streakDisplay').textContent = currentUser.streak;
-            document.getElementById('scoreDisplay').textContent = currentUser.score;
-            document.getElementById('exploredDisplay').textContent = currentUser.statesVisited.length;
-            
-            const accuracy = currentUser.totalQuizzes > 0 ? 
-                Math.round((currentUser.correctAnswers / (currentUser.totalQuizzes * 5)) * 100) : 0;
-            document.getElementById('accuracyDisplay').textContent = accuracy + '%';
-        }
-
-        // Update UI
-        function updateUI() {
-            document.getElementById('totalScore').textContent = currentUser.score;
-            document.getElementById('currentStreak').textContent = currentUser.streak;
-            document.getElementById('statesVisited').textContent = `${currentUser.statesVisited.length}/28`;
-        }
-
-        // Close modal when clicking outside
-        document.getElementById('stateModal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeModal();
-            }
-        });
-
-        // Initialize the app
-        renderStates();
+    if (!currentUser.statesVisited.includes(stateName)) {
+        currentUser.statesVisited.push(stateName);
+        currentUser.score += 15;
         updateUI();
+        renderStates();
+    }
+
+    document.getElementById('modalStateTitle').textContent = `${state.emoji} ${state.name}`;
+    document.getElementById('modalStateCapital').textContent = `Capital: ${state.capital}`;
+    
+    const modalBody = document.getElementById('modalBody');
+    modalBody.innerHTML = `
+        <div class="section">
+            <h3>🏛️ Historical Heritage</h3>
+            <p>${state.history}</p>
+        </div>
+        <div class="section">
+            <h3>🎭 Cultural Identity</h3>
+            <p>${state.culture}</p>
+        </div>
+        <div class="section">
+            <h3>🏛️ Heritage & Monuments</h3>
+            <div class="cultural-items">
+                ${state.heritage.map(item => `
+                    <div class="cultural-item" onclick="showHeritageImage('${state.name}', '${item}')">
+                        ${item}
+                        <br><small style="color: rgba(218, 165, 32, 0.6);">Click to view in 3D</small>
+                    </div>
+                `).join('')}
+            </div>
+        </div>
+        <div class="section">
+            <h3>🎉 Traditional Festivals</h3>
+            <div class="cultural-items">
+                ${state.festivals.map(item => `
+                    <div class="cultural-item" onclick="showFestivalImage('${state.name}', '${item}')">
+                        ${item}
+                        <br><small style="color: rgba(218, 165, 32, 0.6);">Click to view</small>
+                    </div>
+                `).join('')}
+            </div>
+        </div>
+        <div class="section">
+            <h3>🍽️ Traditional Cuisine</h3>
+            <div class="cultural-items">
+                ${state.cuisine.map(item => `
+                    <div class="cultural-item" onclick="showCuisineImage('${state.name}', '${item}')">
+                        ${item}
+                        <br><small style="color: rgba(218, 165, 32, 0.6);">Click to view</small>
+                    </div>
+                `).join('')}
+            </div>
+        </div>
+        <div class="section">
+            <h3>🗣️ Regional Languages</h3>
+            <div class="cultural-items">
+                ${state.languages.map(item => `<div class="cultural-item">${item}</div>`).join('')}
+            </div>
+        </div>
+    `;
+
+    document.getElementById('stateModal').classList.add('active');
+}
+
+function closeModal() {
+    document.getElementById('stateModal').classList.remove('active');
+}
+
+function showHeritageImage(stateName, heritageName) {
+    const state = indianStates.find(s => s.name === stateName);
+    if (!state) return;
+
+    const imageUrl = state.heritageImages?.[heritageName] || 
+                   'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvQL4twTG-6kKRLMgBTSEfPFfBgPJyClHeSg&s';
+    
+    document.getElementById('viewerImage').src = imageUrl;
+    document.getElementById('imageName').textContent = heritageName;
+    document.getElementById('imageState').textContent = `${state.emoji} ${stateName}`;
+
+    document.getElementById('imageViewerModal').classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function showFestivalImage(stateName, festivalName) {
+    const state = indianStates.find(s => s.name === stateName);
+    if (!state) return;
+
+    const imageUrl = state.festivalsImages?.[festivalName] || 
+                   'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvQL4twTG-6kKRLMgBTSEfPFfBgPJyClHeSg&s';
+    
+    document.getElementById('viewerImage').src = imageUrl;
+    document.getElementById('imageName').textContent = festivalName;
+    document.getElementById('imageState').textContent = `${state.emoji} ${stateName}`;
+
+    document.getElementById('imageViewerModal').classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function showCuisineImage(stateName, cuisineName) {
+    const state = indianStates.find(s => s.name === stateName);
+    if (!state) return;
+
+    const imageUrl = state.cuisineImages?.[cuisineName] || 
+                   'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvQL4twTG-6kKRLMgBTSEfPFfBgPJyClHeSg&s';
+    
+    document.getElementById('viewerImage').src = imageUrl;
+    document.getElementById('imageName').textContent = cuisineName;
+    document.getElementById('imageState').textContent = `${state.emoji} ${stateName}`;
+
+    document.getElementById('imageViewerModal').classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeImageViewer() {
+    document.getElementById('imageViewerModal').classList.remove('active');
+    document.body.style.overflow = 'auto';
+}
+
+function startQuiz() {
+    const shuffledQuestions = [...generalQuizQuestions].sort(() => Math.random() - 0.5);
+    currentQuiz.questions = shuffledQuestions.slice(0, 5);
+    currentQuiz.currentQuestion = 0;
+    currentQuiz.userAnswers = [];
+    currentQuiz.isActive = true;
+    currentQuiz.stateSpecific = false;
+    currentQuiz.stateName = null;
+
+    showQuestion();
+}
+
+function stateQuiz(stateName) {
+    const state = indianStates.find(s => s.name === stateName);
+    if (!state || !state.quizQuestions) {
+        alert('Quiz not available for this state yet!');
+        return;
+    }
+
+    showTab('quiz');
+    
+    const stateQuestions = [...state.quizQuestions];
+    const generalQuestions = [...generalQuizQuestions].sort(() => Math.random() - 0.5).slice(0, 3);
+    const mixedQuestions = [...stateQuestions, ...generalQuestions].sort(() => Math.random() - 0.5);
+
+    currentQuiz.questions = mixedQuestions.slice(0, 5);
+    currentQuiz.currentQuestion = 0;
+    currentQuiz.userAnswers = [];
+    currentQuiz.isActive = true;
+    currentQuiz.stateSpecific = true;
+    currentQuiz.stateName = stateName;
+
+    const quizHeader = document.querySelector('.quiz-header h2');
+    quizHeader.textContent = `${state.emoji} ${stateName} Cultural Quiz`;
+
+    showQuestion();
+}
+
+function showQuestion() {
+    if (currentQuiz.currentQuestion >= currentQuiz.questions.length) {
+        finishQuiz();
+        return;
+    }
+
+    const question = currentQuiz.questions[currentQuiz.currentQuestion];
+    const progress = ((currentQuiz.currentQuestion) / currentQuiz.questions.length) * 100;
+    
+    document.getElementById('progressBar').style.width = progress + '%';
+    
+    document.getElementById('quizContent').innerHTML = `
+        <div class="question">
+            <h3>Question ${currentQuiz.currentQuestion + 1} of ${currentQuiz.questions.length}</h3>
+            <h3>${question.question}</h3>
+            <div class="options">
+                ${question.options.map((option, index) => `
+                    <div class="option" onclick="selectOption(${index})" data-index="${index}">
+                        ${option}
+                    </div>
+                `).join('')}
+            </div>
+            <div class="quiz-actions">
+                <button class="btn btn-secondary" onclick="previousQuestion()" ${currentQuiz.currentQuestion === 0 ? 'style="visibility: hidden;"' : ''}>Previous</button>
+                <button class="btn btn-primary" onclick="nextQuestion()" id="nextBtn" style="display: none;">Next Question</button>
+            </div>
+        </div>
+    `;
+}
+
+function selectOption(index) {
+    const options = document.querySelectorAll('.option');
+    options.forEach(opt => opt.classList.remove('selected'));
+    options[index].classList.add('selected');
+    
+    currentQuiz.userAnswers[currentQuiz.currentQuestion] = index;
+    document.getElementById('nextBtn').style.display = 'block';
+}
+
+function nextQuestion() {
+    if (currentQuiz.userAnswers[currentQuiz.currentQuestion] === undefined) return;
+    
+    currentQuiz.currentQuestion++;
+    showQuestion();
+}
+
+function previousQuestion() {
+    if (currentQuiz.currentQuestion > 0) {
+        currentQuiz.currentQuestion--;
+        showQuestion();
+    }
+}
+
+function finishQuiz() {
+    let correctAnswers = 0;
+    currentQuiz.questions.forEach((question, index) => {
+        if (currentQuiz.userAnswers[index] === question.correct) {
+            correctAnswers++;
+        }
+    });
+
+    const score = correctAnswers * 25;
+    currentUser.score += score;
+    currentUser.totalQuizzes++;
+    currentUser.correctAnswers += correctAnswers;
+    
+    currentUser.quizHistory.push({
+        date: new Date().toLocaleDateString(),
+        score: correctAnswers,
+        total: currentQuiz.questions.length,
+        stateName: currentQuiz.stateName
+    });
+
+    updateUI();
+
+    const accuracy = Math.round((correctAnswers / currentQuiz.questions.length) * 100);
+    const quizTypeText = currentQuiz.stateSpecific ? `${currentQuiz.stateName} Cultural Quiz` : 'Cultural Quiz';
+    
+    document.getElementById('quizContent').innerHTML = `
+        <div style="text-align: center; padding: 2rem;">
+            <h2>🎉 ${quizTypeText} Completed!</h2>
+            <div class="streak-display" style="font-size: 4rem; color: #DAA520; margin: 1rem 0;">
+                ${correctAnswers}/${currentQuiz.questions.length}
+            </div>
+            <p style="font-size: 1.2rem; margin-bottom: 1rem; color: #FFD700;">Cultural Knowledge: ${accuracy}%</p>
+            <p style="margin-bottom: 2rem; color: #DAA520;">You earned ${score} heritage points!</p>
+            
+            <div style="background: rgba(218, 165, 32, 0.1); padding: 1.5rem; border-radius: 15px; margin-bottom: 2rem;">
+                <h3 style="color: #FFD700; margin-bottom: 1rem;">📚 What You Learned:</h3>
+                <div style="text-align: left; color: #DAA520;">
+                    ${currentQuiz.questions.map((q, i) => `
+                        <p style="margin-bottom: 1rem;">
+                            <strong>Q${i+1}:</strong> ${q.question}<br>
+                            <span style="color: ${currentQuiz.userAnswers[i] === q.correct ? '#28a745' : '#dc3545'};">
+                                Your answer: ${q.options[currentQuiz.userAnswers[i]] || 'Not answered'}
+                            </span><br>
+                            <span style="color: #28a745;">Correct: ${q.options[q.correct]}</span><br>
+                            <em style="color: rgba(218, 165, 32, 0.8);">${q.explanation}</em>
+                        </p>
+                    `).join('')}
+                </div>
+            </div>
+            
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                <button class="btn btn-primary" onclick="startQuiz()">Another General Quiz</button>
+                <button class="btn btn-secondary" onclick="showTab('explore')">Explore More States</button>
+                <button class="btn btn-secondary" onclick="showTab('dashboard')">View Progress</button>
+            </div>
+        </div>
+    `;
+
+    document.getElementById('progressBar').style.width = '100%';
+    currentQuiz.isActive = false;
+}
+
+function showTab(tabName) {
+    document.querySelectorAll('.tab-content').forEach(tab => {
+        tab.classList.add('hidden');
+    });
+    
+    document.getElementById(tabName + '-tab').classList.remove('hidden');
+    
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.classList.remove('active');
+    });
+    
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    tabButtons.forEach(btn => {
+        if ((tabName === 'explore' && btn.textContent.includes('Explore')) ||
+            (tabName === 'quiz' && btn.textContent.includes('Quiz')) ||
+            (tabName === 'dashboard' && btn.textContent.includes('Progress'))) {
+            btn.classList.add('active');
+        }
+    });
+
+    if (tabName === 'dashboard') {
+        updateDashboard();
+    } else if (tabName === 'quiz') {
+        const quizHeader = document.querySelector('.quiz-header h2');
+        quizHeader.textContent = '🧠 Cultural Knowledge Quiz';
+        
+        if (!currentQuiz.isActive) {
+            document.getElementById('quizContent').innerHTML = `
+                <button class="btn btn-primary" onclick="startQuiz()" style="width: 200px; margin: 2rem auto; display: block;">Start Cultural Quiz</button>
+            `;
+            document.getElementById('progressBar').style.width = '0%';
+        }
+    }
+}
+
+function updateDashboard() {
+    document.getElementById('streakDisplay').textContent = currentUser.streak;
+    document.getElementById('scoreDisplay').textContent = currentUser.score;
+    document.getElementById('exploredDisplay').textContent = currentUser.statesVisited.length;
+    
+    const accuracy = currentUser.totalQuizzes > 0 ? 
+        Math.round((currentUser.correctAnswers / (currentUser.totalQuizzes * 5)) * 100) : 0;
+    document.getElementById('accuracyDisplay').textContent = accuracy + '%';
+}
+
+function updateUI() {
+    document.getElementById('totalScore').textContent = currentUser.score;
+    document.getElementById('currentStreak').textContent = currentUser.streak;
+    document.getElementById('statesVisited').textContent = `${currentUser.statesVisited.length}/28`;
+}
+
+document.getElementById('stateModal').addEventListener('click', function(e) {
+    if (e.target === this) {
+        closeModal();
+    }
+});
+
+document.getElementById('imageViewerModal').addEventListener('click', function(e) {
+    if (e.target === this) {
+        closeImageViewer();
+    }
+});
+
+document.addEventListener('keydown', function(e) {
+    const imageViewer = document.getElementById('imageViewerModal');
+    if (e.key === 'Escape' && imageViewer.classList.contains('active')) {
+        closeImageViewer();
+    }
+});
+
+renderStates();
+updateUI();
     </script>
 </body>
 </html>
-
-
-
