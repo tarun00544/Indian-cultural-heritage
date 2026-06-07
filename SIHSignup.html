@@ -1,0 +1,640 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Bharat</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --gold: #d4a017;
+            --gold-light: #f0c040;
+            --gold-bright: #ffd700;
+            --brown-dark: #1a0c00;
+            --brown-mid: #3b1f08;
+            --brown-card: rgba(100, 60, 10, 0.45);
+            --text-gold: #f5d87a;
+            --text-light: #ffe9a0;
+            --white: #ffffff;
+            --error: #ff6b6b;
+            --success: #51cf66;
+            --border: rgba(212, 160, 23, 0.35);
+            --input-bg: rgba(20, 10, 0, 0.55);
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: radial-gradient(ellipse at top, #4a2500 0%, #2a1200 40%, #0e0500 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Decorative background orbs */
+        body::before {
+            content: '';
+            position: fixed;
+            top: -150px; right: -150px;
+            width: 500px; height: 500px;
+            background: radial-gradient(circle, rgba(212,160,23,0.18) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        body::after {
+            content: '';
+            position: fixed;
+            bottom: -150px; left: -150px;
+            width: 400px; height: 400px;
+            background: radial-gradient(circle, rgba(180,80,10,0.2) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 440px;
+            animation: fadeUp 0.7s cubic-bezier(0.22,1,0.36,1) both;
+        }
+
+        @keyframes fadeUp {
+            from { opacity:0; transform: translateY(40px); }
+            to   { opacity:1; transform: translateY(0); }
+        }
+
+        /* Card */
+        .card {
+            background: var(--brown-card);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 36px 32px 30px;
+            box-shadow:
+                0 0 0 1px rgba(255,200,60,0.08),
+                0 30px 60px rgba(0,0,0,0.5),
+                inset 0 1px 0 rgba(255,220,80,0.12);
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 28px;
+        }
+
+        .logo-icon {
+            width: 68px; height: 68px;
+            background: linear-gradient(145deg, #e8b820, #c48a10);
+            border-radius: 18px;
+            display: inline-flex; align-items: center; justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 14px;
+            box-shadow: 0 8px 24px rgba(212,160,23,0.4), inset 0 1px 0 rgba(255,255,255,0.2);
+        }
+
+        .brand-name {
+            font-family: 'Cinzel', serif;
+            font-size: 2.1rem;
+            font-weight: 700;
+            color: var(--gold-light);
+            letter-spacing: 2px;
+            text-shadow: 0 0 30px rgba(240,192,64,0.5);
+            display: block;
+        }
+
+        .brand-sub {
+            color: var(--text-gold);
+            font-size: 0.8rem;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+            margin-top: 4px;
+            opacity: 0.85;
+        }
+
+        /* Form */
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .form-group.full { grid-column: 1 / -1; }
+
+        label {
+            display: block;
+            color: var(--text-gold);
+            font-size: 0.78rem;
+            font-weight: 500;
+            letter-spacing: 0.6px;
+            text-transform: uppercase;
+            margin-bottom: 7px;
+        }
+
+        .input-wrap {
+            position: relative;
+        }
+
+        .input-icon {
+            position: absolute;
+            left: 14px; top: 50%;
+            transform: translateY(-50%);
+            font-size: 1rem;
+            opacity: 0.6;
+            pointer-events: none;
+            transition: opacity 0.2s;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="password"] {
+            width: 100%;
+            padding: 13px 14px 13px 40px;
+            background: var(--input-bg);
+            border: 1.5px solid rgba(212,160,23,0.3);
+            border-radius: 12px;
+            color: #fff;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.9rem;
+            transition: border-color 0.25s, box-shadow 0.25s, background 0.25s;
+            outline: none;
+        }
+
+        input::placeholder { color: rgba(245,216,122,0.35); }
+
+        input:focus {
+            border-color: var(--gold-light);
+            background: rgba(20,10,0,0.75);
+            box-shadow: 0 0 0 3px rgba(212,160,23,0.18), 0 4px 12px rgba(0,0,0,0.3);
+        }
+        input:focus + .input-icon { opacity: 1; }
+
+        input.error   { border-color: var(--error); box-shadow: 0 0 0 3px rgba(255,107,107,0.15); }
+        input.success { border-color: var(--success); box-shadow: 0 0 0 3px rgba(81,207,102,0.15); }
+
+        .hint {
+            font-size: 0.72rem;
+            margin-top: 5px;
+            padding-left: 2px;
+            display: none;
+        }
+        .hint.error   { color: var(--error);   display: block; }
+        .hint.success { color: var(--success);  display: block; }
+
+        /* Password strength */
+        .strength-track {
+            height: 3px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 99px;
+            margin-top: 7px;
+            overflow: hidden;
+        }
+        .strength-fill {
+            height: 100%;
+            width: 0;
+            border-radius: 99px;
+            transition: width 0.35s, background 0.35s;
+        }
+        .strength-label {
+            font-size: 0.7rem;
+            margin-top: 4px;
+            color: rgba(245,216,122,0.5);
+            transition: color 0.3s;
+        }
+
+        /* Checkbox */
+        .terms-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .custom-check {
+            appearance: none;
+            width: 18px; height: 18px;
+            border: 1.5px solid rgba(212,160,23,0.5);
+            border-radius: 5px;
+            background: var(--input-bg);
+            cursor: pointer;
+            flex-shrink: 0;
+            margin-top: 1px;
+            transition: all 0.2s;
+            position: relative;
+        }
+        .custom-check:checked {
+            background: var(--gold);
+            border-color: var(--gold);
+        }
+        .custom-check:checked::after {
+            content: '✓';
+            position: absolute;
+            top: -1px; left: 2px;
+            color: #1a0c00;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .terms-text {
+            color: rgba(245,216,122,0.75);
+            font-size: 0.78rem;
+            line-height: 1.5;
+            text-transform: none;
+            letter-spacing: 0;
+            font-weight: 400;
+        }
+        .terms-text a { color: var(--gold-light); text-decoration: none; font-weight: 500; }
+        .terms-text a:hover { text-decoration: underline; }
+
+        /* Submit */
+        .btn-submit {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #e8b820 0%, #c07b0a 100%);
+            color: #1a0800;
+            border: none;
+            border-radius: 13px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s, opacity 0.2s;
+            display: flex; align-items: center; justify-content: center; gap: 8px;
+            box-shadow: 0 6px 20px rgba(200,130,10,0.4);
+        }
+        .btn-submit:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 28px rgba(200,130,10,0.55);
+        }
+        .btn-submit:active:not(:disabled) { transform: translateY(0); }
+        .btn-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+
+        .spinner {
+            width: 18px; height: 18px;
+            border: 2px solid rgba(26,8,0,0.3);
+            border-top-color: #1a0800;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            display: none;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        /* Divider */
+        .divider {
+            display: flex; align-items: center; gap: 12px;
+            margin: 22px 0 18px;
+        }
+        .divider::before, .divider::after {
+            content: ''; flex: 1;
+            height: 1px;
+            background: rgba(212,160,23,0.25);
+        }
+        .divider span {
+            color: rgba(245,216,122,0.5);
+            font-size: 0.78rem;
+            white-space: nowrap;
+        }
+
+        /* Social buttons */
+        .social-btn {
+            width: 100%;
+            padding: 12px 16px;
+            border-radius: 12px;
+            border: 1.5px solid rgba(212,160,23,0.3);
+            background: rgba(20,10,0,0.4);
+            color: var(--text-light);
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.88rem;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex; align-items: center; justify-content: center; gap: 10px;
+            transition: border-color 0.25s, background 0.25s;
+            margin-bottom: 10px;
+        }
+        .social-btn:hover {
+            border-color: rgba(212,160,23,0.6);
+            background: rgba(40,20,0,0.5);
+        }
+        .social-btn svg { width: 20px; height: 20px; flex-shrink: 0; }
+
+        /* Footer link */
+        .signin-link {
+            text-align: center;
+            margin-top: 22px;
+            color: rgba(245,216,122,0.6);
+            font-size: 0.83rem;
+        }
+        .signin-link a {
+            color: var(--gold-light);
+            font-weight: 600;
+            text-decoration: none;
+        }
+        .signin-link a:hover { text-decoration: underline; }
+
+        /* Success overlay */
+        .overlay {
+            position: fixed; inset: 0;
+            background: rgba(0,0,0,0.65);
+            display: none; z-index: 100;
+            backdrop-filter: blur(4px);
+        }
+        .success-modal {
+            position: fixed;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%) scale(0.85);
+            background: linear-gradient(145deg, #3b1f08, #241205);
+            border: 1px solid rgba(212,160,23,0.4);
+            border-radius: 22px;
+            padding: 40px 32px;
+            text-align: center;
+            z-index: 101;
+            display: none;
+            max-width: 340px; width: 90%;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+            animation: popIn 0.4s cubic-bezier(0.34,1.56,0.64,1) both;
+        }
+        @keyframes popIn {
+            from { transform: translate(-50%,-50%) scale(0.7); opacity:0; }
+            to   { transform: translate(-50%,-50%) scale(1);   opacity:1; }
+        }
+        .success-modal .icon { font-size: 3rem; margin-bottom: 14px; }
+        .success-modal h2 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold-light);
+            font-size: 1.4rem;
+            margin-bottom: 8px;
+        }
+        .success-modal p {
+            color: var(--text-gold);
+            font-size: 0.88rem;
+            opacity: 0.85;
+            margin-bottom: 24px;
+            line-height: 1.6;
+        }
+        .success-modal button {
+            padding: 11px 32px;
+            background: linear-gradient(135deg, #e8b820, #c07b0a);
+            color: #1a0800;
+            border: none;
+            border-radius: 10px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            letter-spacing: 1px;
+        }
+
+        @media (max-width: 480px) {
+            .card { padding: 28px 20px 24px; }
+            .form-row { grid-template-columns: 1fr; }
+            .brand-name { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="card">
+
+        <!-- Header -->
+        <div class="header">
+            <div class="logo-icon">🏛️</div>
+            <span class="brand-name">Bharat</span>
+            <p class="brand-sub">Join us · Discover India's Cultural Diversity</p>
+        </div>
+
+        <!-- Form -->
+        <form id="signupForm" novalidate>
+
+            <div class="form-row">
+                <!-- First Name -->
+                <div class="form-group">
+                    <label for="firstName">First Name</label>
+                    <div class="input-wrap">
+                        <input type="text" id="firstName"   autocomplete="given-name">
+                         
+                    </div>
+                    <div class="hint" id="firstNameHint"></div>
+                </div>
+                <!-- Last Name -->
+                <div class="form-group">
+                    <label for="lastName">Last Name</label>
+                    <div class="input-wrap">
+                        <input type="text" id="lastName"   autocomplete="family-name">
+                         
+                    </div>
+                    <div class="hint" id="lastNameHint"></div>
+                </div>
+            </div>
+
+            <!-- Email -->
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <div class="input-wrap">
+                    <input type="email" id="email"   autocomplete="email">
+                     
+                
+
+            <!-- Phone -->
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <div class="input-wrap">
+                    <input type="tel" id="phone"   autocomplete="tel">
+                    
+                 
+
+            <!-- Password -->
+            <div class="form-group">
+                <label for="password">Password</label>
+                <div class="input-wrap">
+                    <input type="password" id="password" placeholder="Create a strong password">
+                    <span class="input-icon">🔒</span>
+                </div>
+                <div class="strength-track"><div class="strength-fill" id="strengthFill"></div></div>
+                <div class="strength-label" id="strengthLabel"></div>
+                <div class="hint" id="passwordHint"></div>
+            </div>
+
+            <!-- Confirm Password -->
+            <div class="form-group">
+                <label for="confirmPassword">Confirm Password</label>
+                <div class="input-wrap">
+                    <input type="password" id="confirmPassword" placeholder="Repeat your password">
+                    <span class="input-icon">🔑</span>
+                </div>
+                <div class="hint" id="confirmPasswordHint"></div>
+            </div>
+
+            <!-- Terms -->
+            <div class="terms-row">
+                <input type="checkbox" class="custom-check" id="terms">
+                <label for="terms" class="terms-text">
+                    I agree to the <a href="Indian_Cultural_Heritage_Terms_Privacy Edited.pdf" target="_blank">Terms of Service</a> and <a href="Indian_Cultural_Heritage_Terms_Privacy Edited.pdf" target="_blank">Privacy Policy</a>
+                </label>
+            </div>
+
+            <!-- Submit -->
+            <button type="submit" class="btn-submit" id="submitBtn">
+                <div class="spinner" id="spinner"></div>
+                <span id="btnText">Begin Journey</span>
+            </button>
+        </form>
+
+        <!-- Divider -->
+        <div class="divider"><span>Or continue with</span></div>
+
+        
+
+        <!-- Sign in link -->
+        <div class="signin-link">
+            Already have an account? <a href="SIHLogin.html">Sign in here</a>
+        </div>
+
+    </div>
+</div>
+
+<!-- Success Modal -->
+<div class="overlay" id="overlay"></div>
+<div class="success-modal" id="successModal">
+    <div class="icon">🎉</div>
+    <h2>Welcome to Bharat!</h2>
+    <p>Your account has been created successfully.<br>Begin exploring India's rich cultural heritage.</p>
+    <button onclick="closeModal()">Begin Journey</button>
+</div>
+
+<script>
+    const registeredUsers = [];
+
+    /* ---- Helpers ---- */
+    function setField(id, state, msg) {
+        const input = document.getElementById(id);
+        const hint  = document.getElementById(id + 'Hint');
+        input.className = state || '';
+        if (hint) {
+            hint.textContent = msg || '';
+            hint.className = 'hint ' + (state || '');
+        }
+    }
+    function clearField(id) { setField(id, '', ''); }
+
+    /* ---- Validators ---- */
+    const re = {
+        name:  /^[a-zA-Z\s]{2,}$/,
+        email: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+        phone: /^[\+]?[1-9][\d\s\-]{7,14}$/
+    };
+
+    /* ---- Password strength ---- */
+    function checkStrength(pw) {
+        const checks = [pw.length >= 8, /[A-Z]/.test(pw), /[a-z]/.test(pw), /\d/.test(pw), /[!@#$%^&*(),.?":{}|<>]/.test(pw)];
+        return checks.filter(Boolean).length;
+    }
+
+    document.getElementById('password').addEventListener('input', function () {
+        const pw = this.value;
+        const fill  = document.getElementById('strengthFill');
+        const label = document.getElementById('strengthLabel');
+        if (!pw) { fill.style.width = '0'; label.textContent = ''; clearField('password'); return; }
+        const s = checkStrength(pw);
+        const levels = [
+            { pct: '20%', color: '#ff6b6b', text: 'Very weak' },
+            { pct: '40%', color: '#ff6b6b', text: 'Weak' },
+            { pct: '60%', color: '#f5a623', text: 'Fair' },
+            { pct: '80%', color: '#f0c040', text: 'Good' },
+            { pct: '100%',color: '#51cf66', text: 'Strong' }
+        ];
+        const l = levels[s - 1] || levels[0];
+        fill.style.width = l.pct;
+        fill.style.background = l.color;
+        label.textContent = l.text;
+        label.style.color = l.color;
+        if (s >= 3) setField('password', 'success', '');
+        else setField('password', 'error', 'Add uppercase, numbers & symbols');
+    });
+
+    /* ---- Live validation ---- */
+    document.getElementById('firstName').addEventListener('input', function () {
+        if (!this.value) { clearField('firstName'); return; }
+        re.name.test(this.value) ? setField('firstName','success','') : setField('firstName','error','Letters only, min 2 chars');
+    });
+    document.getElementById('lastName').addEventListener('input', function () {
+        if (!this.value) { clearField('lastName'); return; }
+        re.name.test(this.value) ? setField('lastName','success','') : setField('lastName','error','Letters only, min 2 chars');
+    });
+    document.getElementById('email').addEventListener('input', function () {
+        if (!this.value) { clearField('email'); return; }
+        if (!re.email.test(this.value)) { setField('email','error','Enter a valid email address'); return; }
+        if (registeredUsers.find(u => u.email === this.value)) { setField('email','error','Email already registered'); return; }
+        setField('email','success','Email is available ✓');
+    });
+    document.getElementById('phone').addEventListener('input', function () {
+        if (!this.value) { clearField('phone'); return; }
+        re.phone.test(this.value.replace(/\s/g,'')) ? setField('phone','success','') : setField('phone','error','Enter a valid phone number');
+    });
+    document.getElementById('confirmPassword').addEventListener('input', function () {
+        if (!this.value) { clearField('confirmPassword'); return; }
+        const match = this.value === document.getElementById('password').value;
+        match ? setField('confirmPassword','success','Passwords match ✓') : setField('confirmPassword','error','Passwords do not match');
+    });
+
+    /* ---- Submit ---- */
+    document.getElementById('signupForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+        const fn = document.getElementById('firstName').value.trim();
+        const ln = document.getElementById('lastName').value.trim();
+        const em = document.getElementById('email').value.trim();
+        const ph = document.getElementById('phone').value.trim();
+        const pw = document.getElementById('password').value;
+        const cp = document.getElementById('confirmPassword').value;
+        const tc = document.getElementById('terms').checked;
+
+        let valid = true;
+        if (!re.name.test(fn)) { setField('firstName','error','Enter your first name'); valid=false; }
+        if (!re.name.test(ln)) { setField('lastName','error','Enter your last name'); valid=false; }
+        if (!re.email.test(em)) { setField('email','error','Enter a valid email'); valid=false; }
+        if (registeredUsers.find(u=>u.email===em)) { setField('email','error','Email already registered'); valid=false; }
+        if (!re.phone.test(ph.replace(/\s/g,''))) { setField('phone','error','Enter a valid phone number'); valid=false; }
+        if (checkStrength(pw) < 3) { setField('password','error','Password too weak'); valid=false; }
+        if (pw !== cp) { setField('confirmPassword','error','Passwords do not match'); valid=false; }
+        if (!tc) { alert('Please accept the Terms of Service and Privacy Policy'); valid=false; }
+        if (!valid) return;
+
+        const btn = document.getElementById('submitBtn');
+        const spinner = document.getElementById('spinner');
+        const btnText = document.getElementById('btnText');
+        btn.disabled = true;
+        spinner.style.display = 'block';
+        btnText.textContent = 'Creating Account…';
+
+        setTimeout(() => {
+            registeredUsers.push({ id: Date.now(), name: fn+' '+ln, email: em, phone: ph, createdAt: new Date().toISOString() });
+            btn.disabled = false;
+            spinner.style.display = 'none';
+            btnText.textContent = 'Begin Journey';
+            document.getElementById('overlay').style.display = 'block';
+            document.getElementById('successModal').style.display = 'block';
+            this.reset();
+            document.querySelectorAll('input[type="text"],input[type="email"],input[type="tel"],input[type="password"]').forEach(i=>i.className='');
+            document.querySelectorAll('.hint').forEach(h=>{h.className='hint';h.textContent='';});
+            document.getElementById('strengthFill').style.width='0';
+            document.getElementById('strengthLabel').textContent='';
+        }, 2000);
+    });
+
+    function closeModal() {
+        document.getElementById('overlay').style.display = 'none';
+        document.getElementById('successModal').style.display = 'none';
+    }
+    document.getElementById('overlay').addEventListener('click', closeModal);
+</script>
+</body>
+</html>
